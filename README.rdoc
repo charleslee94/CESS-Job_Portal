@@ -1,5 +1,6 @@
-== README
+{<img src="https://codeclimate.com/repos/56d4b3a74ffdef0083004f5f/badges/367d350d2655cc218836/gpa.svg" />}[https://codeclimate.com/repos/56d4b3a74ffdef0083004f5f/feed]
 
+== README
 This README would normally document whatever steps are necessary to get the
 application up and running.
 
@@ -28,4 +29,4 @@ Please feel free to use a different markup language if you do not plan to run
 
 tt>rake doc:app</tt>.
 
-{<img src="https://codeclimate.com/repos/56d4b3a74ffdef0083004f5f/badges/367d350d2655cc218836/gpa.svg" />}[https://codeclimate.com/repos/56d4b3a74ffdef0083004f5f/feed]
+
