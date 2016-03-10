@@ -5,3 +5,6 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+Job.create(school: "Ashley Falls")
+Job.create(school: "Torrey Pines", title: "Teacher", summary: "This job rocks!", compensation_min: "100,000", compensation_max: "120,000")
