@@ -11,9 +11,9 @@ Background:
     
 Scenario: visiting the portal for the first time
   Given I am on the home page
-  Then I should not see "Apply here" #or what is on the job posting page
+  Then I should not see "Apply Here" #or what is on the job posting page
   And I should see "SFCESS Guidelines" #or what is on the guidelines page
   Then I follow "Accept
   Then I follow "Ashley Falls"
-  Then I should see "Apply here"
+  Then I should see "Apply Here"
   And I should not see "SFCESS Guidelines"
