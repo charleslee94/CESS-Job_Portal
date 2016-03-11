@@ -1,11 +1,11 @@
 {
   "Cucumber Features": {
     "coverage": {
-      "/home/ubuntu/workspace/app/models/job.rb": [
+      "/home/charles/.virtualenvs/ruby/cs169/CESS-Job-App/app/models/job.rb": [
         1,
         null
       ],
-      "/home/ubuntu/workspace/app/controllers/jobs_controller.rb": [
+      "/home/charles/.virtualenvs/ruby/cs169/CESS-Job-App/app/controllers/jobs_controller.rb": [
         1,
         1,
         null,
@@ -85,22 +85,26 @@
         null,
         null
       ],
-      "/home/ubuntu/workspace/app/controllers/application_controller.rb": [
+      "/home/charles/.virtualenvs/ruby/cs169/CESS-Job-App/app/controllers/application_controller.rb": [
         1,
         null,
         null,
         1,
         null
       ],
-      "/home/ubuntu/workspace/app/helpers/application_helper.rb": [
+      "/home/charles/.virtualenvs/ruby/cs169/CESS-Job-App/app/helpers/application_helper.rb": [
         1,
         null
       ],
-      "/home/ubuntu/workspace/app/helpers/jobs_helper.rb": [
+      "/home/charles/.virtualenvs/ruby/cs169/CESS-Job-App/app/helpers/jobs_helper.rb": [
         1,
         null
       ],
+<<<<<<< HEAD
       "/home/ubuntu/workspace/app/controllers/guidelines_controller.rb": [
+=======
+      "/home/charles/.virtualenvs/ruby/cs169/CESS-Job-App/app/controllers/guidelines_controller.rb": [
+>>>>>>> e4b7b2768631d1214feab85364c6e1987496dad1
         1,
         1,
         null,
@@ -110,11 +114,19 @@
         null,
         null
       ],
+<<<<<<< HEAD
       "/home/ubuntu/workspace/app/models/guideline.rb": [
+=======
+      "/home/charles/.virtualenvs/ruby/cs169/CESS-Job-App/app/models/guideline.rb": [
+>>>>>>> e4b7b2768631d1214feab85364c6e1987496dad1
         0,
         0
       ]
     },
+<<<<<<< HEAD
     "timestamp": 1457732421
+=======
+    "timestamp": 1457732229
+>>>>>>> e4b7b2768631d1214feab85364c6e1987496dad1
   }
 }
