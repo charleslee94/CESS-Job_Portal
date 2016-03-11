@@ -6,8 +6,8 @@ Feature: home page guidelines
     
 Background:
     Given the following job openings exist:
-      | school name    | position        | compensation | posting_date |
-      | Ashley Falls   | Teacher         | 80,000       |   2016-02-25 |
+      | school         | title           | summary                  | compensation_min | compensation_max | 
+      | Ashley Falls   | Teacher         | I love my job!           | 80,000           | 100,000          |
     
 Scenario: visiting the portal for the first time
   Given I am on the home page
