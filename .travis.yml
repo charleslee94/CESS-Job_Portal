@@ -1,4 +1,6 @@
 language: ruby
+cache: bundler
 rvm:
   - 2.2.4
-sudo: required
+services:
+- postgresql
