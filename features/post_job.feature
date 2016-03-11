@@ -6,8 +6,8 @@ Feature: post job opening
 
 Scenario: post job opening
   Given I am on the post open positions page
-  When I fill in "School Name" with "Ashley Falls"
-  And  I fill in "Position Title" with "Teacher"
+  When I fill in "School" with "Ashley Falls"
+  And  I fill in "Title" with "Teacher"
   And  I press "Post Job Opening"
   Then I should see "Ashley Falls" on the open positions page
   And the open position for "Ashley Falls" should be "Teacher"
