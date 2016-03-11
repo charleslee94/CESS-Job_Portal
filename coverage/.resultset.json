@@ -59,6 +59,10 @@
         null,
         null,
         null,
+        1,
+        0,
+        null,
+        null,
         null,
         null,
         1,
@@ -72,7 +76,7 @@
         1,
         null,
         1,
-        6,
+        7,
         null,
         null,
         null,
@@ -95,8 +99,22 @@
       "/home/ubuntu/workspace/app/helpers/jobs_helper.rb": [
         1,
         null
+      ],
+      "/home/ubuntu/workspace/app/controllers/guidelines_controller.rb": [
+        1,
+        1,
+        null,
+        null,
+        1,
+        null,
+        null,
+        null
+      ],
+      "/home/ubuntu/workspace/app/models/guideline.rb": [
+        0,
+        0
       ]
     },
-    "timestamp": 1457728179
+    "timestamp": 1457732834
   }
 }
