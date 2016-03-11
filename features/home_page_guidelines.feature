@@ -12,7 +12,16 @@ Background:
 Scenario: visiting the portal for the first time
   Given I am on the home page
   Then I should not see "Apply Here" 
-  And I should see "SFCESS Guidelines" 
+  And I should see "Guidelines" 
+  When I follow "Look at job postings"
+  When I follow "Show"
+  Then I should see "Apply Here"
+  And I should not see "SFCESS Guidelines"
+
+Scenario: visiting the portal for the second time
+  Given I am on the guidelines page
+  Then I should not see "Apply Here" 
+  And I should see "Guidelines" 
   When I follow "Look at job postings"
   When I follow "Show"
   Then I should see "Apply Here"

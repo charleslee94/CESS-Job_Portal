@@ -15,8 +15,13 @@ module NavigationHelpers
 
     when /^the home\s?page$/
       '/'
+    
+    when /^the guidelines\s?page$/
+      '/guidelines'
+      
     when /^the view open positions page$/
       '/jobs'
+      
     when /^the post open positions page$/
       '/jobs/new'
 

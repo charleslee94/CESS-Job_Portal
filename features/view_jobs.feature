@@ -19,6 +19,13 @@ Scenario: view job openings
   And the title for "Torrey Pines" should be "Math teacher"
   And the compensation_min for "Ashley Falls" should be "80,000"
 
+Scenario: Test the back button
+  Given I am on the view open positions page
+  Then I should see "Ashley Falls"
+  And I should see "Torrey Pines"
+  And the title for "Torrey Pines" should be "Math teacher"
+  And the compensation_min for "Ashley Falls" should be "80,000"
+  
 Scenario: edit job opening
   Given I am on the view open positions page
   When I edit the job for the school "Ashley Falls"
@@ -26,8 +33,16 @@ Scenario: edit job opening
   And I press "Update Job"
   Then I should see "Job was successfully updated."
   And I follow "Back"
-  Then the summary for "Ashley Falls" should be "This school rocks in SD!" 
-  
+  Then the summary for "Ashley Falls" should be "This school rocks in SD!"
+
+Scenario: edit job name
+  Given I am on the view open positions page
+  When I edit the job for the school "Ashley Falls"
+  And I fill in "School" with "Nate Holmes"
+  And I press "Update Job"
+  Then I should see "Job was successfully updated."
+  And I follow "Back"
+  Then I should see "Nate Holmes"
 
 Scenario: delete job opening
   Given I am on the view open positions page
