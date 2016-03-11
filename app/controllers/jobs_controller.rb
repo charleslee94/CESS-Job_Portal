@@ -25,31 +25,33 @@ class JobsController < ApplicationController
   # POST /jobs.json
   def create
     @job = Job.new(job_params)
-    body @job, "Job was successfully created.", false
+    respond_to do |format|
+      if @job.save
+        format.html { redirect_to @job, notice: 'Job was successfully created.' }
+        format.json { render :show, status: :created, location: @job }
+      else
+        format.html { render :new }
+        format.json { render json: @job.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   # PATCH/PUT /jobs/1
   # PATCH/PUT /jobs/1.json
   def update
-    @job = Job.new(job_params)
-    body @job, "Job was successfully updated.", true
-  end
-  
-  def body job, message, update
     respond_to do |format|
-      if update
-        format.html { redirect_to job, notice: message }
-        format.json { render :show, status: :ok, location: job }
+      if @job.update(job_params)
+        format.html { redirect_to @job, notice: 'Job was successfully updated.' }
+        format.json { render :show, status: :ok, location: @job }
       else
         format.html { render :edit }
-        format.json { render json: job.errors, status: :unprocessable_entity }
+        format.json { render json: @job.errors, status: :unprocessable_entity }
       end
     end
   end
   
   def apply
     @job = Job.find(params[:id])
-    
   end
 
   # DELETE /jobs/1
