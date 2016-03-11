@@ -40,6 +40,7 @@ end
 group :test do
   gem 'cucumber-rails', :require => false
   gem 'cucumber-rails-training-wheels'
+  gem 'rake'
 end
 group :production do
   gem 'pg'
