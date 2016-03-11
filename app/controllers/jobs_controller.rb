@@ -50,6 +50,10 @@ class JobsController < ApplicationController
       end
     end
   end
+  
+  def apply
+    @job = Job.find(params[:id])
+  end
 
   # DELETE /jobs/1
   # DELETE /jobs/1.json
