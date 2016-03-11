@@ -18,13 +18,6 @@ Scenario: view job openings
   And I should see "Torrey Pines"
   And the title for "Torrey Pines" should be "Math teacher"
   And the compensation_min for "Ashley Falls" should be "80,000"
-
-Scenario: Test the back button
-  Given I am on the view open positions page
-  Then I should see "Ashley Falls"
-  And I should see "Torrey Pines"
-  And the title for "Torrey Pines" should be "Math teacher"
-  And the compensation_min for "Ashley Falls" should be "80,000"
   
 Scenario: edit job opening
   Given I am on the view open positions page
