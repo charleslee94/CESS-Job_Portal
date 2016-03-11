@@ -17,3 +17,12 @@ Scenario: post job opening
         Then I should see "Gillispie" 
         And the title for "Gillispie" should be "Pre-School"
   
+        #Scenario: post an expired job
+        #        Given I am on the post open positions page
+        #        When I fill in "School" with "Challenger"
+        #        And I fill in "Compensation min" with "50,000"
+        #        And I fill in "Compensation max" with "70,000"
+        #        And I select "2011" from "job_exipiration_1i"
+        #        And I press "Create Job"
+        #        And I should see "Job already expired"
+

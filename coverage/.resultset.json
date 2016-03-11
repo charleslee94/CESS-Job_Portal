@@ -1,11 +1,11 @@
 {
   "Cucumber Features": {
     "coverage": {
-      "/home/ubuntu/workspace/app/models/job.rb": [
+      "/home/charles/.virtualenvs/ruby/cs169/CESS-Job-App/app/models/job.rb": [
         1,
         null
       ],
-      "/home/ubuntu/workspace/app/controllers/jobs_controller.rb": [
+      "/home/charles/.virtualenvs/ruby/cs169/CESS-Job-App/app/controllers/jobs_controller.rb": [
         1,
         1,
         null,
@@ -84,22 +84,22 @@
         null,
         null
       ],
-      "/home/ubuntu/workspace/app/controllers/application_controller.rb": [
+      "/home/charles/.virtualenvs/ruby/cs169/CESS-Job-App/app/controllers/application_controller.rb": [
         1,
         null,
         null,
         1,
         null
       ],
-      "/home/ubuntu/workspace/app/helpers/application_helper.rb": [
+      "/home/charles/.virtualenvs/ruby/cs169/CESS-Job-App/app/helpers/application_helper.rb": [
         1,
         null
       ],
-      "/home/ubuntu/workspace/app/helpers/jobs_helper.rb": [
+      "/home/charles/.virtualenvs/ruby/cs169/CESS-Job-App/app/helpers/jobs_helper.rb": [
         1,
         null
       ],
-      "/home/ubuntu/workspace/app/controllers/guidelines_controller.rb": [
+      "/home/charles/.virtualenvs/ruby/cs169/CESS-Job-App/app/controllers/guidelines_controller.rb": [
         1,
         1,
         null,
@@ -109,11 +109,11 @@
         null,
         null
       ],
-      "/home/ubuntu/workspace/app/models/guideline.rb": [
+      "/home/charles/.virtualenvs/ruby/cs169/CESS-Job-App/app/models/guideline.rb": [
         0,
         0
       ]
     },
-    "timestamp": 1457734897
+    "timestamp": 1457736141
   }
 }
