@@ -1,0 +1,8 @@
+# spec/fixtures/jobs.yml
+matt_job:
+  id: 1
+  school: Haas
+  title: Matt
+  summary: Not great
+  compensation_min: Not much
+  compensation_max: Not a lot
