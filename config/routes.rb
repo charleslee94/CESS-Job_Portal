@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   resources :jobs
   # map '/' to be a redirect to '/movies'
-  root :to => redirect('/guidelines')
+  root :to => redirect('/guideline')
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
