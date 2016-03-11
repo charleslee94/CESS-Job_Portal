@@ -44,6 +44,7 @@ group :test do
   gem 'cucumber-rails', :require => false
   gem 'cucumber-rails-training-wheels'
   gem 'rake'
+  gem 'simplecov', :require => false
 end
 group :production do
   gem 'pg'
