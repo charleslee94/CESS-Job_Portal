@@ -13,3 +13,6 @@ Scenario: follow link to job application page
   Given I am on the view open positions page
   And I follow "Show"
   Then I should see "Apply Here"
+  
+Scenario: follow link to job application page
+  Given I am on the edit page for "Ashley Falls"
