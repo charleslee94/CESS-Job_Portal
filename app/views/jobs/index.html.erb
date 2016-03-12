@@ -18,8 +18,8 @@
   <tbody>
     <% @jobs.each do |job| %>
       <tr>
-        <td><%= job.school %></td>
-        <td><%= link_to job.title, job%></td>
+        <td><%= link_to job.school, job_path(job)%></td>
+        <td><%= link_to job.title, job_path(job)%></td>
         <td><%= job.summary %></td>
         <td><%= job.compensation_min %></td>
         <td><%= job.compensation_max %></td>
