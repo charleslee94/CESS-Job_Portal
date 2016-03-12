@@ -21,9 +21,6 @@ module NavigationHelpers
       
     when /^the view open positions page$/
       '/jobs'
-    
-    when /^the edit\s?page for "(.*)"$/ 
-      job_path(Job.find_by_title($1))
       
     when /^the post open positions page$/
       '/jobs/new'

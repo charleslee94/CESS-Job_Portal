@@ -14,6 +14,6 @@ Scenario: visiting the portal for the first time
   Then I should not see "Apply Here" 
   And I should see "SF-CESS" 
   When I follow "Look at job postings"
-  When I follow "Show"
+  When I follow "Ashley Falls"
   Then I should see "Apply Here"
   And I should not see "SFCESS Guidelines"

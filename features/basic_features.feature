@@ -11,6 +11,6 @@ Background: jobs in database
 
 Scenario: follow link to job application page
   Given I am on the view open positions page
-  And I follow "Show"
+  And I follow "Ashley Falls"
   And I follow "Back"
   Then I should see "Listing"

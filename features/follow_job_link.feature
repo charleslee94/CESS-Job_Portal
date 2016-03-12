@@ -11,8 +11,18 @@ Background: jobs in database
 
 Scenario: follow link to job application page
   Given I am on the view open positions page
-  And I follow "Show"
+  And I follow "Ashley Falls"
   Then I should see "Apply Here"
   
-Scenario: follow link to job application page
-  Given I am on the edit page for "Ashley Falls"
+Scenario: apply to a job
+  Given I am on the view open positions page
+  And I follow "Ashley Falls"
+  And I follow "Apply Here"
+  Then I should see "Thank you for applying to Teacher"
+ 
+Scenario: edit and show
+  Given I am on the view open positions page
+  And I follow "Ashley Falls"
+  And I follow "Edit"
+  And I follow "Show"
+  Then I should see "Compensation min"
