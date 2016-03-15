@@ -19,7 +19,7 @@
     <% @jobs.each do |job| %>
       <tr>
         <td><%= link_to job.school, job_path(job)%></td>
-        <td><%= link_to job.title, job_path(job), style: "font-size=24"%></td>
+        <td><%= link_to job.title, job_path(job)%></td>
         <td><%= job.summary %></td>
         <td><%= job.compensation_min %></td>
         <td><%= job.compensation_max %></td>
@@ -34,4 +34,4 @@
 
 <br>
 
-<%= link_to 'New Job', new_job_path %>
+<%= link_to 'New Job', new_job_path, class: 'btn btn-primary btn-xs' %>
