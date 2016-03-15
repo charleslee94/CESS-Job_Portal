@@ -43,13 +43,6 @@ describe JobsController do
       actual_job = Job.find(matt_job.id)
       assigns(:job).should == actual_job
     end
-    
-    it 'should load correct job id into edit view' do
-      matt_job = jobs(:matt_job)
-      delete :destroy, :id => matt_job.id
-      actual_job = Job.find(matt_job.id)
-      assigns(:job).should == actual_job
-    end
   end
   
 end
