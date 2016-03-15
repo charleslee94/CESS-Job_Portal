@@ -7,7 +7,6 @@ class GuidelinesController < ApplicationController
    end
    
    def edit
-      redirect_to guidelines_path
    end
    
    def new

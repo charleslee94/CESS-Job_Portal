@@ -13,14 +13,6 @@ describe GuidelinesController do
         get :index, :id => matt_job.id
         response.should render_template("index")
     end
-    
-    it 'edit should render the show page' do
-        #job = FactoryGirl.build(:job, :school => 'Matt', :title => 'Nate', :summary => 'Not Good', :expiration => '2016-10-22')
-        matt_job = jobs(:matt_job)
-        get :edit, :id => matt_job.id
-        response.should render_template("index")
-    end
-    
   end
   
 end
