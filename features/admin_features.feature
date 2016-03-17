@@ -17,6 +17,7 @@ Scenario: create a user login for a school
     And I fill in "school" with "haas"
     Then I press "Submit"
     Then I should see "User created"
+    And I should not see "Failure"
 
 Scenario: delete a posting 
     Given I am on admin panel
