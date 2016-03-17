@@ -23,3 +23,7 @@ end
 When(/^I delete the job for the school "(.*?)"$/) do |school|
   find('tr', text: school).click_link("Destroy")
 end
+
+Given /^I am logged in as a regular user$/ do
+  fail "Unimplemented"
+end
