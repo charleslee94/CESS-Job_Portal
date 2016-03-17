@@ -16,6 +16,7 @@ Scenario: post job opening
         And I follow "Back"
         Then I should see "Gillispie" 
         And the title for "Gillispie" should be "Pre-School"
+
   
         #Scenario: post an expired job
         #        Given I am on the post open positions page

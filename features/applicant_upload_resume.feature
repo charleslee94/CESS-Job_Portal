@@ -1,6 +1,6 @@
 Feature: allow regular users to upload their resumes
     As a job applicant
-    I want to be able to easily upload my application
+    I want to be able to easily upload my resume
     So that I can apply for a job
 
 Background: jobs in database
