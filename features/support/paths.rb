@@ -24,6 +24,9 @@ module NavigationHelpers
       
     when /^the post open positions page$/
       '/jobs/new'
+      
+    when /^the admin page$/
+      '/admin'
 
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
