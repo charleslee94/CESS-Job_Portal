@@ -7,10 +7,10 @@ Feature: view available jobs
 Background: jobs in database
 
         Given the following job openings exist:
-        | school         | title           | summary                  | compensation_min | compensation_max | 
-        | Ashley Falls   | Teacher         | I love my job!           | 80,000           | 100,000          |
-        | Torrey Pines   | Math teacher    | This job rocks!          | 100,000          | 120,000          |
-        | Carmel Valley  | English teacher |  Middle school is rough. | 87,000           | 98,000           |
+        | school         | title           | summary                  | compensation_min | compensation_max | exipiration |
+        | Ashley Falls   | Teacher         | I love my job!           | 80,000           | 100,000          |            |
+        | Torrey Pines   | Math teacher    | This job rocks!          | 100,000          | 120,000          |            |
+        | Carmel Valley  | English teacher |  Middle school is rough. | 87,000           | 98,000           |            |
 
 Scenario: view job openings
   Given I am on the view open positions page

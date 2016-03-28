@@ -2,15 +2,19 @@
 
 <h1>Listing Jobs</h1>
 
+<%#= link_to 'View by School', :show => "school", class: 'btn btn-primary btn-xs' %>
+<%#= link_to 'View by Title', :show => "title", class: 'btn btn-primary btn-xs' %>
+<%#= link_to 'View All Postings', class: 'btn btn-primary btn-xs' %>
+
 <table class="table table-hover">
   <thead>
     <tr>
-      <th>School</th>
-      <th>Title</th>
+      <th><%= link_to "School", :sort => "school"%></th>
+      <th><%= link_to "Title", :sort => "title" %></th>
       <th>Summary</th>
-      <th>Compensation min</th>
-      <th>Compensation max</th>
-      <th>Exipiration</th>
+      <th><%= link_to "Compensation min", :sort => "compensation_min" %></th>
+      <th><%= link_to "Compensation max", :sort => "compensation_max" %></th>
+      <th>Expiration</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -21,8 +25,8 @@
         <td><%= link_to job.school, job_path(job)%></td>
         <td><%= link_to job.title, job_path(job)%></td>
         <td><%= job.summary %></td>
-        <td><%= job.compensation_min %></td>
-        <td><%= job.compensation_max %></td>
+        <td><%= link_to job.compensation_min, job_path(job) %></td>
+        <td><%= link_to job.compensation_max, job_path(job) %></td>
         <td><%= job.exipiration %></td>
         <td><%= link_to 'Edit', edit_job_path(job), class: 'btn btn-primary btn-xs' %></td>
         <td><%= link_to 'Destroy', job, method: :delete, class: 'btn btn-primary btn-xs' %></td>

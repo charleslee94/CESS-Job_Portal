@@ -1,11 +1,21 @@
 class JobsController < ApplicationController
-  before_action :set_job, only: [:show, :edit, :update, :destroy]
+  #before_action :set_job, only: [:show, :edit, :update, :destroy]
 
   # GET /jobs
   # GET /jobs.json
   def index
-    @jobs = Job.all
+    #@jobs = Job.all
+    sort = params[:sort]
+    show = params[:show]
+    if show != nil
+      @jobs = Job.select(show)
+    elsif sort == "compensation_min" or sort == "compensation_max"
+      @jobs = Job.order(sort + ' DESC')
+    else
+      @jobs = Job.order(sort)
+    end
   end
+  
 
   # GET /jobs/1
   # GET /jobs/1.json
@@ -23,16 +33,21 @@ class JobsController < ApplicationController
 
   # POST /jobs
   # POST /jobs.json
+  #WHY DOESN'T THIS STOP ANYTHING
   def create
-    @job = Job.new(job_params)
-    respond_to do |format|
-      if @job.save
-        format.html { redirect_to @job, notice: 'Job was successfully created.' }
-        format.json { render :show, status: :created, location: @job }
-      else
-        format.html { render :new }
-        format.json { render json: @job.errors, status: :unprocessable_entity }
+    if current_user
+      @job = Job.new(job_params)
+      respond_to do |format|
+        if @job.save
+          format.html { redirect_to @job, notice: 'Job was successfully created.' }
+          format.json { render :show, status: :created, location: @job }
+        else
+          format.html { render :new }
+          format.json { render json: @job.errors, status: :unprocessable_entity }
+        end
       end
+    else
+      render :action => 'index'
     end
   end
 
