@@ -17,10 +17,13 @@ Scenario: create a user login for a school
     And I fill in "school" with "haas"
     Then I press "Submit"
     Then I should see "User created"
+    And I should not see "Failure"
 
-Scenario: cancel upload
-    Given I am on the view open positions page
+Scenario: delete a posting 
+    Given I am on admin panel
     And I follow "Ashley Falls"
-    And I press "submit resume"
-    And I press "cancel"
-    Then I should see "upload failure"
+    And I follow "Matt's Application"
+    Then I should see "Delete"
+    And I press "Delete"
+    Then I should see "Successfully deleted"
+    

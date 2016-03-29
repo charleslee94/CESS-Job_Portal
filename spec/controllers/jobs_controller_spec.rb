@@ -13,6 +13,7 @@ describe JobsController do
     end
   end
   
+  
   describe 'rendering correct pages' do
     it 'edit should call upon the correct id' do
         #job = FactoryGirl.build(:job, :school => 'Matt', :title => 'Nate', :summary => 'Not Good', :expiration => '2016-10-22')
