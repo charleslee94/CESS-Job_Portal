@@ -9,7 +9,7 @@ Background:
     Given the following job openings exist:
       | school         | title           | summary                  | compensation_min | compensation_max | 
       | Ashley Falls   | Teacher         | I love my job!           | 80,000           | 100,000          |
-      | Torrey Pines   | Math teacher    | This job rocks!          | 100,000     
+      | Torrey Pines   | Math teacher    | This job rocks!          | 100,000          | 110,000          |
     
 Scenario: visiting the portal for the first time
   Given I am on the home page
