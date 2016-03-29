@@ -13,7 +13,7 @@ class JobsController < ApplicationController
     if sort == "compensation_min" or sort == "compensation_max"
       @jobs = Job.order(sort + ' DESC')
     else
-      @jobs = Job.order(sort)
+      @jobs = Job.all
     end
   end
   
