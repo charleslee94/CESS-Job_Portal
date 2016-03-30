@@ -4,7 +4,6 @@ class CreateResumes < ActiveRecord::Migration
       t.string :name
       t.string :attachment
       t.integer :jobid
-
       t.timestamps null: false
     end
   end

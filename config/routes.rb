@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   root :to => redirect('/guidelines')
   
   get 'jobs/:jobid/apply/resume/new', :to => 'resumes#new', :as => 'new_app'
-  post '/resumes', :to => 'resumes#create', :as => 'create_app'
+  post '/resumes/:jobid', :to => 'resumes#create', :as => 'create_app'
   get 'resumes', :to => 'resumes#index', :as => 'resumes'
   
   # Example of regular route:

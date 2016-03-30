@@ -5,17 +5,15 @@ class ResumesController < ApplicationController
    
    def new
       @job = Job.find(params[:jobid])
-      session[:jobid] = @job.id
       @resume = Resume.new
    end
    
    def create
       @resume = Resume.new(resume_params)
-      @job = Job.find(session[:jobid])
+      @job = Job.find(params[:jobid])
       @resume.jobid = @job.id
-      session[:jobid] = nil
       if @resume.save
-         redirect_to jobs_path, notice: "The resume #{@resume.name} has been uploaded. You have successfully applied to #{@job.title}"
+         redirect_to jobs_path, notice: "The resume #{@resume.name} has been uploaded. You have successfully applied to #{@job.title}."
       else
          redirect_to new_app_path(@job), notice: "The upload failed as you have either not included a file name or have not included a file."
       end
