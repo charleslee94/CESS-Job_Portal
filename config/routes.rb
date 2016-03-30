@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   
   
   get 'jobs/:id/apply', :to => 'jobs#apply', :as => 'apply'
+  get 'resumes/new/:id', :to => 'resumes#new', :as => 'new'
   
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
