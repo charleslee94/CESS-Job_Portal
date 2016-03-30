@@ -4,7 +4,7 @@ class ResumesController < ApplicationController
    end
    
    def new
-      
+      @job = Job.find(params[:jobid])
       @resume = Resume.new
    end
    
