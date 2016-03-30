@@ -67,10 +67,4 @@ Rails.application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
-  
-  CarrierWaveExample::Application.routes.draw do
-   resources :resumes, only: [:index, :new, :create, :destroy]
-   root "resumes#index"
-  end
-  
 end
