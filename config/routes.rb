@@ -10,8 +10,8 @@ Rails.application.routes.draw do
   # map '/' to be a redirect to '/movies'
   root :to => redirect('/guidelines')
   
-  get 'jobs/:jobid/apply/resume/new', :to => 'resumes#new', :as => 'new_resume'
-  get 'jobs/:jobid/apply/resume/create', :to => 'resumes#create', :as => 'create_resume'
+  get 'jobs/:jobid/apply/resume/new', :to => 'jobs/resumes#new', :as => 'new_resume'
+  get 'jobs/:jobid/apply/resume/create', :to => 'jobs/resumes#create', :as => 'create_resume'
   
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
