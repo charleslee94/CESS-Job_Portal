@@ -9,13 +9,13 @@ class ResumesController < ApplicationController
    end
    
    def create
-      @resume = Resume.new(resume_params)
       @job = Job.find(params[:jobid])
-      @resume.jobid = @job.id
+      @resume = Resume.new(resume_params)
+      @job.resumes << @resume
       if @resume.save
          redirect_to jobs_path, notice: "The resume #{@resume.name} has been uploaded. You have successfully applied to #{@job.title}."
       else
-         redirect_to new_app_path(@job), notice: "The upload failed as you have either not included a file name or have not included a file."
+         redirect_to new_app_path(@job), notice: "The upload failed as you have either not included a file name, have not attached a file, or the file is the wrong filetype (allowed filetypes: .PDF, .DOC, .DOCX)"
       end
    end
    

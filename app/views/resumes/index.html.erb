@@ -15,7 +15,7 @@
       <tr>
          <th>Name</th>
          <th>Download Link</th>
-         <th> </th>
+         <th>Job</th>
       </tr>
    </thead>
    
@@ -24,7 +24,7 @@
          <tr>
             <td><%= resume.name %></td>
             <td><%= link_to "Download Resume", resume.attachment_url %></td>
-            <td><%= resume.jobid %></td>
+            <td><%= resume.job.title %></td>
         </tr>
       <% end %>
    </tbody>
