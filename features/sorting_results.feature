@@ -11,9 +11,11 @@ Background: jobs in database
    | Torrey Pines   | Math teacher    | This job rocks!          | 100,000          | 120,000          |
    | Carmel Valley  | English teacher |  Middle school is rough. | 87,000           | 98,000           |
 
-Scenario:  change result view
+Scenario: change result view
   Given I am on the view open positions page
   And I follow "school"
   Then I should see "Ashley Falls" before "Torrey Pines"
   When I follow "title"
   Then I should see "English teacher" before "Math teacher"
+  Then I should see "Math teacher" before "Teacher"
+  

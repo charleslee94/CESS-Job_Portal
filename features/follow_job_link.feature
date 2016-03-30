@@ -18,7 +18,7 @@ Scenario: apply to a job
   Given I am on the view open positions page
   And I follow "Ashley Falls"
   And I follow "Apply Here"
-  Then I should see "Thank you for applying to Teacher"
+  Then I should see "Apply for Teacher"
  
 Scenario: edit and show
   Given I am on the view open positions page

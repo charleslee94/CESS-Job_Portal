@@ -8,19 +8,9 @@ Background: jobs in database
    | school         | title           | summary                  | compensation_min | compensation_max | 
    | Ashley Falls   | Teacher         | I love my job!           | 80,000           | 100,000          |
 
-
-Scenario: create a user login for a school
-    Given I am on the admin panel
-    And I follow "Create new user"
-    And I fill in "username" with "matt"
-    And I fill in "password" with "joseph"
-    And I fill in "school" with "haas"
-    Then I press "Submit"
-    Then I should see "User created"
-
-Scenario: cancel upload
+Scenario: upload resume sad path
     Given I am on the view open positions page
-    And I follow "Ashley Falls"
-    And I press "submit resume"
-    And I press "cancel"
-    Then I should see "upload failure"
+    And I follow "Teacher"
+    And I follow "Apply Here"
+    And I press "Save"
+    Then I should see "The upload failed"

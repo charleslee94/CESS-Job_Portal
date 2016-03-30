@@ -37,13 +37,4 @@ describe JobsController do
     end
   end
   
-  describe 'load the correct variables into view' do
-    it 'should load correct job id into apply view' do
-      matt_job = jobs(:matt_job)
-      get :apply, :id => matt_job.id
-      actual_job = Job.find(matt_job.id)
-      assigns(:job).should == actual_job
-    end
-  end
-  
 end
