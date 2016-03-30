@@ -1,5 +1,8 @@
 {<img src="https://codeclimate.com/github/charleslee94/CESS-Job_Portal/badges/gpa.svg" />}[https://codeclimate.com/github/charleslee94/CESS-Job_Portal]
+
 {<img src="https://travis-ci.org/charleslee94/CESS-Job_Portal.svg?branch=master" alt="Build Status" />}[https://travis-ci.org/charleslee94/CESS-Job_Portal]
+
+{<img src="https://coveralls.io/repos/github/charleslee94/CESS-Job_Portal/badge.svg?branch=master" alt="Coverage Status" />}[https://coveralls.io/github/charleslee94/CESS-Job_Portal?branch=master]
 
 == README
 This README would normally document whatever steps are necessary to get the
