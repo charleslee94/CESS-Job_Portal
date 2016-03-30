@@ -40,6 +40,8 @@ gem 'autoprefixer-rails'
 gem 'rails_12factor'
 gem 'devise'
 
+gem 'carrierwave'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'sqlite3'
