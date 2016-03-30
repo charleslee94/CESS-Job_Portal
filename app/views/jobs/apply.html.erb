@@ -1,5 +1,5 @@
 <h1> Apply for <%= @job.title %> </h1>
-<% if !@resume %>
+<% if @resume %>
     <div class = "well">
        <%= form_for @resume, html: { multipart: true } do |f| %>
           <%= f.label :name %>
