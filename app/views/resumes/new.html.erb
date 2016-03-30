@@ -1,0 +1,26 @@
+<p id="notice"><%= notice %></p>
+
+<h1> Apply for <%= @job.title %></h1>
+<br/>
+<br/>
+<% if !@resume.errors.empty? %>
+   <div class = "alert alert-error">
+      
+      <ul>
+         <% @resume.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+         <% end %>
+      </ul>
+      
+   </div>
+<% end %>
+
+<div class = "well">
+   <%= form_for @resume, url: create_app_path(@job.id), html: { multipart: true } do |f| %>
+      <%= f.label :"Resume name (Format: Last Name, First Name)" %>
+      <%= f.text_field :name %>
+      <%= f.file_field :attachment %>
+      <br/>
+      <%= f.submit "Save", class: "btn btn-primary" %>
+   <% end %>
+</div>

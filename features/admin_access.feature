@@ -1,4 +1,3 @@
-
 Feature: admin access
     As a SFCESS member
     So that our job postings are secure
@@ -20,4 +19,3 @@ Scenario: visiting the portal for the first time
   And I follow "Torrey Pines"
   Then I follow "delete"
   Then I see "job successfully deleted"
-  

@@ -26,4 +26,3 @@ Scenario: delete a posting
     Then I should see "Delete"
     And I press "Delete"
     Then I should see "Successfully deleted"
-    

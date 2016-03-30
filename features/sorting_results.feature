@@ -17,4 +17,3 @@ Scenario:  change result view
   Then I should see "Ashley Falls" before "Torrey Pines"
   When I follow "title"
   Then I should see "English teacher" before "Math teacher"
-    

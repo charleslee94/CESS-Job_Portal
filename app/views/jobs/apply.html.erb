@@ -1,1 +1,4 @@
-<h1> Thank you for applying to <%= @job.title %></h1>
+<h1> Apply for <%= @job.title %> </h1>
+<% if @resume %>
+    <%= link_to 'Back', jobs_path, class: 'btn btn-primary btn-xs' %>
+<% end %>

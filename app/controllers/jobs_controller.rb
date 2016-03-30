@@ -1,5 +1,5 @@
 class JobsController < ApplicationController
-  #before_action :set_job, only: [:show, :edit, :update, :destroy]
+  before_action :set_job, only: [:show, :edit, :update, :destroy]
 
   # GET /jobs
   # GET /jobs.json
@@ -7,12 +7,13 @@ class JobsController < ApplicationController
     #@jobs = Job.all
     sort = params[:sort]
     show = params[:show]
-    if show != nil
+    unless show.nil?
       @jobs = Job.select(show)
-    elsif sort == "compensation_min" or sort == "compensation_max"
+    end
+    if sort == "compensation_min" or sort == "compensation_max"
       @jobs = Job.order(sort + ' DESC')
     else
-      @jobs = Job.order(sort)
+      @jobs = Job.all
     end
   end
   
@@ -23,8 +24,14 @@ class JobsController < ApplicationController
   end
 
   # GET /jobs/new
+  #authentication here for posting new job
   def new
+    #if current_user
     @job = Job.new
+    #else
+      #flash[:notice] = "You don't have permission to add a job post."
+      #render action: 'index'
+    #end
   end
 
   # GET /jobs/1/edit
@@ -33,21 +40,16 @@ class JobsController < ApplicationController
 
   # POST /jobs
   # POST /jobs.json
-  #WHY DOESN'T THIS STOP ANYTHING
   def create
-    if current_user
-      @job = Job.new(job_params)
-      respond_to do |format|
-        if @job.save
-          format.html { redirect_to @job, notice: 'Job was successfully created.' }
-          format.json { render :show, status: :created, location: @job }
-        else
-          format.html { render :new }
-          format.json { render json: @job.errors, status: :unprocessable_entity }
-        end
+    @job = Job.new(job_params)
+    respond_to do |format|
+      if @job.save
+        format.html { redirect_to @job, notice: 'Job was successfully created.' }
+        format.json { render :show, status: :created, location: @job }
+      else
+        format.html { render :new }
+        format.json { render json: @job.errors, status: :unprocessable_entity }
       end
-    else
-      render :action => 'index'
     end
   end
 
