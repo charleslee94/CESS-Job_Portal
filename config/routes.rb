@@ -17,7 +17,8 @@ Rails.application.routes.draw do
   resources :application
   # map '/' to be a redirect to '/movies'
   root :to => redirect('/guidelines')
-
+  
+  
   get 'jobs/:id/apply', :to => 'jobs#apply', :as => 'apply'
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
