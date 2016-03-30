@@ -69,7 +69,6 @@ class JobsController < ApplicationController
   
   def apply
     @job = Job.find(params[:id])
-    @resume = Resume.new
   end
 
   # DELETE /jobs/1
