@@ -15,6 +15,8 @@ RSpec.describe ResumesController, type: :controller do
   describe "GET #new" do
     it "returns http success" do
       get :new, :jobid => 1
+      @job = Job.find(1)
+      assigns(:job).should == @job 
       expect(response).to have_http_status(:success)
     end
   end

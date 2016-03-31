@@ -7,7 +7,10 @@ Background: jobs in database
     Given the following job openings exist:
    | school         | title           | summary                  | compensation_min | compensation_max | 
    | Ashley Falls   | Teacher         | I love my job!           | 80,000           | 100,000          |
-
+   
+   Given the following resumes exist:
+   | name            | attachment     | jobid   |
+   | Joseph, Mathew  | haha.jpg       |     1   |
 
 Scenario: create a user login for a school
     Given I am on the admin panel
