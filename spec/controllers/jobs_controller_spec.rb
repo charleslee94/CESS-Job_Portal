@@ -13,6 +13,12 @@ describe JobsController do
     end
   end
   
+  describe 'testing jobs#new' do
+    it 'should call a new job' do
+      get :new
+    end
+  end
+  
   
   describe 'rendering correct pages' do
     it 'edit should call upon the correct id' do
