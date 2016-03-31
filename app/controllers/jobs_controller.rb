@@ -10,8 +10,8 @@ class JobsController < ApplicationController
     unless show.nil?
       @jobs = Job.select(show)
     end
-    if sort == "compensation_min" or sort == "compensation_max"
-      @jobs = Job.order(sort + ' DESC')
+    if sort
+      @jobs = Job.order(sort + ' ASC')
     else
       @jobs = Job.all
     end

@@ -13,9 +13,9 @@ Background: jobs in database
 
 Scenario: change result view
   Given I am on the view open positions page
-  And I follow "school"
+  And I follow "School"
   Then I should see "Ashley Falls" before "Torrey Pines"
-  When I follow "title"
+  When I follow "Title"
   Then I should see "English teacher" before "Math teacher"
   Then I should see "Math teacher" before "Teacher"
   
