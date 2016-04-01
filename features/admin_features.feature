@@ -9,19 +9,28 @@ Background: jobs in database
    | Ashley Falls   | Teacher         | I love my job!           | 80,000           | 100,000          |
 
 Scenario: create a user login for a school
-    Given I am on the admin panel
-    And I follow "Create new user"
-    And I fill in "username" with "matt"
-    And I fill in "password" with "joseph"
-    And I fill in "school" with "haas"
-    Then I press "Submit"
-    Then I should see "User created"
-    And I should not see "Failure"
+    Given I am the admin
+    And I follow "Sign In"
+    And I follow "Sign up"
+    And I fill in "Email" with "school@sc.com"
+    And I fill in "Password" with "8characters"
+    And I fill in "Password confirmation" with "8characters"
+    And I press "Sign up"
+    Then I should be on the guidelines page
+
+Scenario: malformed user login
+    Given I am the admin
+    And I follow "Sign In"
+    And I follow "Sign up"
+    And I fill in "Email" with "test@test.com"
+    And I fill in "Password" with "short"
+    And I fill in "Password confirmation" with "short"
+    And I press "Sign up"
+    Then I should see "too short"
 
 Scenario: delete a posting 
-    Given I am on admin panel
+    Given I am the admin 
     And I follow "Ashley Falls"
-    And I follow "Matt's Application"
-    Then I should see "Delete"
-    And I press "Delete"
-    Then I should see "Successfully deleted"
+    Then I should see "Destroy"
+    And I follow "Destroy"
+    Then I should see "successfully destroyed."
