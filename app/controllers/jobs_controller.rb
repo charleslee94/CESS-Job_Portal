@@ -17,7 +17,9 @@ class JobsController < ApplicationController
     end
   end
   
-
+  def homepage
+  end
+  
   # GET /jobs/1
   # GET /jobs/1.json
   def show
@@ -48,10 +50,8 @@ class JobsController < ApplicationController
       if @job.save
         format.html { redirect_to @job, notice: 'Job was successfully created.' }
         format.json { render :show, status: :created, location: @job }
-      else
-        format.html { render :new }
-        format.json { render json: @job.errors, status: :unprocessable_entity }
       end
+      # to-do: add fail cases for creation!
     end
   end
 
@@ -62,10 +62,8 @@ class JobsController < ApplicationController
       if @job.update(job_params)
         format.html { redirect_to @job, notice: 'Job was successfully updated.' }
         format.json { render :show, status: :ok, location: @job }
-      else
-        format.html { render :edit }
-        format.json { render json: @job.errors, status: :unprocessable_entity }
       end
+      #TO-DO: add fail cases for creation! 
     end
   end
 

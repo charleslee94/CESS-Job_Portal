@@ -5,16 +5,16 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
   resources :jobs
-  resources :guidelines
   resources :application
-
+  
   # map '/' to be a redirect to '/movies'
   root :to => redirect('/guidelines')
   
+  get '/guidelines', :to => 'guidelines#index', :as => 'guidelines'
   get 'jobs/:jobid/apply/resume/new', :to => 'resumes#new', :as => 'new_app'
   post '/resumes/:jobid', :to => 'resumes#create', :as => 'create_app'
   get 'resumes', :to => 'resumes#index', :as => 'resumes'
-  
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
