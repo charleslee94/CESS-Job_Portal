@@ -23,7 +23,12 @@ describe JobsController do
       post :create, :job => {:school => @job.school, :title => @job.title, :summary => @job.summary, :compensation_min => @job.compensation_min, :compensation_max => @job.compensation_max, :expiration => @job.exipiration}
       flash[:notice].should =~ /Job was successfully created/
     end
-  
+    
+    it "create sad path" do
+      Job.should_receive(:new).and_return(@job)
+      post :create, :job => {:school => nil, :compensation_min => @job.compensation_min, :compensation_max => @job.compensation_max, :expiration => @job.exipiration}
+      flash[:notice].should =~ /Job was successfully created/
+    end
   end
   
   describe 'testing jobs#new' do
