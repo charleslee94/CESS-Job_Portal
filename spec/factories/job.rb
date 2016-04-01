@@ -7,6 +7,6 @@ FactoryGirl.define do
     summary 'not good'
     compensation_min '0'
     compensation_max '10000'
-    expiration '2016'
+    exipiration '2016'
   end
 end

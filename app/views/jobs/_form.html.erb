@@ -33,7 +33,15 @@
   </div>
   <div class="field">
     <%= f.label :exipiration %><br>
-    <%= f.datetime_select :exipiration, class: 'form-control' %>
+    <%= f.date_select :exipiration, :default => 30.days.from_now, class: 'form-control' %>
+    <% if @job.exipiration != nil %>
+      <% puts @job.exipiration %>
+      <% puts "!!!!!!!" %>
+      <% puts Time.now %>
+      <% if Time.now > @job.exipiration %>
+        <% puts "job has already passed" %>
+      <% end %>
+    <% end %>
   </div>
   <div class="actions">
     <%= f.submit %>
