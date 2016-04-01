@@ -554,6 +554,10 @@
         0,
         0,
         0,
+        0,
+        0,
+        0,
+        0,
         0
       ],
       "/home/ubuntu/workspace/app/helpers/application_helper.rb": [
@@ -569,6 +573,6 @@
         0
       ]
     },
-    "timestamp": 1459537590
+    "timestamp": 1459539905
   }
 }
