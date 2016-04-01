@@ -39,6 +39,8 @@ ratings:
   - "**.php"
   - "**.py"
 exclude_paths:
+# temporary, since its empty right now
+- app/models/user.rb
 - app/helpers
 - views/users
 - coverage/
