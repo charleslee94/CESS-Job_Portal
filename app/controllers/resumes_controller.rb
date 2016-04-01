@@ -20,13 +20,10 @@ class ResumesController < ApplicationController
    end
    
    def destroy
-      @resume = Resume.find(params[:id])
-      @resume.destroy
-      redirect_to jobs_path, notice:  "The resume #{@resume.name} has been deleted."
    end
    
    private
       def resume_params
-        params.require(:resume).permit(:name, :attachment, :jobid)
+        params.require(:resume).permit(:name, :attachment)
       end
 end

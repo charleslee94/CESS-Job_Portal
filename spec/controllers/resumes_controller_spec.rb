@@ -4,11 +4,27 @@ require 'rails_helper'
 require 'factory_girl'
 
 RSpec.describe ResumesController, type: :controller do
-
+  fixtures :jobs
+  
+  before(:each) do
+    @job = jobs(:matt_job)
+  end
+  
   describe "GET #index" do
     it "returns http success" do
       get :index
       expect(response).to have_http_status(:success)
+    end
+  end
+  
+  describe "POST #create" do
+    it "returns http success" do
+      attachment = File.new("#{Rails.root}/public/422.html")
+      matt_job = jobs(:matt_job)
+      resume = Resume.new({:name => 'Joseph, Fire', :attachment => attachment})
+      Resume.should_receive(:new).and_return(resume)
+      Job.should_receive(:find).and_return(@job)
+      post :create, :jobid => @job.id, :resume => {:name => 'Joseph, Fire', :attachment => attachment}
     end
   end
 
