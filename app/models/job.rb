@@ -6,9 +6,6 @@ end
 def job_not_expired
    if exipiration and exipiration.past?
        errors.add(:base, "this job has expired")
-       puts "YAYAYAYAY"
-       puts self
        #self.delete!
    end
 end
-

@@ -8,6 +8,7 @@ describe JobsController do
   
   before(:each) do
     @job = jobs(:matt_job)
+    @expired = jobs(:expired_job)
   end
   
   describe 'index should display all jobs' do
@@ -22,6 +23,12 @@ describe JobsController do
       Job.should_receive(:new).and_return(@job)
       post :create, :job => {:school => @job.school, :title => @job.title, :summary => @job.summary, :compensation_min => @job.compensation_min, :compensation_max => @job.compensation_max, :expiration => @job.exipiration}
       flash[:notice].should =~ /Job was successfully created/
+    end
+    
+    it "expired sad path" do
+      Job.should_receive(:new).and_return(@expired)
+      post :create, :job => {:school => @job.school, :title => @job.title, :summary => @job.summary, :compensation_min => @job.compensation_min, :compensation_max => @job.compensation_max, :expiration => @expired.exipiration}
+      expect(response).to have_http_status(200)
     end
   end
   
