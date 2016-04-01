@@ -32,12 +32,26 @@ describe JobsController do
     end
   end
   
+  describe 'DELETE jobs#destroy' do
+    it 'should delete a job' do
+      delete :destroy, :id => @job.id
+      flash[:notice].should =~ /Job was successfully destroyed/
+    end
+  end
+
+  describe 'PATCH jobs#update' do
+    it 'should update a job' do
+      patch :update, :id => @job.id, :job => {:school => @job.school, :title => @job.title, :summary => @job.summary, :compensation_min => @job.compensation_min, :compensation_max => @job.compensation_max, :expiration => @job.exipiration}
+      flash[:notice].should =~ /Job was successfully updated/
+    end
+  end
   
   describe 'rendering correct pages' do
     it 'edit should call upon the correct id' do
         #job = FactoryGirl.build(:job, :school => 'Matt', :title => 'Nate', :summary => 'Not Good', :exipiration => '2016-10-22')
-        Job.should_receive(:find).with(@job.id.to_s)
         get :edit, :id => @job.id
+        expect(response).to have_http_status(:success)
+        assigns(:job).should == @job
     end
     
     it 'edit should render the edit page' do
