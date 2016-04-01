@@ -39,6 +39,7 @@ ratings:
   - "**.php"
   - "**.py"
 exclude_paths:
+- app/helpers
 - views/users
 - coverage/
 - public/
