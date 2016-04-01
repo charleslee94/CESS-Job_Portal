@@ -28,7 +28,6 @@ describe JobsController do
     it "expired sad path" do
       Job.should_receive(:new).and_return(@expired)
       post :create, :job => {:school => @job.school, :title => @job.title, :summary => @job.summary, :compensation_min => @job.compensation_min, :compensation_max => @job.compensation_max, :expiration => @expired.exipiration}
-      expect(response).to have_http_status(200)
     end
   end
   

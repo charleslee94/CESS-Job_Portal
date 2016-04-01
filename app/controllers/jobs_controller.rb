@@ -51,7 +51,7 @@ class JobsController < ApplicationController
         format.html { redirect_to @job, notice: 'Job was successfully created.' }
         format.json { render :show, status: :created, location: @job }
       else
-        format.html { render :edit }
+        format.html { render :new, notice: 'Job was not created successfully' }
         format.json { render json: @job.errors, status: :unprocessable_entity }
       end
       # to-do: add fail cases for creation!
