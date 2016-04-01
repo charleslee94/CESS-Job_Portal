@@ -353,13 +353,13 @@
         null,
         1,
         null,
+        2,
+        2,
+        2,
         1,
-        1,
-        1,
-        0,
         null,
+        2,
         1,
-        0,
         null,
         1,
         null,
@@ -556,10 +556,6 @@
         0,
         0
       ],
-      "/home/ubuntu/workspace/app/models/guideline.rb": [
-        0,
-        0
-      ],
       "/home/ubuntu/workspace/app/helpers/application_helper.rb": [
         0,
         0
@@ -573,6 +569,6 @@
         0
       ]
     },
-    "timestamp": 1459514136
+    "timestamp": 1459536473
   }
 }

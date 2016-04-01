@@ -13,8 +13,13 @@ describe JobsController do
   
   describe 'index should display all jobs' do
     it 'should call all jobs' do
-        Job.should_receive(:all)
-        get :index
+        Job.should_receive(:order)
+        get :index, :sort => 'compensation_max'
+    end
+    
+    it 'should call all jobs' do
+        Job.should_receive(:select)
+        get :index, :show => 'compensation_max'
     end
   end
   
