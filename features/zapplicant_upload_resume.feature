@@ -22,6 +22,6 @@ Scenario: upload resume sad path
 Scenario: listing correct resume things on index
     Given I am on the resumes page
     Then I should see "Joseph, Mathew"
-    And I should see "Matt"
+    And I should see "Mat"
     And I follow "Back to Jobs"
     Then I should see "Ashley Falls"
