@@ -46,3 +46,8 @@ Then /I should see "(.*)" before "(.*)"/ do |e1, e2|
   index2 = (page.body =~ /#{e2}/)
   expect(index1).to be < index2
 end
+
+When(/^I am logged in as "(.*?)"$/) do |school|
+  fail "Unimplemented"
+end
+
