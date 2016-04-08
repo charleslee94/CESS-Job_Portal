@@ -27,12 +27,11 @@ Feature: edit/delete/view only my own school's jobs
         And I am logged in as "Torrey Pines"
         Then I should see "Torrey Pines" 
         And I should not see "Ashley Falls"
-        When I follow destroy
+        When I follow "Destroy"
         Then I should see "Job was successfully destroyed."
     
-    Scenario:
+    Scenario: Can't edit or destroy
       Given I am on the view open positions page
-      And I am not logged in
       Then I should not see "Destroy"
       And I should not see "Edit"
 
