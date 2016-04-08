@@ -12,7 +12,7 @@ Background: jobs in database
 
 Scenario: static school info
     Given I am on the post open positions page
-    And I am logged in as "Torrey Pines"
+    And I am logged in as "torreypines@hotmail.com" with password "meowmix3"
     Then I should see "School" before "Torrey Pines" 
     And I should not see "Ashley Falls"
     
@@ -24,7 +24,7 @@ Feature: edit/delete/view only my own school's jobs
 
     Scenario: only view and destroy my own postings
         Given I am on the view open positions page
-        And I am logged in as "Torrey Pines"
+        And I am logged in as "torreypines@hotmail.com" with password "meowmix3"
         Then I should see "Torrey Pines" 
         And I should not see "Ashley Falls"
         When I follow "Destroy"

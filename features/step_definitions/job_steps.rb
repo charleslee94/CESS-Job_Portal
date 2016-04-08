@@ -47,7 +47,10 @@ Then /I should see "(.*)" before "(.*)"/ do |e1, e2|
   expect(index1).to be < index2
 end
 
-When(/^I am logged in as "(.*?)"$/) do |school|
-  fail "Unimplemented"
+When /^I am logged in as "([^"]*)" with password "([^"]*)"$/ do |email, password|
+  visit '/users/sign_in'
+  fill_in "user_email", :with => email
+  fill_in "user_password", :with => password
+  click_button "Sign in"
 end
 
