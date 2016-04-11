@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(version: 20160330223713) do
     t.text     "summary"
     t.string   "compensation_min"
     t.string   "compensation_max"
-    t.datetime "exipiration"
+    t.datetime "expiration"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
   end
