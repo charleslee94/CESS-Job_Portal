@@ -7,4 +7,4 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 Job.create(school: "Ashley Falls")
-Job.create(school: "Torrey Pines", title: "Teacher", summary: "This job rocks!", compensation_min: "100,000", compensation_max: "120,000")
+Job.create(school: "Torrey Pines", title: "Teacher", summary: "This job rocks!", compensation_min: "100,000", compensation_max: "120,000", expiration: DateTime.new(2017,9,1,19))

@@ -32,13 +32,13 @@
     <%= f.text_field :compensation_max, class: 'form-control' %>
   </div>
   <div class="field">
-    <%= f.label :exipiration %><br>
-    <%= f.date_select :exipiration, :default => 30.days.from_now, class: 'form-control' %>
-    <% if @job.exipiration != nil %>
-      <% puts @job.exipiration %>
+    <%= f.label :expiration %><br>
+    <%= f.date_select :expiration, :default => 30.days.from_now, class: 'form-control' %>
+    <% if @job.expiration != nil %>
+      <% puts @job.expiration %>
       <% puts "!!!!!!!" %>
       <% puts Time.now %>
-      <% if Time.now > @job.exipiration %>
+      <% if Time.now > @job.expiration %>
         <% puts "job has already passed" %>
       <% end %>
     <% end %>
