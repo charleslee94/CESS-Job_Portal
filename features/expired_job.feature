@@ -1,4 +1,4 @@
-Feature: job exipirations
+Feature: job expirations
     As a SFCESS applicant
     So that I don't apply to old or expired jobs
     I want jobs to be deleted once they are expired
@@ -17,7 +17,7 @@ Scenario: post an expired job
     And I fill in "Summary" with "pre school is fun"
     And I fill in "Compensation min" with "60,000"
     And I fill in "Compensation max" with "70,000"
-    And I select "2011" from "job_exipiration_1i"
+    And I select "2011" from "job_expiration_1i"
     And  I press "Create Job"
     Then I should see "this job has expired"
     
@@ -28,6 +28,6 @@ Scenario: post a valid job
     And I fill in "Summary" with "pre school is fun"
     And I fill in "Compensation min" with "60,000"
     And I fill in "Compensation max" with "70,000"
-    And I select "2017" from "job_exipiration_1i"
+    And I select "2017" from "job_expiration_1i"
     And  I press "Create Job"
     Then I should not see "this job has expired"

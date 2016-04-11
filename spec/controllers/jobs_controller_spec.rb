@@ -26,13 +26,13 @@ describe JobsController do
   describe "POST #create" do
     it "create happy path" do
       Job.should_receive(:new).and_return(@job)
-      post :create, :job => {:school => @job.school, :title => @job.title, :summary => @job.summary, :compensation_min => @job.compensation_min, :compensation_max => @job.compensation_max, :expiration => @job.exipiration}
+      post :create, :job => {:school => @job.school, :title => @job.title, :summary => @job.summary, :compensation_min => @job.compensation_min, :compensation_max => @job.compensation_max, :expiration => @job.expiration}
       flash[:notice].should =~ /Job was successfully created/
     end
     
     it "expired sad path" do
       Job.should_receive(:new).and_return(@expired)
-      post :create, :job => {:school => @job.school, :title => @job.title, :summary => @job.summary, :compensation_min => @job.compensation_min, :compensation_max => @job.compensation_max, :expiration => @expired.exipiration}
+      post :create, :job => {:school => @job.school, :title => @job.title, :summary => @job.summary, :compensation_min => @job.compensation_min, :compensation_max => @job.compensation_max, :expiration => @expired.expiration}
     end
   end
   
@@ -52,27 +52,27 @@ describe JobsController do
 
   describe 'PATCH jobs#update' do
     it 'should update a job' do
-      patch :update, :id => @job.id, :job => {:school => @job.school, :title => @job.title, :summary => @job.summary, :compensation_min => @job.compensation_min, :compensation_max => @job.compensation_max, :expiration => @job.exipiration}
+      patch :update, :id => @job.id, :job => {:school => @job.school, :title => @job.title, :summary => @job.summary, :compensation_min => @job.compensation_min, :compensation_max => @job.compensation_max, :expiration => @job.expiration}
       flash[:notice].should =~ /Job was successfully updated/
     end
   end
   
   describe 'rendering correct pages' do
     it 'edit should call upon the correct id' do
-        #job = FactoryGirl.build(:job, :school => 'Matt', :title => 'Nate', :summary => 'Not Good', :exipiration => '2016-10-22')
+        #job = FactoryGirl.build(:job, :school => 'Matt', :title => 'Nate', :summary => 'Not Good', :expiration => '2016-10-22')
         get :edit, :id => @job.id
         expect(response).to have_http_status(:success)
         assigns(:job).should == @job
     end
     
     it 'edit should render the edit page' do
-        #job = FactoryGirl.build(:job, :school => 'Matt', :title => 'Nate', :summary => 'Not Good', :exipiration => '2016-10-22')
+        #job = FactoryGirl.build(:job, :school => 'Matt', :title => 'Nate', :summary => 'Not Good', :expiration => '2016-10-22')
         get :edit, :id => @job.id
         response.should render_template("edit")
     end
     
     it 'edit should render the show page' do
-        #job = FactoryGirl.build(:job, :school => 'Matt', :title => 'Nate', :summary => 'Not Good', :exipiration => '2016-10-22')
+        #job = FactoryGirl.build(:job, :school => 'Matt', :title => 'Nate', :summary => 'Not Good', :expiration => '2016-10-22')
         get :show, :id => @job.id
         response.should render_template("show")
     end

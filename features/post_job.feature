@@ -23,7 +23,7 @@ Scenario: post job opening
         #        When I fill in "School" with "Challenger"
         #        And I fill in "Compensation min" with "50,000"
         #        And I fill in "Compensation max" with "70,000"
-        #        And I select "2011" from "job_exipiration_1i"
+        #        And I select "2011" from "job_expiration_1i"
         #        And I press "Create Job"
         #        And I should see "Job already expired"
 

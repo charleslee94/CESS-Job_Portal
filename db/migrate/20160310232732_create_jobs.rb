@@ -6,7 +6,7 @@ class CreateJobs < ActiveRecord::Migration
       t.text :summary
       t.string :compensation_min
       t.string :compensation_max
-      t.datetime :exipiration
+      t.datetime :expiration
 
       t.timestamps null: false
     end

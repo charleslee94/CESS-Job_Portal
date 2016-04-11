@@ -4,7 +4,7 @@ class Job < ActiveRecord::Base
 end
 
 def job_not_expired
-   if exipiration and exipiration.past?
+   if expiration and expiration.past?
        errors.add(:base, "this job has expired")
        #self.delete!
    end
