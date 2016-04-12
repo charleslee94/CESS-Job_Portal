@@ -18,17 +18,17 @@ pre {
   font-size: 11px;
 }
 
-a {
-  color: #000;
+a:link, a:visited {
+    color: black;
+    text-decoration: none;
 
-  &:visited {
-    color: #666;
-  }
+}
 
-  &:hover {
-    color: #fff;
-    background-color: #000;
-  }
+a:hover, a:active {
+    text-decoration: underline;
+}
+h1 {
+  text-align: center
 }
 
 div {
@@ -46,6 +46,8 @@ div {
   background-color: red;
   display: table;
 }
+
+
 
 #error_explanation {
   width: 450px;

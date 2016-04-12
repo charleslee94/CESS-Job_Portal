@@ -1,12 +1,12 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Open Positions</h1>
+<h1 class = "title">Open SF-CESS Positions</h1>
 
 <%#= link_to 'View by School', :show => "school", class: 'btn btn-primary btn-xs' %>
 <%#= link_to 'View by Title', :show => "title", class: 'btn btn-primary btn-xs' %>
 <%#= link_to 'View All Postings', class: 'btn btn-primary btn-xs' %>
 
-<table class="table table-hover">
+<table class="table table-hover table-striped table-responsive">
   <thead>
     <tr>
       <th><%= link_to "School", jobs_path(:sort => "school")%></th>
@@ -29,7 +29,7 @@
         <td><%= link_to job.compensation_max, job_path(job) %></td>
         <td><%= link_to job.expiration.try(:strftime, "%A, %B %d, %Y"), job_path(job) %></td>
         <td><%= link_to 'Edit', edit_job_path(job), class: 'btn btn-primary btn-xs' %></td>
-        <td><%= link_to 'Destroy', job, method: :delete, class: 'btn btn-primary btn-xs' %></td>
+        <td><%= link_to 'Destroy', job, method: :delete, class: 'btn btn-danger btn-xs' %></td>
         <!--<td><%#<%= link_to 'Destroy', job, method: :delete, data: { confirm: 'Are you sure?' } %></td>-->
       </tr>
     <% end %>
@@ -39,4 +39,4 @@
 <br>
 
 <%= link_to 'New Job', new_job_path, class: 'btn btn-primary btn-xs' %>
-<%= link_to 'Sign In', new_user_session_path, class: 'btn btn-primary btn-xs' %>
+<%= link_to 'Sign In', new_user_session_path, class: 'btn btn-success btn-xs' %>
