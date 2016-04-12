@@ -5,9 +5,9 @@ Feature: allow only admins to edit their own things
 
 Background: jobs in database
     Given the following job openings exist:
-   | school         | title           | summary                  | compensation_min | compensation_max | 
-   | Ashley Falls   | Teacher         | I love my job!           | 80,000           | 100,000          |
-   | Ashley Falls 2  | Teacher 2      | I love my job!           | 80,000           | 100,000          |    
+   | school         | title           | summary                  | compensation_min | compensation_max | expiration
+   | Ashley Falls   | Teacher         | I love my job!           | 80,000           | 100,000          | 2018-10-20
+   | Ashley Falls 2  | Teacher 2      | I love my job!           | 80,000           | 100,000          | 2018-10-20
     
     Given the following resumes exist:
    | name            | attachment     | job_id   |
