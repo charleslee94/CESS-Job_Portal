@@ -6,9 +6,9 @@ Feature: post job opening with static info
 
 Background: jobs in database
     Given the following job openings exist:
-   | school         | title           | summary                  | compensation_min | compensation_max | 
-   | Ashley Falls   | Teacher         | I love my job!           | 80,000           | 100,000          |
-   | Torrey Pines   | Math teacher    | This job rocks!          | 100,000          | 110,000          |
+   | school         | title           | summary                  | compensation_min | compensation_max | expiration |
+   | Ashley Falls   | Teacher         | I love my job!           | 80,000           | 100,000          | 2018-10-20 |
+   | Torrey Pines   | Math teacher    | This job rocks!          | 100,000          | 110,000          | 2018-10-20 |
 
 Scenario: static school info
     Given I am on the post open positions page

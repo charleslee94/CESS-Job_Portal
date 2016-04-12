@@ -6,8 +6,8 @@ Feature: follow job links to application page
 Background: jobs in database
 
    Given the following job openings exist:
-   | school         | title           | summary                  | compensation_min | compensation_max | 
-   | Ashley Falls   | Teacher         | I love my job!           | 80,000           | 100,000          |
+   | school         | title           | summary                  | compensation_min | compensation_max | expiration |
+   | Ashley Falls   | Teacher         | I love my job!           | 80,000           | 100,000          | 2018-10-20 |
 
 Scenario: follow link to job application page
   Given I am on the view open positions page
