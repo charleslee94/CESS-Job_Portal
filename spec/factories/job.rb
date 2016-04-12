@@ -7,6 +7,6 @@ FactoryGirl.define do
     summary 'not good'
     compensation_min '0'
     compensation_max '10000'
-    expiration '2016'
+    expiration DateTime.new(2017,9,1,19)
   end
 end
