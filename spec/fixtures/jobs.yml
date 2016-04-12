@@ -6,10 +6,11 @@ matt_job:
   summary: Not great
   compensation_min: Not much
   compensation_max: Not a lot
+  expiration: 2018-10-22
 
 expired_job:
   id: 2
-  school: Haas
+  school: Not Haas
   title: Matt
   summary: Not great
   compensation_min: Not much
