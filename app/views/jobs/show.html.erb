@@ -27,7 +27,7 @@
 
 <p>
   <strong>Expiration:</strong>
-  <%= @job.expiration.strftime "%A, %B %d, %Y" %>
+  <%= @job.expiration.try(:strftime, "%A, %B %d, %Y") %>
 </p>
 
 <%= link_to 'Edit', edit_job_path(@job), class: 'btn btn-primary btn-xs' %> |
