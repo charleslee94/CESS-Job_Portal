@@ -26,13 +26,13 @@ describe JobsController do
   describe "POST #create" do
     it "create happy path" do
       Job.should_receive(:new).and_return(@job)
-      post :create, :job => {:school => @job.school, :title => @job.title, :summary => @job.summary, :compensation_min => @job.compensation_min, :compensation_max => @job.compensation_max, :expiration => @job.expiration}
+      post :create, :job => {:school => @job.school, :title => @job.title, :job_description => @job.job_description, :fte => @job.fte, :compensation_min => @job.compensation_min, :compensation_max => @job.compensation_max, :expiration => @job.expiration}
       flash[:notice].should =~ /Job was successfully created/
     end
     
     it "expired sad path" do
       Job.should_receive(:new).and_return(@expired)
-      post :create, :job => {:school => @job.school, :title => @job.title, :summary => @job.summary, :compensation_min => @job.compensation_min, :compensation_max => @job.compensation_max, :expiration => @expired.expiration}
+      post :create, :job => {:school => @job.school, :title => @job.title, :job_description => @job.job_description, :fte => @job.fte, :compensation_min => @job.compensation_min, :compensation_max => @job.compensation_max, :expiration => @expired.expiration}
     end
   end
   
@@ -52,7 +52,7 @@ describe JobsController do
 
   describe 'PATCH jobs#update' do
     it 'should update a job' do
-      patch :update, :id => @job.id, :job => {:school => @job.school, :title => @job.title, :summary => @job.summary, :compensation_min => @job.compensation_min, :compensation_max => @job.compensation_max, :expiration => @job.expiration}
+      patch :update, :id => @job.id, :job => {:school => @job.school, :title => @job.title, :job_description => @job.job_description, :fte => @job.fte, :compensation_min => @job.compensation_min, :compensation_max => @job.compensation_max, :expiration => @job.expiration}
       flash[:notice].should =~ /Job was successfully updated/
     end
   end

@@ -22,8 +22,8 @@ Then /the compensation_min for "([^"]*)" should be "([^"]*)"$/ do |school, comp|
   expect(Job.find_by(school: school).compensation_min).to eq(comp)
 end
 
-Then /the summary for "([^"]*)" should be "([^"]*)"$/ do |school, sum|
-  expect(Job.find_by(school: school).summary).to eq(sum)
+Then /the job description for "([^"]*)" should be "([^"]*)"$/ do |school, sum|
+  expect(Job.find_by(school: school).job_description).to eq(sum)
 end
 
 When(/^I edit the job for the school "(.*?)"$/) do |school|

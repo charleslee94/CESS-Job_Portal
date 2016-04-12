@@ -6,14 +6,12 @@ Feature: follow job links to application page
 Background: jobs in database
 
    Given the following job openings exist:
-   | school         | title           | summary                  | compensation_min | compensation_max | expiration |
-   | Ashley Falls   | Teacher         | I love my job!           | 80,000           | 100,000          | 2018-10-20 |
+   | school         | title           | job_description          | compensation_min | compensation_max | expiration | fte |
+   | Ashley Falls   | Teacher         | I love my job!           | 80,000           | 100,000          | 2018-10-20 | 1   |
 
 Scenario: follow link to job application page
   Given I am on the view open positions page
   And I follow "Ashley Falls"
-  Then I should see "Summary"
   And I follow "Back"
-  Then I should see "Listing"
-  And I should not see "Summary"
+  Then I should see "Open Positions"
  

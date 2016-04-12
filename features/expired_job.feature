@@ -6,15 +6,15 @@ Feature: job expirations
     
 Background:
     Given the following job openings exist:
-   | school         | title           | summary                  | compensation_min | compensation_max | expiration |
-   | Ashley Falls   | Teacher         | I love my job!           | 80,000           | 100,000          | 2018-10-20 |
-   | Ashley Falls 2  | Teacher 2      | I love my job!           | 80,000           | 100,000          | 2018-10-20 |
+   | school         | title           | job_description          | compensation_min | compensation_max | expiration | fte |
+   | Ashley Falls   | Teacher         | I love my job!           | 80,000           | 100,000          | 2018-10-20 | 1   |
+   | Ashley Falls 2  | Teacher 2      | I love my job!           | 80,000           | 100,000          | 2018-10-20 | .5  |
     
 Scenario: post an expired job
     Given I am on the post open positions page
     When I fill in "School" with "Gillispie"
     And  I fill in "Title" with "Pre-School"
-    And I fill in "Summary" with "pre school is fun"
+    And I fill in "Job Description" with "pre school is fun"
     And I fill in "Compensation min" with "60,000"
     And I fill in "Compensation max" with "70,000"
     And I select "2011" from "job_expiration_1i"
@@ -25,7 +25,7 @@ Scenario: post a valid job
   Given I am on the post open positions page
     When I fill in "School" with "Gillispie"
     And  I fill in "Title" with "Pre-School"
-    And I fill in "Summary" with "pre school is fun"
+    And I fill in "Job Description" with "pre school is fun"
     And I fill in "Compensation min" with "60,000"
     And I fill in "Compensation max" with "70,000"
     And I select "2017" from "job_expiration_1i"

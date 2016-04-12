@@ -6,12 +6,12 @@ Feature: view available jobs
 
 Background: jobs in database
 
-        Given the following job openings exist:
-        | school         | title           | summary                  | compensation_min | compensation_max | expiration |
-        | Ashley Falls   | Teacher         | I love my job!           | 80,000           | 100,000          | 2018-10-20 |          
-        | Torrey Pines   | Math teacher    | This job rocks!          | 100,000          | 120,000          | 2018-10-20 |      
-        | Carmel Valley  | English teacher |  Middle school is rough. | 87,000           | 98,000           | 2018-10-20 |     
-        | 
+    Given the following job openings exist:
+        | school         | title           | job_description          | compensation_min | compensation_max | expiration | fte |
+        | Ashley Falls   | Teacher         | I love my job!           | 80,000           | 100,000          | 2018-10-20 |  1  |      
+        | Torrey Pines   | Math teacher    | This job rocks!          | 100,000          | 120,000          | 2018-10-20 |  1  | 
+        | Carmel Valley  | English teacher |  Middle school is rough. | 87,000           | 98,000           | 2018-10-20 |  1  | 
+        
 Scenario: view job openings
   Given I am on the view open positions page
   Then I should see "Ashley Falls"
@@ -40,13 +40,13 @@ Scenario: view job openings by title
 
 Scenario: view jobs descending by compensation minimum
   Given I am on the view open positions page
-  When I follow "Compensation min"
+  When I follow "Compensation Min"
   Then I should see "Torrey Pines" before "Carmel Valley"
   And I should see "Ashley Falls" before "Carmel Valley"
 
 Scenario: view jobs descending by compensation maximum
   Given I am on the view open positions page
-  When I follow "Compensation max"
+  When I follow "Compensation Max"
   Then I should see "Torrey Pines" before "Carmel Valley"
   And I should see "Ashley Falls" before "Carmel Valley"
   
@@ -66,11 +66,12 @@ Scenario: view jobs alphabetical order by title
 Scenario: edit job opening
   Given I am on the view open positions page
   When I edit the job for the school "Ashley Falls"
-  And I fill in "Summary" with "This school rocks in SD!"
+  And I fill in "Job description" with "This school rocks in SD!"
   And I press "Update Job"
   Then I should see "Job was successfully updated."
   And I follow "Back"
-  Then the summary for "Ashley Falls" should be "This school rocks in SD!"
+  And I follow "Ashley Falls"
+  Then I should see "This school rocks in SD!"
 
 Scenario: edit job name
   Given I am on the view open positions page

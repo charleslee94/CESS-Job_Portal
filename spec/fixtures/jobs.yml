@@ -3,7 +3,8 @@ matt_job:
   id: 1
   school: Haas
   title: Matt
-  summary: Not great
+  job_description: Not great
+  fte: 1
   compensation_min: Not much
   compensation_max: Not a lot
   expiration: 2018-10-22
@@ -12,7 +13,8 @@ expired_job:
   id: 2
   school: Not Haas
   title: Matt
-  summary: Not great
+  job_description: Not great
+  fte: 1
   compensation_min: Not much
   compensation_max: Not a lot
   expiration: 2011-10-22

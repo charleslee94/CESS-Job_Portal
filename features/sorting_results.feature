@@ -6,10 +6,10 @@ Feature: Sort results
 Background: jobs in database
 
    Given the following job openings exist:
-        | school         | title           | summary                  | compensation_min | compensation_max | expiration |
-        | Ashley Falls   | Teacher         | I love my job!           | 80,000           | 100,000          | 2018-10-20 |          
-        | Torrey Pines   | Math teacher    | This job rocks!          | 100,000          | 120,000          | 2018-10-20 |      
-        | Carmel Valley  | English teacher |  Middle school is rough. | 87,000           | 98,000           | 2018-10-20 |   
+        | school         | title           | job_description          | compensation_min | compensation_max | expiration | fte |
+        | Ashley Falls   | Teacher         | I love my job!           | 80,000           | 100,000          | 2018-10-20 |  1  |        
+        | Torrey Pines   | Math teacher    | This job rocks!          | 100,000          | 120,000          | 2018-10-20 |  .5 |    
+        | Carmel Valley  | English teacher |  Middle school is rough. | 87,000           | 98,000           | 2018-10-20 | .75 | 
 
 Scenario: change result view
   Given I am on the view open positions page
