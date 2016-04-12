@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1 class = "title">Open SF-CESS Positions</h1>
+<h1 class = "title">Open Positions</h1>
 
 <%#= link_to 'View by School', :show => "school", class: 'btn btn-primary btn-xs' %>
 <%#= link_to 'View by Title', :show => "title", class: 'btn btn-primary btn-xs' %>
@@ -11,7 +11,7 @@
     <tr>
       <th><%= link_to "School", jobs_path(:sort => "school")%></th>
       <th><%= link_to "Title", jobs_path(:sort => "title") %></th>
-      <th>Summary</th>
+      <th>FTE</th>
       <th><%= link_to "Compensation Min", jobs_path(:sort => "compensation_min") %></th>
       <th><%= link_to "Compensation Max", jobs_path(:sort => "compensation_max") %></th>
       <th>Expiration</th>
@@ -24,7 +24,7 @@
       <tr>
         <td><%= link_to job.school, job_path(job)%></td>
         <td><%= link_to job.title, job_path(job)%></td>
-        <td><%= link_to job.summary, job_path(job)%></td>
+        <td><%= link_to job.fte, job_path(job)%></td>
         <td><%= link_to job.compensation_min, job_path(job) %></td>
         <td><%= link_to job.compensation_max, job_path(job) %></td>
         <td><%= link_to job.expiration.try(:strftime, "%A, %B %d, %Y"), job_path(job) %></td>

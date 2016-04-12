@@ -11,17 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160411213854) do
+ActiveRecord::Schema.define(version: 20160412224045) do
 
   create_table "jobs", force: :cascade do |t|
     t.string   "school"
     t.string   "title"
-    t.text     "summary"
+    t.text     "job_description"
     t.string   "compensation_min"
     t.string   "compensation_max"
     t.datetime "expiration"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
+    t.string   "fte"
   end
 
   create_table "resumes", force: :cascade do |t|
