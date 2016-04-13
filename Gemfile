@@ -13,7 +13,6 @@ gem 'coffee-rails', '~> 4.1.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 # Use coveralls for code coverage
-gem 'coveralls', require: false
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
@@ -57,6 +56,7 @@ group :test do
   gem 'cucumber-rails-training-wheels'
   gem 'rake'
   gem 'simplecov', :require => false
+  gem 'coveralls', require: false
 end
 group :production do
   gem 'pg'
