@@ -37,15 +37,7 @@
   </div>
   <div class="field">
     <%= f.label :expiration %><br>
-    <%= f.date_select :expiration, :default => 30.days.from_now, class: 'form-control' %>
-    <% if @job.expiration != nil %>
-      <% puts @job.expiration %>
-      <% puts "!!!!!!!" %>
-      <% puts Time.now %>
-      <% if Time.now > @job.expiration %>
-        <% puts "job has already passed" %>
-      <% end %>
-    <% end %>
+    <%= f.select :expiration, options_for_select([['30 days', 30.days.from_now], ['60 days', 60.days.from_now],['90 days', 90.days.from_now]]), class: 'form-control' %>
   </div>
   <div class="actions">
     <%= f.submit %>
