@@ -4,4 +4,13 @@
 require File.expand_path('../config/application', __FILE__)
 
 Rails.application.load_tasks
-task :default => :cucumber
+if not Rails.env.production?
+    require 'rspec/core/rake_task'
+    require 'cucumber/rake/task'
+    require 'coveralls/rake/task'
+
+    Coveralls::RakeTask.new
+    Cucubmer::Rake::Task.new(:features)
+    RSpec::Core::RakeTask.new(:spec)
+    task :default => [:spec, :features, 'coveralls:push']
+end
