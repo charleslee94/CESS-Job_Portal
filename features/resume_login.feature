@@ -16,7 +16,7 @@ Scenario: must be logged in to upload resume
     Given I am on the view open positions page
     And I follow "Teacher"
     And I follow "Apply Here"
-    Then I should see "You must be logged in to complete this action."
+    Then I should see "Log In"
     And I fill in "Email" with "school@sc.com"
     And I fill in "Password" with "8characters"
     And I fill in "Password confirmation" with "8characters"

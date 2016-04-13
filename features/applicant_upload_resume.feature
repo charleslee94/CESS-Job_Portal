@@ -16,8 +16,7 @@ Scenario: upload resume sad path
     Given I am on the view open positions page
     And I follow "Teacher"
     And I follow "Apply Here"
-    And I press "Save"
-    Then I should see "The upload failed"
+    And I should see "Log In"
 
 Scenario: listing correct resume things on index
     Given I am on the resumes page

@@ -1,14 +1,19 @@
 class ResumesController < ApplicationController
    # before_action :verify_admin, only: [:view]
    
-   
    def index
       @resumes = Resume.all
    end
    
    def new
-      @job = Job.find(params[:jobid])
-      @resume = Resume.new
+      if current_user
+         @job = Job.find(params[:jobid])
+         @resume = Resume.new
+      else
+         #make this notice show up on log in page NOT job description page
+         flash[:notice] = "You must be logged in to submit a resume."
+         redirect_to new_user_session_path
+      end
    end
    
    def create

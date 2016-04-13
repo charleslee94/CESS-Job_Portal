@@ -11,6 +11,9 @@ class JobsController < ApplicationController
       @jobs = Job.select(show)
     end
     if sort
+      #if params[:sort_on] == "compensation"
+       # all jobs --> compensation_min.gsub(/[\s$,]/ ,"")
+      #end
       @jobs = Job.order(sort + ' ASC')
     else
       @jobs = Job.all
