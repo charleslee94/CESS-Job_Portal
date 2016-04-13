@@ -10,7 +10,7 @@ if not Rails.env.production?
     require 'coveralls/rake/task'
 
     Coveralls::RakeTask.new
-    Cucubmer::Rake::Task.new(:features)
+    Cucumber::Rake::Task.new(:features)
     RSpec::Core::RakeTask.new(:spec)
     task :default => [:spec, :features, 'coveralls:push']
 end
