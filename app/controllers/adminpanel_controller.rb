@@ -11,9 +11,8 @@ class AdminpanelController < ApplicationController
     end
     
     def create_new_school
-      @user = User.create(email: params[:user][:email], school: params[:user][:school], password: params[:user][:password])
+      @user = User.new(email: params[:user][:email], school: params[:user][:school], password: params[:user][:password])
       redirect_to '/admin'
     end
-
 
 end
