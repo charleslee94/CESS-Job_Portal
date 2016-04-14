@@ -11,7 +11,7 @@ RSpec.describe ResumesController, type: :controller do
   end
   
   describe "GET #index" do
-    it "returns http success" do
+    it "index happy path" do
       attachment = File.new("#{Rails.root}/public/422.html")
       @job = jobs(:matt_job)
       @resume = Resume.new({:name => 'Joseph, Fire', :attachment => attachment})
@@ -21,6 +21,18 @@ RSpec.describe ResumesController, type: :controller do
       controller.stub(:current_user) { candidate }
       get :index, :schoolid => candidate.id
       assigns(@resumes).should == {"marked_for_same_origin_verification" => true, "resumes" => [@resume]}
+    end
+    
+    it "index sad" do
+      attachment = File.new("#{Rails.root}/public/422.html")
+      @job = jobs(:matt_job)
+      @resume = Resume.new({:name => 'Joseph, Fire', :attachment => attachment})
+      @job.resumes << @resume
+      candidate = User.create!({:email => "hah2a@haha.com", :password => 'whatever222', :user_type => 'candidate'})
+      candidate.jobs << @job
+      controller.stub(:current_user) { candidate }
+      get :index, :schoolid => candidate.id
+      expect(response).to have_http_status(302)
     end
   end
   
