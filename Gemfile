@@ -49,6 +49,9 @@ group :development, :test do
   gem 'byebug'
   gem 'capybara'
   gem 'database_cleaner'
+  gem 'awesome_print', require: 'ap'
+  gem 'quiet_assets'
+  gem 'better_errors'
 end
 
 group :test do
