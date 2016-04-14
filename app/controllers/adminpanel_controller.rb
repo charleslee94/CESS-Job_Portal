@@ -6,6 +6,7 @@ class AdminpanelController < ApplicationController
                 redirect_to '/jobs'
             end
         else
+            flash[:notice] = 'You must be logged in to view this page'
             redirect_to '/jobs'
         end
     end
