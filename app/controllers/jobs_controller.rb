@@ -20,6 +20,9 @@ class JobsController < ApplicationController
     end
   end
   
+  def show_admin_panel
+  end
+  
   def homepage
   end
   
