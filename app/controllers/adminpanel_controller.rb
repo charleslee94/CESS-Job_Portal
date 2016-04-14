@@ -11,6 +11,7 @@ class AdminpanelController < ApplicationController
     end
     
     def create_new_school
+      redirect_to '/admin'
     end
 
 

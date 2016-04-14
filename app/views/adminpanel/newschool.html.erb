@@ -1,11 +1,15 @@
 <h2>Sign up</h2>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
+<%= form_for(@user, url: {action: "create_new_school"}) do |f| %>
 
   <div class="field">
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :school %><br />
+    <%= f.text_field :school %>
   </div>
 
   <div class="field">
@@ -27,4 +31,3 @@
   </div>
 <% end %>
 
-<%= render "users/shared/links" %>
