@@ -13,6 +13,9 @@ Rails.application.routes.draw do
   get '/guidelines', :to => 'guidelines#index', :as => 'guidelines'
   get 'jobs/:jobid/apply/resume/new', :to => 'resumes#new', :as => 'new_app'
   post '/resumes/:jobid', :to => 'resumes#create', :as => 'create_app'
+  post '/admin/newschool', :to => 'adminpanel#create_new_school', :as => 'create_new_school_user'
+  get '/admin', :to => 'adminpanel#index', :as => 'admin_panel'
+  get '/admin/newschool', :to => 'adminpanel#newschool', :as => 'new_school_user'
   get 'resumes', :to => 'resumes#index', :as => 'resumes'
 
   # Example of regular route:

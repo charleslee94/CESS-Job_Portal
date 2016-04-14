@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160413233342) do
+ActiveRecord::Schema.define(version: 20160414023034) do
 
   create_table "jobs", force: :cascade do |t|
     t.string   "school"
@@ -49,8 +49,9 @@ ActiveRecord::Schema.define(version: 20160413233342) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
+    t.datetime "created_at",                                   null: false
+    t.datetime "updated_at",                                   null: false
+    t.string   "user_type",              default: "candidate"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

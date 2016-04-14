@@ -6,5 +6,10 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-Job.create(school: "Ashley Falls")
-Job.create(school: "Torrey Pines", title: "Teacher", summary: "This job rocks!", compensation_min: "100,000", compensation_max: "120,000", expiration: DateTime.new(2017,9,1,19))
+
+users = [{:email => 'mattjoseph@berkeley.edu', :password => 'hahahahaa', :user_type => 'admin'},
+         {:email => 'candidate@berkeley.edu', :password => 'hahahahaa', :user_type => 'candidate'}]
+
+users.each do |user|
+    User.create!(user)
+end
