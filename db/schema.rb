@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160414053955) do
+ActiveRecord::Schema.define(version: 20160414062744) do
 
   create_table "admins", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(version: 20160414053955) do
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
     t.string   "fte"
+    t.integer  "user_id"
   end
 
   create_table "resumes", force: :cascade do |t|

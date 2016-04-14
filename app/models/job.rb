@@ -1,8 +1,8 @@
 class Job < ActiveRecord::Base
     has_many :resumes
+    belongs_to :user
     validate :job_not_expired
-    validates :expiration, :school, presence: true
-
+    validates :expiration, presence: true
 
     def job_not_expired
        if expiration and expiration.past?
@@ -10,4 +10,5 @@ class Job < ActiveRecord::Base
            #self.delete!
        end
     end
+    
 end

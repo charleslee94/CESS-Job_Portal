@@ -3,6 +3,18 @@ class ResumesController < ApplicationController
    
    def index
       @resumes = Resume.all
+      if current_user and current_user.user_type == 'school'
+         school = User.find(params[:schoolid]) 
+         @resumes = []
+         school.jobs.each do |job|
+            Resume.where(:job_id => job.id).each do |each_resume|
+               @resumes << each_resume
+            end
+         end
+      else
+         redirect_to '/jobs'
+      end
+      return @resumes
    end
    
    def new

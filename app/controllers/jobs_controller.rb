@@ -20,7 +20,7 @@ class JobsController < ApplicationController
     end
   end
   
-  def show_admin_panel
+  def admin_panel
   end
   
   def homepage
@@ -51,16 +51,21 @@ class JobsController < ApplicationController
   # POST /jobs
   # POST /jobs.json
   def create
-    @job = Job.new(job_params)
-    respond_to do |format|
-      if @job.save
-        format.html { redirect_to @job, notice: 'Job was successfully created.' }
-        format.json { render :show, status: :created, location: @job }
-      else
-        format.html { render :new, notice: 'Job was not created successfully' }
-        format.json { render json: @job.errors, status: :unprocessable_entity }
+    if current_user and current_user.user_type == 'school'
+      @job = Job.new(job_params)
+      respond_to do |format|
+        if @job.save
+          current_user.jobs << @job
+          format.html { redirect_to @job, notice: current_user.school }
+          format.json { render :show, status: :created, location: @job }
+        else
+          format.html { render :new, notice: 'Job was not created successfully' }
+          format.json { render json: @job.errors, status: :unprocessable_entity }
+        end
       end
-      # to-do: add fail cases for creation!
+    else
+      flash[:message] = 'You are either not signed in or are not authorized to do this.'
+      redirect_to '/jobs'
     end
   end
 
