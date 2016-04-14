@@ -8,6 +8,9 @@ RSpec.describe ResumesController, type: :controller do
   
   before(:each) do
     @job = jobs(:matt_job)
+    candidate = User.create({:email => "haha@haha.com", :password => 'whatever222', :user_type => 'candidate'})
+    school_user = User.create({:email => "haha@haha.com", :password => 'whatever222', :user_type => 'school'})
+    admin_user = User.create({:email => "haha@haha.com", :password => 'whatever222', :user_type => 'admin'})
   end
   
   describe "GET #index" do
@@ -19,6 +22,7 @@ RSpec.describe ResumesController, type: :controller do
   
   describe "POST #create" do
     it "create happy path" do
+      controller.stub!(:current_user).and_return(school_user)
       attachment = File.new("#{Rails.root}/public/422.html")
       matt_job = jobs(:matt_job)
       resume = Resume.new({:name => 'Joseph, Fire', :attachment => attachment})

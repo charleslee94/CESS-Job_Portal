@@ -51,7 +51,7 @@ class JobsController < ApplicationController
   # POST /jobs
   # POST /jobs.json
   def create
-    if current_user and current_user.user_type == 'school'
+    if current_user
       @job = Job.new(job_params)
       respond_to do |format|
         if @job.save
@@ -63,10 +63,6 @@ class JobsController < ApplicationController
           format.json { render json: @job.errors, status: :unprocessable_entity }
         end
       end
-    else
-      flash[:message] = 'You are either not signed in or are not authorized to do this.'
-      redirect_to '/jobs'
-    end
   end
 
   # PATCH/PUT /jobs/1
