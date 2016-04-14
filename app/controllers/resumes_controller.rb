@@ -39,9 +39,6 @@ class ResumesController < ApplicationController
       end
    end
    
-   def destroy
-   end
-   
    private
       def resume_params
         params.require(:resume).permit(:name, :attachment)
