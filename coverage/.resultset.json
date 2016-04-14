@@ -528,12 +528,6 @@
         1,
         1,
         1,
-        null,
-        1,
-        0,
-        0,
-        null,
-        null,
         null
       ],
       "/home/ubuntu/workspace/app/uploaders/attachment_uploader.rb": [
@@ -639,6 +633,6 @@
         0
       ]
     },
-    "timestamp": 1460626584
+    "timestamp": 1460656389
   }
 }
