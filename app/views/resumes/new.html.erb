@@ -17,8 +17,10 @@
 
 <div class = "well">
    <%= form_for @resume, url: create_app_path(@job.id), html: { multipart: true } do |f| %>
-      <%= f.label :"Resume name (Format: Last Name, First Name)" %>
-      <%= f.text_field :name %>
+      <%= f.label :"First Name" %>
+      <%= f.text_field :firstName %>
+      <%= f.label :"Last Name" %>
+      <%= f.text_field :lastName %>
       <%= f.file_field :attachment %>
       <br/>
       <%= f.submit "Save", class: "btn btn-primary" %>
