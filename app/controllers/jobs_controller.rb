@@ -63,6 +63,7 @@ class JobsController < ApplicationController
           format.json { render json: @job.errors, status: :unprocessable_entity }
         end
       end
+    end
   end
 
   # PATCH/PUT /jobs/1
