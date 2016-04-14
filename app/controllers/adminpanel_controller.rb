@@ -17,7 +17,13 @@ class AdminpanelController < ApplicationController
     
     def create_new_school
       @user = User.create(email: params[:user][:email], school: params[:user][:school], password: params[:user][:password], user_type: 'school')
-      redirect_to '/admin'
+      if @user.save
+          flash[:notice] = 'You have successfully created a new school. Log in to your school account to start posting job listings.'
+          redirect_to '/jobs'
+      else
+          flash[:notice] = 'Something went wrong in the creation of this user.'
+          redirect_to '/jobs'
+      end
     end
     
 end
