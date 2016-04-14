@@ -9,6 +9,9 @@ describe JobsController do
   before(:each) do
     @job = jobs(:matt_job)
     @expired = jobs(:expired_job)
+    candidate = User.create({:email => "haha@haha.com", :password => 'whatever222', :user_type => 'candidate'})
+    school_user = User.create({:email => "haha@haha.com", :password => 'whatever222', :user_type => 'school'})
+    admin_user = User.create({:email => "haha@haha.com", :password => 'whatever222', :user_type => 'admin'})
   end
   
   describe 'index should display all jobs' do
@@ -26,8 +29,10 @@ describe JobsController do
   describe "POST #create" do
     it "create happy path" do
       Job.should_receive(:new).and_return(@job)
+      candidate = User.create({:email => "haha@haha.com", :password => 'whatever222', :user_type => 'candidate'})
+      controller.should_receive(:current_user).and_return(candidate)
       post :create, :job => {:school => @job.school, :title => @job.title, :job_description => @job.job_description, :fte => @job.fte, :compensation_min => @job.compensation_min, :compensation_max => @job.compensation_max, :expiration => @job.expiration}
-      flash[:notice].should =~ /Job was successfully created/
+      flash[:notice].should =~ /Job was created successfully/
     end
     
     it "expired sad path" do

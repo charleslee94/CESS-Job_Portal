@@ -51,17 +51,15 @@ class JobsController < ApplicationController
   # POST /jobs
   # POST /jobs.json
   def create
-    if current_user
-      @job = Job.new(job_params)
-      respond_to do |format|
-        if @job.save
-          current_user.jobs << @job
-          format.html { redirect_to @job, notice: current_user.school }
-          format.json { render :show, status: :created, location: @job }
-        else
-          format.html { render :new, notice: 'Job was not created successfully' }
-          format.json { render json: @job.errors, status: :unprocessable_entity }
-        end
+    @job = Job.new(job_params)
+    respond_to do |format|
+      if @job.save
+        current_user.jobs << @job
+        format.html { redirect_to @job, notice: 'Job was created successfully' }
+        format.json { render :show, status: :created, location: @job }
+      else
+        format.html { render :new, notice: 'Job was not created successfully' }
+        format.json { render json: @job.errors, status: :unprocessable_entity }
       end
     end
   end

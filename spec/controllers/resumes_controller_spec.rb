@@ -8,14 +8,15 @@ RSpec.describe ResumesController, type: :controller do
   
   before(:each) do
     @job = jobs(:matt_job)
-    candidate = User.create({:email => "haha@haha.com", :password => 'whatever222', :user_type => 'candidate'})
-    school_user = User.create({:email => "haha@haha.com", :password => 'whatever222', :user_type => 'school'})
-    admin_user = User.create({:email => "haha@haha.com", :password => 'whatever222', :user_type => 'admin'})
+    admin_user = User.create!({:email => "haha@haha.com", :password => 'whatever222', :user_type => 'admin'})
+    @job.user = admin_user
   end
   
   describe "GET #index" do
     it "returns http success" do
-      get :index
+      candidate = User.create!({:email => "hah2a@haha.com", :password => 'whatever222', :user_type => 'school'})
+      controller.stub(:current_user) { candidate }
+      get :index, :schoolid => candidate.id
       expect(response).to have_http_status(:success)
     end
   end
@@ -44,6 +45,8 @@ RSpec.describe ResumesController, type: :controller do
 
   describe "GET #new" do
     it "returns http success" do
+      candidate = User.create({:email => "haha@haha.com", :password => 'whatever222', :user_type => 'school'})
+      controller.should_receive(:current_user).and_return(candidate)
       get :new, :jobid => 1
       @job = Job.find(1)
       assigns(:job).should == @job 
