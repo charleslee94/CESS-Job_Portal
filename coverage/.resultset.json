@@ -314,6 +314,30 @@
   },
   "RSpec": {
     "coverage": {
+      "/home/ubuntu/workspace/app/controllers/adminpanel_controller.rb": [
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        null,
+        null,
+        0,
+        null,
+        null,
+        null,
+        1,
+        0,
+        null,
+        null,
+        1,
+        0,
+        0,
+        null,
+        null,
+        null
+      ],
       "/home/ubuntu/workspace/app/controllers/application_controller.rb": [
         1,
         null,
@@ -519,10 +543,6 @@
         null,
         null
       ],
-      "/home/ubuntu/workspace/app/models/admin.rb": [
-        1,
-        null
-      ],
       "/home/ubuntu/workspace/app/models/resume.rb": [
         1,
         1,
@@ -587,11 +607,6 @@
         null,
         null
       ],
-      "/home/ubuntu/workspace/app/models/school.rb": [
-        1,
-        1,
-        null
-      ],
       "/home/ubuntu/workspace/app/models/job.rb": [
         1,
         1,
@@ -607,32 +622,8 @@
         null,
         null,
         null
-      ],
-      "/home/ubuntu/workspace/app/controllers/adminpanel_controller.rb": [
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0
       ]
     },
-    "timestamp": 1460656389
+    "timestamp": 1460656852
   }
 }
