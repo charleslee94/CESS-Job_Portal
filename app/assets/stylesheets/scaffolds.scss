@@ -47,6 +47,14 @@ div {
   display: table;
 }
 
+.centeredbox {
+  text-align: center;
+  border: 3px solid #73AD21;
+  border-radius: 25px;
+  padding: 10px;
+  margin: auto;
+  width: 400px;
+}
 
 
 #error_explanation {
