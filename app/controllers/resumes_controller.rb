@@ -1,6 +1,5 @@
 class ResumesController < ApplicationController
    # before_action :verify_admin, only: [:view]
-   
    def index
       @resumes = Resume.all
       if current_user and current_user.user_type == 'school'
@@ -12,6 +11,7 @@ class ResumesController < ApplicationController
             end
          end
       else
+         flash[:notice] = "You must be logged in as a school administrator to view this page"
          redirect_to '/jobs'
       end
       return @resumes
@@ -43,10 +43,4 @@ class ResumesController < ApplicationController
       def resume_params
         params.require(:resume).permit(:name, :attachment)
       end
-      
-      # def verify_admin
-      #    if not user_signed_in?
-      #       redirect_to jobs_path, notice: "You must be an admin to view other resumes."
-      #    end
-      # end
 end

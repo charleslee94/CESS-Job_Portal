@@ -32,7 +32,7 @@ RSpec.describe ResumesController, type: :controller do
       candidate.jobs << @job
       controller.stub(:current_user) { candidate }
       get :index, :schoolid => candidate.id
-      expect(response).to have_http_status(302)
+      flash[:notice].should =~ /administrator to view this page/
     end
   end
   

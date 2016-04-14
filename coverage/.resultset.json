@@ -474,7 +474,6 @@
       "/home/ubuntu/workspace/app/controllers/resumes_controller.rb": [
         1,
         null,
-        null,
         1,
         2,
         2,
@@ -486,6 +485,7 @@
         null,
         null,
         null,
+        1,
         1,
         null,
         2,
@@ -516,12 +516,6 @@
         1,
         1,
         2,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
         null,
         null
       ],
@@ -645,6 +639,6 @@
         0
       ]
     },
-    "timestamp": 1460625209
+    "timestamp": 1460625784
   }
 }
