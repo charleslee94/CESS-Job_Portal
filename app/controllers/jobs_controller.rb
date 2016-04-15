@@ -79,6 +79,9 @@ class JobsController < ApplicationController
   # DELETE /jobs/1
   # DELETE /jobs/1.json
   def destroy
+    @job.resumes.each do |resume|
+      resume.destroy
+    end
     @job.destroy
     respond_to do |format|
       format.html { redirect_to jobs_url, notice: 'Job was successfully destroyed.' }
