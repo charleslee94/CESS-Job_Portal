@@ -22,7 +22,7 @@
   <tbody>
     <% @jobs.each do |job| %>
       <tr>
-        <td><%= link_to job.school, job_path(job)%></td>
+        <td><%= link_to job.school, job_path(job)%></td> 
         <td><%= link_to job.title, job_path(job)%></td>
         <td><%= link_to job.fte, job_path(job)%></td>
         <td><%= link_to job.compensation_min, job_path(job) %></td>
@@ -45,7 +45,7 @@
 <%= link_to 'Home', guidelines_path, class: 'btn btn-primary btn-xs' %>
 <% if user_signed_in? %>
   <%= link_to('Sign Out', destroy_user_session_path, :method => :delete, class: 'btn btn-success btn-xs') %>
-  <% if current_user.user_type == 'admin' or current_user.user_type == 'school'  %>
+  <% if current_user.user_type == 'school'  %>
     <%= link_to 'New Job', new_job_path, class: 'btn btn-primary btn-xs' %>
   <% end %>
   <% if current_user.user_type == 'school'  %>
