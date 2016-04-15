@@ -10,17 +10,17 @@ Background: jobs in database
    | Ashley Falls 2  | Teacher 2      | I love my job!           | 80,000           | 100,000          | 2018-10-20 | .5  |
     
     Given the following resumes exist:
-   | name            | attachment     | job_id   |
-   | Joseph, Mathew  | haha.jpg       |     1    |
-   | Holmes, Nathan  | test.pdf       |     2    |
+   | firstname   | lastname         | attachment     | job_id   |
+   | Mathew      | Joseph           | haha.jpg       |     1    |
+   | Nathan      | Holmes           | test.pdf       |     2    |
    
    Given the following users exist:
-   | name            | password    | school       |
-   | mathewjopeph    | admin       | Ashley Falls | 
+   | email                | password   | school       |
+   | mathew@jopeph.com    | admin123   | Ashley Falls | 
 
 Scenario: create a user login for a school
-    Given I am the admin
-    And I follow "Sign In"
+    Given I am at the home page
+    And I follow "SFCESS School Sign In"
     And I follow "Sign up"
     And I fill in "Email" with "school@sc.com"
     And I fill in "Password" with "8characters"
@@ -29,8 +29,8 @@ Scenario: create a user login for a school
     Then I should be on the guidelines page
 
 Scenario: malformed user login
-    Given I am the admin
-    And I follow "Sign In"
+    Given I am at the home page
+    And I follow "SFCESS School Sign In"
     And I follow "Sign up"
     And I fill in "Email" with "test@test.com"
     And I fill in "Password" with "short"
@@ -38,8 +38,10 @@ Scenario: malformed user login
     And I press "Sign up"
     Then I should see "too short"
 
-Scenario: delete a posting 
-    Given I am the admin 
+Scenario: delete a posting
+    Given I am logged in as "mathew@joseph.com" with password "admin123"
+    And I am at the home page
+    And I follow "Candidates: View Job Openings"
     And I follow "Ashley Falls"
     Then I should see "Destroy"
     And I follow "Destroy"
@@ -48,15 +50,19 @@ Scenario: delete a posting
 # Iteration 3-1 test #
 
 Scenario: Login and see only school resumes
-    Given I log in as "mathewjoseph" with the password "admin"
-    And I am on the resumes page
-    Then I should see "Joseph, Mathew"
-    And I should not see "Holmes, Nathan"
+    Given I am logged in as "mathew@joseph.com" with password "admin123"
+    And I am at the home page
+    And I follow "Candidates: View Job Openings"
+    And I follow "View submitted resumes"
+    Then I should see "Joseph"
+    And I should not see "Holmes"
 
 Scenario: Not logged in
-    Given I am on the resumes page
-    Then I should see "Please log in"
+    Given I am at the home page
+    And I follow "Ashley Falls"
+    And I follow "Apply Here"
+    Then I should see "Log in"
 
 Scenario: Login with incorrect password
-    Given I log in as "mathewjoseph" with the password "notadmin"
-    Then I should see "Invalid credentials"
+    Given I am logged in as "mathewjoseph" with password "notadmin"
+    Then I should not see "Guidelines"

@@ -12,9 +12,6 @@ class JobsController < ApplicationController
       @jobs = Job.select(show)
     end
     if sort
-      #if params[:sort_on] == "compensation"
-       # all jobs --> compensation_min.gsub(/[\s$,]/ ,"")
-      #end
       @jobs = Job.order(sort + ' ASC')
     else
       @jobs = Job.all
@@ -55,6 +52,7 @@ class JobsController < ApplicationController
     @job = Job.new(job_params)
     respond_to do |format|
       if @job.save
+        @job.school = current_user.school
         current_user.jobs << @job
         format.html { redirect_to @job, notice: 'Job was created successfully' }
         format.json { render :show, status: :created, location: @job }
@@ -80,6 +78,11 @@ class JobsController < ApplicationController
   # DELETE /jobs/1
   # DELETE /jobs/1.json
   def destroy
+    if @job.resumes
+      @job.resumes.each do |resume|
+        Resume.destroy(resume)
+      end
+    end
     @job.destroy
     respond_to do |format|
       format.html { redirect_to jobs_url, notice: 'Job was successfully destroyed.' }

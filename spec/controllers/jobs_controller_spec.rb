@@ -30,7 +30,7 @@ describe JobsController do
     it "create happy path" do
       Job.should_receive(:new).and_return(@job)
       candidate = User.create({:email => "haha@haha.com", :password => 'whatever222', :user_type => 'candidate'})
-      controller.should_receive(:current_user).and_return(candidate)
+      controller.stub(:current_user) { candidate } # re-upload
       post :create, :job => {:school => @job.school, :title => @job.title, :job_description => @job.job_description, :fte => @job.fte, :compensation_min => @job.compensation_min, :compensation_max => @job.compensation_max, :expiration => @job.expiration}
       flash[:notice].should =~ /Job was created successfully/
     end
@@ -50,6 +50,15 @@ describe JobsController do
   
   describe 'DELETE jobs#destroy' do
     it 'should delete a job' do
+      delete :destroy, :id => @job.id
+      flash[:notice].should =~ /Job was successfully destroyed/
+    end
+    
+    it 'should also destroy all resumes' do
+      attachment = File.new("#{Rails.root}/public/422.html")
+      @resume = Resume.new({:firstname => 'Matt', :lastname => 'Joseph', :attachment => attachment})
+      @job.resumes << @resume
+      Resume.should_receive(:destroy)
       delete :destroy, :id => @job.id
       flash[:notice].should =~ /Job was successfully destroyed/
     end
