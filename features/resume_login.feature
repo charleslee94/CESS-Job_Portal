@@ -16,12 +16,12 @@ Scenario: must be logged in to upload resume
     Given I am on the view open positions page
     And I follow "Teacher"
     And I follow "Apply Here"
-    Then I follow "Sign up"
+    Then I should see "Log In"
     And I fill in "Email" with "school@sc.com"
     And I fill in "Password" with "8characters"
     And I fill in "Password confirmation" with "8characters"
-    And I press "Sign up"
-    Then I am at the home page
+    And I press "Sign Up"
+    Then I should be on the resumes page
     
 
 

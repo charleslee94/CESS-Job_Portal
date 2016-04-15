@@ -26,6 +26,10 @@ Given /I am the admin/ do
   visit '/jobs'
 end
 
+Given /I am at the home page/ do
+  visit '/guidelines'
+end
+
 Then /the title for "([^"]*)" should be "([^"]*)"$/ do |school, position|
   expect(Job.find_by(school: school).title).to eq(position)
 end
