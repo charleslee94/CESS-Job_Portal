@@ -9,8 +9,8 @@ Background: jobs in database
    | Ashley Falls   | Teacher         | I love my job!           | 80,000           | 100,000          | 2018-10-20 | 1   |
    
     Given the following resumes exist:
-   | name            | attachment     | job_id   |
-   | Joseph, Mathew  | haha.jpg       |     1    |
+   | firstname   | lastname     | attachment     | job_id   |
+   | Mathew      | Joseph       | haha.jpg       |     1    |
 
 Scenario: must be logged in to upload resume
     Given I am on the view open positions page

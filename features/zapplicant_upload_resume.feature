@@ -9,18 +9,18 @@ Background: jobs in database
    | Ashley Falls   | Teacher         | I love my job!           | 80,000           | 100,000          | 2018-10-20 | 1   |
    
     Given the following resumes exist:
-   | name            | attachment     | job_id   |
-   | Joseph, Mathew  | haha.jpg       |     1    |
+    | firstname   | lastname    | attachment     | job_id   |
+    | Mathew      | Joseph      | haha.jpg       |     1    |
 
 Scenario: upload resume sad path
     Given I am on the view open positions page
-    And I follow "Teacher"
+    And I follow "I love my job"
     And I follow "Apply Here"
     And I should see "Log In"
 
 Scenario: listing correct resume things on index
     Given I am on the resumes page
-    Then I should see "Joseph, Mathew"
-    And I should see "Matt"
+    Then I should see "Mathew"
+    And I should see "Mat"
     And I follow "Back to Jobs"
     Then I should see "Ashley Falls"
