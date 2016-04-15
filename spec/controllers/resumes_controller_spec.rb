@@ -67,6 +67,7 @@ RSpec.describe ResumesController, type: :controller do
       assigns(:job).should == @job 
       expect(response).to have_http_status(:success)
     end
+    
     it "returns sad path" do
       controller.should_receive(:current_user).and_return(nil)
       get :new, :jobid => 1

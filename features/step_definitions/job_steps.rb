@@ -1,3 +1,9 @@
+Given /a proper jobs page is set up/ do
+  @order = User.create!({:email => 'matt@admin.com',
+                :password => '12345678',
+                :school => 'Torrey Pines',
+                :user_type => 'school'}).jobs.create(school: "n,a", title: "teacher", job_description: "man", compensation_max: "80000", compensation_min: "8000", expiration: "2018-10-22", fte: "something")
+  end
 Given /the following job openings exist/ do |jobs_table|
   jobs_table.hashes.each do |job|
     Job.create!(job)
@@ -7,6 +13,12 @@ end
 Given /the following resumes exist/ do |jobs_table|
   jobs_table.hashes.each do |job|
     Resume.create!(job)
+  end
+end
+
+Given /the following users exist/ do |jobs_table|
+  jobs_table.hashes.each do |job|
+    User.create!(job)
   end
 end
 

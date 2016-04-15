@@ -30,7 +30,7 @@ describe JobsController do
     it "create happy path" do
       Job.should_receive(:new).and_return(@job)
       candidate = User.create({:email => "haha@haha.com", :password => 'whatever222', :user_type => 'candidate'})
-      controller.should_receive(:current_user).and_return(candidate)
+      controller.stub(:current_user) { candidate } # re-upload
       post :create, :job => {:school => @job.school, :title => @job.title, :job_description => @job.job_description, :fte => @job.fte, :compensation_min => @job.compensation_min, :compensation_max => @job.compensation_max, :expiration => @job.expiration}
       flash[:notice].should =~ /Job was created successfully/
     end

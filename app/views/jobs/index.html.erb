@@ -22,7 +22,7 @@
   <tbody>
     <% @jobs.each do |job| %>
       <tr>
-        <td><%= link_to job.user.school, job_path(job)%></td>
+        <td><%= link_to job.school, job_path(job)%></td>
         <td><%= link_to job.title, job_path(job)%></td>
         <td><%= link_to job.fte, job_path(job)%></td>
         <td><%= link_to job.compensation_min, job_path(job) %></td>
