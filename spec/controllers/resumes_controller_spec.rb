@@ -11,9 +11,28 @@ RSpec.describe ResumesController, type: :controller do
   end
   
   describe "GET #index" do
-    it "returns http success" do
-      get :index
-      expect(response).to have_http_status(:success)
+    it "index happy path" do
+      attachment = File.new("#{Rails.root}/public/422.html")
+      @job = jobs(:matt_job)
+      @resume = Resume.new({:name => 'Joseph, Fire', :attachment => attachment})
+      @job.resumes << @resume
+      candidate = User.create!({:email => "hah2a@haha.com", :password => 'whatever222', :user_type => 'school'})
+      candidate.jobs << @job
+      controller.stub(:current_user) { candidate }
+      get :index, :schoolid => candidate.id
+      assigns(@resumes).should == {"marked_for_same_origin_verification" => true, "resumes" => [@resume]}
+    end
+    
+    it "index sad" do
+      attachment = File.new("#{Rails.root}/public/422.html")
+      @job = jobs(:matt_job)
+      @resume = Resume.new({:name => 'Joseph, Fire', :attachment => attachment})
+      @job.resumes << @resume
+      candidate = User.create!({:email => "hah2a@haha.com", :password => 'whatever222', :user_type => 'candidate'})
+      candidate.jobs << @job
+      controller.stub(:current_user) { candidate }
+      get :index, :schoolid => candidate.id
+      flash[:notice].should =~ /administrator to view this page/
     end
   end
   
@@ -41,10 +60,17 @@ RSpec.describe ResumesController, type: :controller do
 
   describe "GET #new" do
     it "returns http success" do
+      candidate = User.create({:email => "haha@haha.com", :password => 'whatever222', :user_type => 'school'})
+      controller.should_receive(:current_user).and_return(candidate)
       get :new, :jobid => 1
       @job = Job.find(1)
       assigns(:job).should == @job 
       expect(response).to have_http_status(:success)
+    end
+    it "returns sad path" do
+      controller.should_receive(:current_user).and_return(nil)
+      get :new, :jobid => 1
+      flash[:notice].should =~ /must be logged in/
     end
   end
   

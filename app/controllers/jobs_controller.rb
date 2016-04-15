@@ -1,5 +1,6 @@
 class JobsController < ApplicationController
   before_action :set_job, only: [:show, :edit, :update, :destroy]
+  before_filter :authenticate_user!, except: [:index, :show]
 
   # GET /jobs
   # GET /jobs.json
@@ -20,7 +21,7 @@ class JobsController < ApplicationController
     end
   end
   
-  def show_admin_panel
+  def admin_panel
   end
   
   def homepage
@@ -54,13 +55,13 @@ class JobsController < ApplicationController
     @job = Job.new(job_params)
     respond_to do |format|
       if @job.save
-        format.html { redirect_to @job, notice: 'Job was successfully created.' }
+        current_user.jobs << @job
+        format.html { redirect_to @job, notice: 'Job was created successfully' }
         format.json { render :show, status: :created, location: @job }
       else
         format.html { render :new, notice: 'Job was not created successfully' }
         format.json { render json: @job.errors, status: :unprocessable_entity }
       end
-      # to-do: add fail cases for creation!
     end
   end
 

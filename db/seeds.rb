@@ -8,7 +8,8 @@
 
 
 users = [{:email => 'mattjoseph@berkeley.edu', :password => 'hahahahaa', :user_type => 'admin'},
-         {:email => 'candidate@berkeley.edu', :password => 'hahahahaa', :user_type => 'candidate'}]
+         {:email => 'candidate@berkeley.edu', :password => 'hahahahaa', :user_type => 'candidate'},
+         {:email => 'school@berkeley.edu', :password => '12345678', :user_type => 'school'}]
 
 users.each do |user|
     User.create!(user)

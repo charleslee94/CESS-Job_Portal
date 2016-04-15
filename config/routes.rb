@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   post '/admin/newschool', :to => 'adminpanel#create_new_school', :as => 'create_new_school_user'
   get '/admin', :to => 'adminpanel#index', :as => 'admin_panel'
   get '/admin/newschool', :to => 'adminpanel#newschool', :as => 'new_school_user'
-  get 'resumes', :to => 'resumes#index', :as => 'resumes'
+  get 'resumes/:schoolid', :to => 'resumes#index', :as => 'resumes'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

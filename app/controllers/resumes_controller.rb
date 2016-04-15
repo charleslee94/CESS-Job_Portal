@@ -1,8 +1,20 @@
 class ResumesController < ApplicationController
    # before_action :verify_admin, only: [:view]
-   
    def index
       @resumes = Resume.all
+      if current_user and current_user.user_type == 'school'
+         school = User.find(params[:schoolid]) 
+         @resumes = []
+         school.jobs.each do |job|
+            Resume.where(:job_id => job.id).each do |each_resume|
+               @resumes << each_resume
+            end
+         end
+      else
+         flash[:notice] = "You must be logged in as a school administrator to view this page"
+         redirect_to '/jobs'
+      end
+      return @resumes
    end
    
    def new
@@ -27,17 +39,8 @@ class ResumesController < ApplicationController
       end
    end
    
-   def destroy
-   end
-   
    private
       def resume_params
         params.require(:resume).permit(:name, :attachment)
       end
-      
-      # def verify_admin
-      #    if not user_signed_in?
-      #       redirect_to jobs_path, notice: "You must be an admin to view other resumes."
-      #    end
-      # end
 end
