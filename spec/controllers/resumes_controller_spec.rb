@@ -18,7 +18,7 @@ RSpec.describe ResumesController, type: :controller do
       @job.resumes << @resume
       candidate = User.create!({:email => "hah2a@haha.com", :password => 'whatever222', :user_type => 'school'})
       candidate.jobs << @job
-      controller.stub(:current_user) { candidate }
+      controller.stub(:current_user) { candidate } # re-upload
       get :index, :schoolid => candidate.id
       assigns(@resumes).should == {"marked_for_same_origin_verification" => true, "resumes" => [@resume]}
     end
