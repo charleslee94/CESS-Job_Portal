@@ -38,4 +38,7 @@ contribution to achievement and the lives of children in the San Francisco-Bay A
 as well as throughout the nation.</p>
 
 <%= link_to 'Candidates: View Job Openings', jobs_path, class: 'btn btn-primary btn-xs' %>
-<%= link_to 'SFCESS School Sign In', new_user_session_path, class: 'btn btn-success btn-xs' %>
+
+<% if not current_user %>
+    <%= link_to 'SFCESS School Sign In', new_user_session_path, class: 'btn btn-success btn-xs' %>
+<% end %>
