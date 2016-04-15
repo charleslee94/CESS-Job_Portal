@@ -55,6 +55,10 @@ Given /I am the admin/ do
   visit '/jobs'
 end
 
+And /I attach a file/ do
+  attach_file(:attachment, "#{Rails.root}/public/422.html")
+end
+
 Then /the title for "([^"]*)" should be "([^"]*)"$/ do |school, position|
   expect(Job.find_by(school: school).title).to eq(position)
 end
