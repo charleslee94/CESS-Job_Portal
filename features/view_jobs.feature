@@ -76,11 +76,11 @@ Scenario: edit job opening
 Scenario: edit job name
   Given I am on the view open positions page
   When I edit the job for the school "Ashley Falls"
-  And I fill in "School" with "Nate Holmes"
+  And I fill in "Title" with "History 2 Teacher"
   And I press "Update Job"
   Then I should see "Job was successfully updated."
   And I follow "Back"
-  Then I should see "Nate Holmes"
+  Then I should see "History 2 Teacher"
 
 Scenario: delete job opening
   Given I am on the view open positions page

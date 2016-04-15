@@ -10,12 +10,14 @@ Background: jobs in database
    | Ashley Falls   | Teacher         | I love my job!           | 80,000           | 100,000          | 2018-10-20 | .5  |
 
 Scenario: follow link to job application page
-  Given I am on the view open positions page
+  Given I am signed in
+  And I am on the view open positions page
   And I follow "Ashley Falls"
   Then I should see "Apply Here"
   
 Scenario: apply to a job
-  Given I am on the view open positions page
+  Given I am signed in
+  And I am on the view open positions page
   And I follow "Ashley Falls"
   And I follow "Apply Here"
   Then I should see "Apply for Teacher"

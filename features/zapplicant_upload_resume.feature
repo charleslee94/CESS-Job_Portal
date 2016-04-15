@@ -11,14 +11,16 @@ Background: jobs in database
     Given the following resumes exist:
     | firstname   | lastname    | attachment     | job_id   |
     | Mathew      | Joseph      | haha.jpg       |     1    |
-
+    
 Scenario: upload resume sad path
+    Given this is pending
     Given I am on the view open positions page
     And I follow "I love my job"
     And I follow "Apply Here"
     And I should see "Log In"
 
 Scenario: listing correct resume things on index
+    Given this is pending
     Given I am on the resumes page
     Then I should see "Mathew"
     And I should see "Mat"

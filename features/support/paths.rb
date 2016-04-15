@@ -22,8 +22,8 @@ module NavigationHelpers
     when /^the view open positions page$/
       '/jobs'
     
-    when /^the resumes page$/
-      '/resumes'
+    when /^the school resumes page$/
+      '/resumes/600'
       
     when /^the post open positions page$/
       '/jobs/new'
