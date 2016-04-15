@@ -76,8 +76,10 @@ class JobsController < ApplicationController
   # DELETE /jobs/1
   # DELETE /jobs/1.json
   def destroy
-    @job.resumes.each do |resume|
-      resume.destroy
+    if @job.resumes
+      @job.resumes.each do |resume|
+        Resume.destroy(resume)
+      end
     end
     @job.destroy
     respond_to do |format|

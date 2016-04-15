@@ -53,6 +53,15 @@ describe JobsController do
       delete :destroy, :id => @job.id
       flash[:notice].should =~ /Job was successfully destroyed/
     end
+    
+    it 'should also destroy all resumes' do
+      attachment = File.new("#{Rails.root}/public/422.html")
+      @resume = Resume.new({:firstname => 'Matt', :lastname => 'Joseph', :attachment => attachment})
+      @job.resumes << @resume
+      Resume.should_receive(:destroy)
+      delete :destroy, :id => @job.id
+      flash[:notice].should =~ /Job was successfully destroyed/
+    end
   end
 
   describe 'PATCH jobs#update' do
