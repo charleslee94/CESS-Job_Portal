@@ -7,9 +7,6 @@ class JobsController < ApplicationController
     sort = params[:sort]
     show = params[:show]
     if current_user and current_user.user_type == 'school'
-      unless show.nil?
-        @jobs = Job.select(show).where("school = ?", current_user.school)
-      end
       if sort
         @jobs = Job.order(sort + ' ASC').where("school = ?", current_user.school)
         session[:sort] = sort
@@ -21,9 +18,6 @@ class JobsController < ApplicationController
       end
       
     else
-      unless show.nil?
-        @jobs = Job.select(show)
-      end
       if sort
         @jobs = Job.order(sort + ' ASC')
         session[:sort] = sort
@@ -56,9 +50,11 @@ class JobsController < ApplicationController
       if current_user.user_type != "candidate"
         @job = Job.new
       else
+        flash[:notice] = 'You must be a school to do this'
         redirect_to '/jobs'
       end
     else
+      flash[:notice] = 'You must be logged in to do this'
       redirect_to '/jobs'
     end
     #else
@@ -73,9 +69,11 @@ class JobsController < ApplicationController
       if current_user.user_type != "candidate"
         @job = Job.find(params[:id])
       else
+        flash[:notice] = 'You must be a school to do this'
         redirect_to '/jobs'
       end
     else
+      flash[:notice] = 'You must be logged in to do this'
       redirect_to '/jobs'
     end
   end
@@ -109,6 +107,7 @@ class JobsController < ApplicationController
         #TO-DO: add fail cases for creation! 
       end
     else
+      flash[:notice] = 'You must be logged in to do this'
       redirect_to '/jobs'
     end
   end
@@ -128,6 +127,7 @@ class JobsController < ApplicationController
         format.json { head :no_content }
       end
     else
+      flash[:notice] = 'You must be logged in to do this'
       redirect_to '/jobs'
     end
   end

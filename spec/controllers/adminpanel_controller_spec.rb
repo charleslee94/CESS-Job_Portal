@@ -14,7 +14,7 @@ describe AdminpanelController do
         it "index sad path 1" do
             controller.stub(:current_user) { nil }
             get :index
-            flash[:notice].should =~ /logged in to view this page/
+            flash[:notice].should =~ /You must be logged in to view this page/
         end
     
         it "index sad path 2" do
