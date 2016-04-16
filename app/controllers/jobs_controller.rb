@@ -47,7 +47,7 @@ class JobsController < ApplicationController
   def new
     #if current_user
     if current_user
-      if current_user.user_type != "candidate"
+      if current_user.user_type == "school"
         @job = Job.new
       else
         flash[:notice] = 'You must be a school to do this'
