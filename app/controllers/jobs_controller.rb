@@ -13,12 +13,7 @@ class JobsController < ApplicationController
     end
     if sort
       @jobs = Job.order(sort + ' ASC')
-      session[:sort] = sort
-      print "IN SORT !!!!"
-    elsif (session[:sort] != nil)
-      sort = session[:sort]  
-      @jobs = Job.order(sort + ' ASC')
-    else 
+    else
       @jobs = Job.all
     end
   end
