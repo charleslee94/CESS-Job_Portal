@@ -64,7 +64,8 @@ Scenario: view jobs alphabetical order by title
   And I should see "English teacher" before "Math teacher"
   
 Scenario: edit job opening
-  Given I am on the view open positions page
+  Given I am signed in with a school name "Ashley Falls" 
+  And I am on the view open positions page
   When I edit the job for the school "Ashley Falls"
   And I fill in "Job description" with "This school rocks in SD!"
   And I press "Update Job"
@@ -74,7 +75,8 @@ Scenario: edit job opening
   Then I should see "This school rocks in SD!"
 
 Scenario: edit job name
-  Given I am on the view open positions page
+  Given I am signed in with a school name "Ashley Falls"
+  And I am on the view open positions page
   When I edit the job for the school "Ashley Falls"
   And I fill in "Title" with "History 2 Teacher"
   And I press "Update Job"
@@ -83,7 +85,9 @@ Scenario: edit job name
   Then I should see "History 2 Teacher"
 
 Scenario: delete job opening
-  Given I am on the view open positions page
+  Given I am signed in with a school name "Carmel Valley"
+  And I am on the view open positions page
+  Then I should see "Carmel Valley"
   When I delete the job for the school "Carmel Valley"
   Then I should see "Job was successfully destroyed."
   And I should not see "Carmel Valley"

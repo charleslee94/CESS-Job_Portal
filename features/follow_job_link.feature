@@ -10,13 +10,13 @@ Background: jobs in database
    | Ashley Falls   | Teacher         | I love my job!           | 80,000           | 100,000          | 2018-10-20 | .5  |
 
 Scenario: follow link to job application page
-  Given I am signed in
+  Given I am signed in with a user type "candidate"
   And I am on the view open positions page
   And I follow "Ashley Falls"
   Then I should see "Apply Here"
   
 Scenario: apply to a job
-  Given I am signed in
+  Given I am signed in with a user type "candidate"
   And I am on the view open positions page
   And I follow "Ashley Falls"
   And I follow "Apply Here"
@@ -25,6 +25,4 @@ Scenario: apply to a job
 Scenario: edit and show
   Given I am on the view open positions page
   And I follow "Ashley Falls"
-  And I follow "Edit"
-  And I follow "Show"
   Then I should see "Compensation min"

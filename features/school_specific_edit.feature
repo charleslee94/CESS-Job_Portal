@@ -20,7 +20,7 @@ Scenario: only view and destroy my own postings
     Then I should see "Job was successfully destroyed."
     
 Scenario: Can't edit or destroy
-  Given this is pending
   Given I am on the view open positions page
+  And I am signed in with a user type "candidate"
   Then I should not see "Destroy"
   And I should not see "Edit"
