@@ -16,11 +16,15 @@ describe JobsController do
   
   describe 'index should display all jobs' do
     it 'should call all jobs' do
+        candidate = User.create({:email => "haha@haha.com", :password => 'whatever222', :user_type => 'candidate'})
+        controller.stub(:current_user) { candidate } # re-upload
         Job.should_receive(:order)
         get :index, :sort => 'compensation_max'
     end
     
     it 'should call all jobs' do
+        candidate = User.create({:email => "haha@haha.com", :password => 'whatever222', :user_type => 'candidate'})
+        controller.stub(:current_user) { candidate } # re-upload
         Job.should_receive(:select)
         get :index, :show => 'compensation_max'
     end
@@ -29,7 +33,7 @@ describe JobsController do
   describe "POST #create" do
     it "create happy path" do
       Job.should_receive(:new).and_return(@job)
-      candidate = User.create({:email => "haha@haha.com", :password => 'whatever222', :user_type => 'candidate'})
+      candidate = User.create({:email => "haha@haha.com", :password => 'whatever222', :user_type => 'school'})
       controller.stub(:current_user) { candidate } # re-upload
       post :create, :job => {:school => @job.school, :title => @job.title, :job_description => @job.job_description, :fte => @job.fte, :compensation_min => @job.compensation_min, :compensation_max => @job.compensation_max, :expiration => @job.expiration}
       flash[:notice].should =~ /Job was created successfully/
@@ -43,6 +47,8 @@ describe JobsController do
   
   describe 'testing jobs#new' do
     it 'should call a new job' do
+      candidate = User.create({:email => "haha@haha.com", :password => 'whatever222', :user_type => 'school'})
+      controller.stub(:current_user) { candidate } # re-upload
       get :new
       expect(response).to have_http_status(:success)
     end
@@ -50,11 +56,15 @@ describe JobsController do
   
   describe 'DELETE jobs#destroy' do
     it 'should delete a job' do
+      candidate = User.create({:email => "haha@haha.com", :password => 'whatever222', :user_type => 'school'})
+      controller.stub(:current_user) { candidate } # re-upload
       delete :destroy, :id => @job.id
       flash[:notice].should =~ /Job was successfully destroyed/
     end
     
     it 'should also destroy all resumes' do
+      candidate = User.create({:email => "haha@haha.com", :password => 'whatever222', :user_type => 'school'})
+      controller.stub(:current_user) { candidate } # re-upload
       attachment = File.new("#{Rails.root}/public/422.html")
       @resume = Resume.new({:firstname => 'Matt', :lastname => 'Joseph', :attachment => attachment})
       @job.resumes << @resume
@@ -66,6 +76,8 @@ describe JobsController do
 
   describe 'PATCH jobs#update' do
     it 'should update a job' do
+      candidate = User.create({:email => "haha@haha.com", :password => 'whatever222', :user_type => 'school'})
+      controller.stub(:current_user) { candidate } # re-upload
       patch :update, :id => @job.id, :job => {:school => @job.school, :title => @job.title, :job_description => @job.job_description, :fte => @job.fte, :compensation_min => @job.compensation_min, :compensation_max => @job.compensation_max, :expiration => @job.expiration}
       flash[:notice].should =~ /Job was successfully updated/
     end
@@ -74,6 +86,8 @@ describe JobsController do
   describe 'rendering correct pages' do
     it 'edit should call upon the correct id' do
         #job = FactoryGirl.build(:job, :school => 'Matt', :title => 'Nate', :summary => 'Not Good', :expiration => '2016-10-22')
+        candidate = User.create({:email => "haha@haha.com", :password => 'whatever222', :user_type => 'scgiik'})
+        controller.stub(:current_user) { candidate } # re-upload
         get :edit, :id => @job.id
         expect(response).to have_http_status(:success)
         assigns(:job).should == @job
@@ -81,6 +95,8 @@ describe JobsController do
     
     it 'edit should render the edit page' do
         #job = FactoryGirl.build(:job, :school => 'Matt', :title => 'Nate', :summary => 'Not Good', :expiration => '2016-10-22')
+        candidate = User.create({:email => "haha@haha.com", :password => 'whatever222', :user_type => 'scgiik'})
+        controller.stub(:current_user) { candidate } # re-upload
         get :edit, :id => @job.id
         response.should render_template("edit")
     end
