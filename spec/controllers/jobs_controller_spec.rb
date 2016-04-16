@@ -21,6 +21,21 @@ describe JobsController do
         get :index, :sort => 'compensation_max'
         session[:sort].should == 'compensation_max'
     end
+    
+     it 'should not sort be nil candidate' do
+        candidate = User.create({:email => "haha@haha.com", :password => 'whatever222', :user_type => 'candidate'})
+        controller.stub(:current_user) { candidate } # re-upload
+        Job.should_receive(:order)
+        get :index, nil, :sort => 'compensation_max'
+    end
+    
+    it 'should call all jobs params' do
+        candidate = User.create({:email => "haha@haha.com", :password => 'whatever222', :user_type => 'candidate'})
+        controller.stub(:current_user) { candidate } # re-upload
+        get :index, :sort => 'compensation_max'
+        session[:sort].should == 'compensation_max'
+    end
+    
   end
   
   describe "POST #create" do
