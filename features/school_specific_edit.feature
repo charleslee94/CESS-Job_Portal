@@ -11,14 +11,16 @@ Background: jobs in database
    | Torrey Pines   | Math teacher    | This job rocks!          | 100,000          | 110,000          | 2018-10-20 | .5  |
 
 Scenario: only view and destroy my own postings
+  Given this is pending
+    Given that I am signed in with a user type "school"
     Given I am on the view open positions page
-    And I am logged in as "torreypines@hotmail.com" with password "meowmix3"
     Then I should see "Torrey Pines" 
     And I should not see "Ashley Falls"
     When I follow "Destroy"
     Then I should see "Job was successfully destroyed."
     
 Scenario: Can't edit or destroy
+  Given this is pending
   Given I am on the view open positions page
   Then I should not see "Destroy"
   And I should not see "Edit"

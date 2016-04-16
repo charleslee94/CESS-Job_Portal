@@ -14,49 +14,40 @@ Background: jobs in database
    | Mathew      | Joseph           | haha.jpg       |     1    |
    | Nathan      | Holmes           | test.pdf       |     2    |
    
-   Given the following users exist:
-   | name            | password    | school       |
-   | mathewjopeph    | admin       | Ashley Falls | 
 
 Scenario: create a user login for a school
-    Given I am the admin
-    And I follow "Sign In"
-    And I follow "Sign up"
+    Given I am signed in with a user type "admin"
+    And I am on the admin page
+    Then I should see "Welcome to the admin panel!"
+    And I follow "Create a new school"
     And I fill in "Email" with "school@sc.com"
     And I fill in "Password" with "8characters"
     And I fill in "Password confirmation" with "8characters"
+    And I fill in "School" with "Torrey Pines"
     And I press "Sign up"
-    Then I should be on the guidelines page
+    Then I should be on the view open positions page
 
 Scenario: malformed user login
-    Given I am the admin
-    And I follow "Sign In"
-    And I follow "Sign up"
+    Given I am signed in with a user type "admin"
+    And I am on the admin page
+    And I follow "Create a new school"
     And I fill in "Email" with "test@test.com"
     And I fill in "Password" with "short"
     And I fill in "Password confirmation" with "short"
+    And I fill in "School" with "Torrey Pines"
     And I press "Sign up"
-    Then I should see "too short"
+    Then I should be on the view open positions page
+    Then I should see "Something went wrong in the creation of this user."
 
+Scenario: I should not be able to see the admin panel if I am not logged in as an admin
+    Given I am signed in with a user type "candidate"
+    And I am on the admin page
+    Then I should not see "Welcome to the admin panel!"
+    And I should be on the view open positions page
+    
 Scenario: delete a posting 
     Given I am the admin 
     And I follow "Ashley Falls"
     Then I should see "Destroy"
     And I follow "Destroy"
     Then I should see "successfully destroyed."
-    
-# Iteration 3-1 test #
-
-Scenario: Login and see only school resumes
-    Given I log in as "mathewjoseph" with the password "admin"
-    And I am on the resumes page
-    Then I should see "Joseph"
-    And I should not see "Holmes"
-
-Scenario: Not logged in
-    Given I am on the resumes page
-    Then I should see "Please log in"
-
-Scenario: Login with incorrect password
-    Given I log in as "mathewjoseph" with the password "notadmin"
-    Then I should see "Invalid credentials"

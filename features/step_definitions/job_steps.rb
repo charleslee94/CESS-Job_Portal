@@ -4,6 +4,13 @@ Given /a proper jobs page is set up/ do
                 :school => 'Torrey Pines',
                 :user_type => 'school'}).jobs.create(school: "n,a", title: "teacher", job_description: "man", compensation_max: "80000", compensation_min: "8000", expiration: "2018-10-22", fte: "something")
   end
+
+Given /candidates exist/ do
+  User.create!({:email => 'candidate@notadmin.com',
+                :password => '12345678',
+                :user_type => 'candidate'})
+  end
+  
 Given /the following job openings exist/ do |jobs_table|
   jobs_table.hashes.each do |job|
     Job.create!(job)
@@ -22,12 +29,34 @@ Given /the following users exist/ do |jobs_table|
   end
 end
 
+Given(/^I am signed in with a user type "([^"]*)"$/) do |arg1|
+  email = 'testing@man.net'
+  password = 'secretpass'
+  User.new(:email => email, :password => password, :user_type => arg1).save!
+
+  visit '/users/sign_in'
+  fill_in "user_email", :with => email
+  fill_in "user_password", :with => password
+  click_button "Log in"
+end
+
+Given(/^I am signed in with a school name "([^"]*)"$/) do |arg1|
+  email = 'testing@man.net'
+  password = 'secretpass'
+  User.new(:email => email, :password => password, :user_type => "school", :school => arg1, :id => 6000).save!
+
+  visit '/users/sign_in'
+  fill_in "user_email", :with => email
+  fill_in "user_password", :with => password
+  click_button "Log in"
+end
+
 Given /I am the admin/ do
   visit '/jobs'
 end
 
-Given /I am at the home page/ do
-  visit '/guidelines'
+And /I attach a file/ do
+  attach_file(:attachment, "#{Rails.root}/public/422.html")
 end
 
 Then /the title for "([^"]*)" should be "([^"]*)"$/ do |school, position|
