@@ -35,7 +35,19 @@
   <%= @job.expiration.try(:strftime, "%A, %B %d, %Y") %>
 </p>
 
-<%= link_to 'Edit', edit_job_path(@job), class: 'btn btn-primary btn-xs' %> |
+<% if user_signed_in? %>
+    <% if current_user.user_type == 'school' or  current_user.user_type == 'admin'%>
+      <td><%= link_to 'Edit', edit_job_path(@job), class: 'btn btn-primary btn-xs' %></td> |
+    <% end %>
+<% end %>
 <%= link_to 'Back', jobs_path, class: 'btn btn-primary btn-xs' %> |
-<%= link_to 'Destroy', @job,  method: :delete, class: 'btn btn-danger btn-xs' %> |
-<%= link_to 'Apply Here', new_app_path(@job), class: 'btn btn-success btn-xs' %>
+<% if user_signed_in? %>
+    <% if current_user.user_type == 'school' or  current_user.user_type == 'admin'%>
+        <td><%= link_to 'Destroy', @job,  method: :delete, class: 'btn btn-danger btn-xs' %></td> |
+    <% end %>
+<% end %>
+<% if user_signed_in? %>
+  <% if current_user.user_type == 'candidate'%>
+    <td><%= link_to 'Apply Here', new_app_path(@job), class: 'btn btn-success btn-xs' %></td>
+  <% end %>
+<% end %>

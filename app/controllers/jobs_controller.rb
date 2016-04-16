@@ -4,21 +4,35 @@ class JobsController < ApplicationController
   # GET /jobs
   # GET /jobs.json
   def index
-    #@jobs = Job.all
     sort = params[:sort]
     show = params[:show]
-    unless show.nil?
-      @jobs = Job.select(show)
-    end
-    if sort
-      @jobs = Job.order(sort + ' ASC')
-      session[:sort] = sort
-      print "IN SORT !!!!"
-    elsif (session[:sort] != nil)
-      sort = session[:sort]  
-      @jobs = Job.order(sort + ' ASC')
-    else 
-      @jobs = Job.all
+    if current_user and current_user.user_type == 'school'
+      unless show.nil?
+        @jobs = Job.select(show).where("school = ?", current_user.school)
+      end
+      if sort
+        @jobs = Job.order(sort + ' ASC').where("school = ?", current_user.school)
+        session[:sort] = sort
+      elsif (session[:sort] != nil)
+        sort = session[:sort]  
+        @jobs = Job.order(sort + ' ASC').where("school = ?", current_user.school)
+      else 
+        @jobs = Job.where("school = ?", current_user.school)
+      end
+      
+    else
+      unless show.nil?
+        @jobs = Job.select(show)
+      end
+      if sort
+        @jobs = Job.order(sort + ' ASC')
+        session[:sort] = sort
+      elsif (session[:sort] != nil)
+        sort = session[:sort]  
+        @jobs = Job.order(sort + ' ASC')
+      else 
+        @jobs = Job.all
+      end
     end
   end
   
@@ -38,7 +52,15 @@ class JobsController < ApplicationController
   #authentication here for posting new job
   def new
     #if current_user
-    @job = Job.new
+    if current_user
+      if current_user.user_type != "candidate"
+        @job = Job.new
+      else
+        redirect_to '/jobs'
+      end
+    else
+      redirect_to '/jobs'
+    end
     #else
       #flash[:notice] = "You don't have permission to add a job post."
       #render action: 'index'
@@ -47,7 +69,15 @@ class JobsController < ApplicationController
 
   # GET /jobs/1/edit
   def edit
-    @job = Job.find(params[:id])
+    if current_user
+      if current_user.user_type != "candidate"
+        @job = Job.find(params[:id])
+      else
+        redirect_to '/jobs'
+      end
+    else
+      redirect_to '/jobs'
+    end
   end
 
   # POST /jobs
@@ -70,27 +100,35 @@ class JobsController < ApplicationController
   # PATCH/PUT /jobs/1
   # PATCH/PUT /jobs/1.json
   def update
-    respond_to do |format|
-      if @job.update(job_params)
-        format.html { redirect_to @job, notice: 'Job was successfully updated.' }
-        format.json { render :show, status: :ok, location: @job }
+    if current_user
+      respond_to do |format|
+        if @job.update(job_params)
+          format.html { redirect_to @job, notice: 'Job was successfully updated.' }
+          format.json { render :show, status: :ok, location: @job }
+        end
+        #TO-DO: add fail cases for creation! 
       end
-      #TO-DO: add fail cases for creation! 
+    else
+      redirect_to '/jobs'
     end
   end
 
   # DELETE /jobs/1
   # DELETE /jobs/1.json
   def destroy
-    if @job.resumes
-      @job.resumes.each do |resume|
-        Resume.destroy(resume)
+    if current_user
+      if @job.resumes
+        @job.resumes.each do |resume|
+          Resume.destroy(resume)
+        end
       end
-    end
-    @job.destroy
-    respond_to do |format|
-      format.html { redirect_to jobs_url, notice: 'Job was successfully destroyed.' }
-      format.json { head :no_content }
+      @job.destroy
+      respond_to do |format|
+        format.html { redirect_to jobs_url, notice: 'Job was successfully destroyed.' }
+        format.json { head :no_content }
+      end
+    else
+      redirect_to '/jobs'
     end
   end
 
