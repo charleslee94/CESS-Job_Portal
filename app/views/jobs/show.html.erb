@@ -37,7 +37,16 @@
 <p>
   <strong>Expiration:</strong>
   <%= @job.expiration.try(:strftime, "%A, %B %d, %Y") %>
-</p>
+  </p>
+
+    <p>
+    <strong>Website: </strong>
+    <% if @website != nil %>
+          <%= link_to @website, "#{@website}" %>
+        <% else %>
+             Website Unavailable 
+        <% end %>
+    </p>
 
 <% if user_signed_in? %>
     <% if current_user.user_type == 'school' or  current_user.user_type == 'admin'%>

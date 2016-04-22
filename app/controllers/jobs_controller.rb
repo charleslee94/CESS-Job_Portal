@@ -41,6 +41,7 @@ class JobsController < ApplicationController
   # GET /jobs/1.json
   def show
     @job = Job.find(params[:id])
+    @website = User.where(school: @job.school)[0].website
   end
 
   # GET /jobs/new
