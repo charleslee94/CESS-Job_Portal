@@ -29,6 +29,10 @@
   <strong>Compensation max:</strong>
   <%= @job.compensation_max %>
 </p>
+<p>
+  <strong> Posted on: </strong>
+  <%= @job.created_at.try(:strftime, "%A, %B %d, %Y") %>
+</p>
 
 <p>
   <strong>Expiration:</strong>
