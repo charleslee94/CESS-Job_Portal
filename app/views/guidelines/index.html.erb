@@ -41,8 +41,7 @@ as well as throughout the nation.</p>
   <%= link_to('Sign Out', destroy_user_session_path, :method => :delete, class: 'btn btn-success btn-xs') %>
   <% if current_user.user_type == 'admin' or current_user.user_type == 'school'  %>
     <%= link_to 'View Job Postings', jobs_path, class: 'btn btn-primary btn-xs' %>
-  <% end %>
-  <% if current_user.user_type == 'candidate' %>
+  <% else %>
       <%= link_to 'Candidates: View Job Postings', jobs_path, class: 'btn btn-primary btn-xs' %>
   <% end %>
   <% if current_user.user_type == 'admin' %>

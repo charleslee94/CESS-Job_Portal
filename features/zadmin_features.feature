@@ -46,7 +46,8 @@ Scenario: I should not be able to see the admin panel if I am not logged in as a
     And I should be on the view open positions page
     
 Scenario: delete a posting 
-    Given I am the admin 
+    Given I am signed in with a user type "admin"
+    And I am on the view open positions page
     And I follow "Ashley Falls"
     Then I should see "Destroy"
     And I follow "Destroy"
