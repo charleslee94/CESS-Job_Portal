@@ -5,6 +5,7 @@ class AdminpanelController < ApplicationController
                 flash[:notice] = 'You are not authorized to view this page'
                 redirect_to '/jobs'
             end
+            @users = User.where(user_type: 'school') 
         else
             flash[:notice] = 'You must be logged in to view this page'
             redirect_to '/jobs'
@@ -25,4 +26,8 @@ class AdminpanelController < ApplicationController
           redirect_to '/admin'
       end
     end
+    def destroy
+      @user.destroy
+    end
+      
 end
