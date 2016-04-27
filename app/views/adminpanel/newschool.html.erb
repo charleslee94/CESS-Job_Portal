@@ -1,3 +1,4 @@
+<div class = "centeredbox">
 <h2>Sign up</h2>
 
 <%= form_for(@user, url: {action: "create_new_school"}) do |f| %>
@@ -15,7 +16,6 @@
     <%= f.label 'Website (blank if unsure)' %><br />
     <%= f.text_field :website %>
   </div>
-
 
   <div class="field">
     <%= f.label :password %>
@@ -35,4 +35,5 @@
     <%= f.submit "Sign up" %>
   </div>
 <% end %>
+</div>
 
