@@ -11,24 +11,24 @@ Background:
     
 Scenario: visiting the portal for the first time
   Given I am on the home page
-  Then I should not see "Apply Here" 
+  Then I should not see "Submit Resume" 
   And I should see "Mission and Values" 
   When I follow "Candidates: View Job Postings"
   And I am signed in with a user type "candidate"
   And I follow "Candidates: View Job Postings"
   When I follow "Ashley Falls"
-  Then I should see "Apply Here"
+  Then I should see "Submit Resume"
   And I should not see "SFCESS Guidelines"
 
 Scenario: visiting the portal for the second time
   Given I am on the guidelines page
-  Then I should not see "Apply Here" 
+  Then I should not see "Submit Resume" 
   And I should see "Mission and Values" 
   When I follow "Candidates: View Job Postings"
   And I am signed in with a user type "candidate"
   And I follow "Candidates: View Job Postings"
   When I follow "Ashley Falls"
-  Then I should see "Apply Here"
+  Then I should see "Submit Resume"
   And I should not see "SFCESS Guidelines"
 
 # Iteration 3-1 tests #

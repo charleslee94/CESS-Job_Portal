@@ -15,7 +15,7 @@ Background: jobs in database
 Scenario: must be logged in to upload resume
     Given I am on the view open positions page
     And I follow "Teacher"
-    And I follow "Apply Here"
+    And I follow "Submit Resume"
     Then I should see "Log In"
     And I fill in "Email" with "school@sc.com"
     And I fill in "Password" with "8characters"

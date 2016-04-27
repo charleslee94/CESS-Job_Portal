@@ -60,7 +60,7 @@ Scenario: Login and see only school resumes
 Scenario: Not logged in
     Given I am at the home page
     And I follow "Ashley Falls"
-    And I follow "Apply Here"
+    And I follow "Submit Resume"
     Then I should see "Log in"
 
 Scenario: Login with incorrect password

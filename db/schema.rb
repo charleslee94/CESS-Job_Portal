@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160426210308) do
+ActiveRecord::Schema.define(version: 20160427200126) do
 
   create_table "admins", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -60,6 +60,7 @@ ActiveRecord::Schema.define(version: 20160426210308) do
     t.datetime "updated_at",                                   null: false
     t.string   "school"
     t.string   "user_type",              default: "candidate"
+    t.string   "website"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

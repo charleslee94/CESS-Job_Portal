@@ -13,14 +13,14 @@ Scenario: follow link to job application page
   Given I am signed in with a user type "candidate"
   And I am on the view open positions page
   And I follow "Ashley Falls"
-  Then I should see "Apply Here"
+  Then I should see "Submit Resume"
   
 Scenario: apply to a job
   Given I am signed in with a user type "candidate"
   And I am on the view open positions page
   And I follow "Ashley Falls"
-  And I follow "Apply Here"
-  Then I should see "Apply for Teacher"
+  And I follow "Submit Resume"
+  Then I should see "Submit resume for Teacher"
  
 Scenario: edit and show
   Given I am on the view open positions page

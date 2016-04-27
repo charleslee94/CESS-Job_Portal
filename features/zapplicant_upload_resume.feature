@@ -16,8 +16,8 @@ Scenario: upload resume sad
     Given I am signed in with a user type "candidate"
     Given I am on the view open positions page
     And I follow "Ashley Falls"
-    And I follow "Apply Here"
-    Then I should see "Apply for Teacher"
+    And I follow "Submit Resume"
+    Then I should see "Submit resume for Teacher"
     And I press "Save"
     Then I should see "The upload failed"
 

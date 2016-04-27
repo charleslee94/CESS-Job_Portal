@@ -15,7 +15,7 @@ Background: jobs in database
 Scenario: upload resume sad path
     Given I am on the view open positions page
     And I follow "I love my job"
-    And I follow "Apply Here"
+    And I follow "Submit Resume"
     And I should see "Log In"
 
 Scenario: listing correct resume things on index
