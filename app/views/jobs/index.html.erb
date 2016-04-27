@@ -43,8 +43,8 @@
 <br>
 
 <%= link_to 'Home', guidelines_path, class: 'btn btn-primary btn-xs' %>
+
 <% if user_signed_in? %>
-  <%= link_to('Sign Out', destroy_user_session_path, :method => :delete, class: 'btn btn-success btn-xs') %>
   <% if current_user.user_type == 'school'  %>
     <%= link_to 'New Job', new_job_path, class: 'btn btn-primary btn-xs' %>
   <% end %>
@@ -54,6 +54,11 @@
   <% if current_user.user_type == 'admin' %>
     <%= link_to('Admin Panel', admin_panel_path, class: 'btn btn-success btn-xs') %>
   <% end %>
+  <% if current_user.user_type == 'candidate'  %>
+    <%= link_to "Change Password", edit_user_registration_path, class: 'btn btn-success btn-xs' %>
+  <% end %>
+  <%= link_to('Sign Out', destroy_user_session_path, :method => :delete, class: 'btn btn-success btn-xs') %>
+  
 <% else %>
   <%= link_to('Sign In', new_user_session_path, class: 'btn btn-success btn-xs')  %>  
 <% end %>
