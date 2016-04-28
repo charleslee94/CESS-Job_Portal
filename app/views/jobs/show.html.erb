@@ -1,113 +1,141 @@
 <p id="notice"><%= notice %></p>
 
-<p><b>Job Details</b></p>
-<p>
-  <strong>School:</strong>
-  <%= @job.school %>
-</p>
+<center><p style="font-size:18px"><b>Job Details</b></p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @job.title %>
-</p>
-
-<p>
-  <strong>Job Description:</strong>
-  <%= @job.job_description %>
-</p>
-
-<p>
-  <strong>FTE:</strong>
-  <%= @job.fte %>
-</p>
-
-<p>
-  <strong>Compensation Min:</strong>
-  <%= @job.compensation_min %>
-</p>
-
-<p>
-  <strong>Compensation Max:</strong>
-  <%= @job.compensation_max %>
-</p>
-
-<p>
-  <strong> Posted on: </strong>
-  <%= @job.created_at.try(:strftime, "%A, %B %d, %Y") %>
-</p>
-
-<p>
-  <strong>Expiration:</strong>
-  <%= @job.expiration.try(:strftime, "%A, %B %d, %Y") %>
-  </p>
-
+<table border="0">
+  <tbody>
+  <tr>
+    <td><strong>School:</strong></td>
+    <td><%= @job.school %></td>
+  </tr>
+  
+  <tr>
+    <td><strong>Title:</strong></td>
+    <td><%= @job.title %></td>
+  </tr>
+  
+  <tr>
+    <td><strong>Job Description:</strong></td>
+    <td><%= @job.job_description %></td>
+  </tr>
+  
+  <tr>
+    <td><strong>FTE:</strong></td>
+    <td><%= @job.fte %></td>
+  </tr>
+  
+  <tr>
+    <td><strong>Compensation Min:</strong></td>
+    <td><%= @job.compensation_min %></td>
+  </tr>
+  
+  <tr>
+    <td><strong>Compensation Max:</strong></td>
+    <td><%= @job.compensation_max %></td>
+  </tr>
+  
+  <tr>
+    <td><strong>Posted On:</strong></td>
+    <td><%= @job.created_at.try(:strftime, "%A, %B %d, %Y") %></td>
+  </tr>
+  
+  <tr>
+    <td><strong>Expiration:</strong></td>
+    <td><%= @job.expiration.try(:strftime, "%A, %B %d, %Y") %></td>
+  </tr>
+  
+  </tbody>
+  
+</table>
 
 
 <br>
-<p><b>School Information</b></p>
+<br>
+<p style="font-size:18px"><b>School Information</b></p>
 
-<p>
-  <strong>Address: </strong>
-  <% if @address != nil %>
-      <%= @address %>
-  <% else %>
-      Address Unavailable 
-  <% end %>
-</p>
+<table border="0">
+  <tbody>
+  <tr>
+    <td><strong>Address:</strong></td>
+    <td>
+      <% if @address != nil %>
+          <%= @address %>
+      <% else %>
+          Address Unavailable 
+      <% end %>
+    </td>
+  </tr>
+  
+  <tr>
+    <td><strong>Website:</strong></td>
+    <td>
+      <% if @website != nil %>
+          <%= @website %>
+      <% else %>
+          Website Unavailable 
+      <% end %>
+    </td>
+  </tr>
+  
+  <tr>
+    <td><strong>Mission:</strong></td>
+    <td>
+      <% if @mission != nil %>
+          <%= @mission %>
+      <% else %>
+          Unavailable 
+      <% end %>
+    </td>
+  </tr>
+  
+  <tr>
+    <td><strong>Number of Students:</strong></td>
+    <td>
+      <% if @num_students != nil %>
+          <%= @num_students %>
+      <% else %>
+          Unavailable 
+      <% end %>
+    </td>
+  </tr>
+  
+  <tr>
+    <td><strong>Number of Staff:</strong></td>
+    <td>
+      <% if @num_students != nil %>
+          <%= @num_students %>
+      <% else %>
+          Unavailable 
+      <% end %>
+    </td>
+  </tr>
+  
+  <tr>
+    <td><strong>Ratio:</strong></td>
+    <td>
+      <% if @ratio != nil %>
+          <%= @ratio %>
+      <% else %>
+          Unavailable 
+      <% end %>
+    </td>
+  </tr>
+  
 
-<p>
-  <strong>Website: </strong>
-  <% if @website != nil %>
-      <%= link_to @website, "#{@website}" %>
-  <% else %>
-      Website Unavailable 
-  <% end %>
-</p>
+  </tbody>
+  
+</table>
 
-<p>
-  <strong>Mission: </strong>
-  <% if @mission != nil %>
-      <%= @mission %>
-  <% else %>
-      Mission Unavailable 
-  <% end %>
-</p>
+  <p><strong>If you want to work here you should know:</strong></p>
+      <p><% if @special != nil %>
+          <%= @special %>
+      <% else %>
+          Unavailable 
+      <% end %>
+      </p>
 
-<p>
-  <strong>Number of Students: </strong>
-  <% if @num_students != nil %>
-      <%= @num_students %>
-  <% else %>
-      Unavailable 
-  <% end %>
-</p>
 
-<p>
-  <strong>Number of Staff: </strong>
-  <% if @num_staff != nil %>
-      <%= @num_staff %>
-  <% else %>
-      Unavailable 
-  <% end %>
-</p>
-
-<p>
-  <strong>Student:Staff Ratio: </strong>
-  <% if @ratio != nil %>
-      <%= @ratio %>
-  <% else %>
-      Unavailable 
-  <% end %>
-</p>
-
-<p>
-  <strong>If you want to work here you should know: </strong>
-  <% if @special != nil %>
-      <%= @special %>
-  <% else %>
-      Unavailable 
-  <% end %>
-</p>
+<br>
 
 
 <%= link_to 'Back', jobs_path, class: 'btn btn-primary btn-xs' %>
@@ -128,3 +156,5 @@
 <% else %>
   <td> | <%= link_to 'Submit Resume', new_app_path(@job), class: 'btn btn-success btn-xs' %> </td>
 <% end %>
+
+</center>
