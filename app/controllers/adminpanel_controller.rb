@@ -45,7 +45,7 @@ class AdminpanelController < ApplicationController
         if @user.save 
           flash[:notice] = 'You have successfully updated the password.'
           redirect_to '/jobs'
-      else
+        else
           flash[:notice] = 'Something went wrong when trying to change the password.'
           redirect_to '/admin'
       end   

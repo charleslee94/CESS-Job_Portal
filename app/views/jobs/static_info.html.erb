@@ -1,0 +1,36 @@
+<p id="notice"><%= notice %></p>
+
+<h1>School Information</h1>
+
+<%= form_for(User.find_by(email: current_user.email), url: :static_school_info) do |f| %>
+
+  <div class="field">
+    <%= f.label :address %><br>
+    <%= f.text_field :address, class: 'form-control' %>
+  </div>
+  <div class="field">
+    <%= f.label :mission %><br>
+    <%= f.text_area :mission, class: 'form-control' %>
+  </div>
+  <div class="field">
+    <%= f.label :num_students %><br>
+    <%= f.text_field :num_students, class: 'form-control' %>
+  </div>
+  <div class="field">
+    <%= f.label :num_staff %><br>
+    <%= f.text_field :num_staff, class: 'form-control' %>
+  </div>
+  <div class="field">
+    <%= f.label :ratio %><br>
+    <%= f.text_field :ratio, class: 'form-control' %>
+  </div>
+  <div class="field">
+    <%= f.label :special %><br>
+    <%= f.text_field :special, class: 'form-control' %>  </div>
+    
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+<%= link_to 'Back', jobs_path, class: 'btn btn-primary btn-xs' %>

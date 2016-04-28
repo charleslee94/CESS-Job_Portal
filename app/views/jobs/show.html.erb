@@ -29,6 +29,71 @@
   <strong>Compensation Max:</strong>
   <%= @job.compensation_max %>
 </p>
+
+
+<p>
+  <strong>Website: </strong>
+  <% if @website != nil %>
+      <%= link_to @website, "#{@website}" %>
+  <% else %>
+      Website Unavailable 
+  <% end %>
+</p>
+
+<p>
+  <strong>Address: </strong>
+  <% if @address != nil %>
+      <%= @address %>
+  <% else %>
+      Address Unavailable 
+  <% end %>
+</p>
+
+<p>
+  <strong>Mission: </strong>
+  <% if @mission != nil %>
+      <%= @mission %>
+  <% else %>
+      Mission Unavailable 
+  <% end %>
+</p>
+
+<p>
+  <strong>Number of Students: </strong>
+  <% if @num_students != nil %>
+      <%= @num_students %>
+  <% else %>
+      Unavailable 
+  <% end %>
+</p>
+
+<p>
+  <strong>Number of Staff: </strong>
+  <% if @num_staff != nil %>
+      <%= @num_staff %>
+  <% else %>
+      Unavailable 
+  <% end %>
+</p>
+
+<p>
+  <strong>Student:Staff Ratio: </strong>
+  <% if @ratio != nil %>
+      <%= @ratio %>
+  <% else %>
+      Unavailable 
+  <% end %>
+</p>
+
+<p>
+  <strong>If you want to work here you should know: </strong>
+  <% if @special != nil %>
+      <%= @special %>
+  <% else %>
+      Unavailable 
+  <% end %>
+</p>
+
 <p>
   <strong> Posted on: </strong>
   <%= @job.created_at.try(:strftime, "%A, %B %d, %Y") %>
@@ -38,15 +103,6 @@
   <strong>Expiration:</strong>
   <%= @job.expiration.try(:strftime, "%A, %B %d, %Y") %>
   </p>
-
-    <p>
-    <strong>Website: </strong>
-    <% if @website != nil %>
-          <%= link_to @website, "#{@website}" %>
-        <% else %>
-             Website Unavailable 
-        <% end %>
-    </p>
 
 <% if user_signed_in? %>
     <% if current_user.user_type == 'school' or  current_user.user_type == 'admin'%>

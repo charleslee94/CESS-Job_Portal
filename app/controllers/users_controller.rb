@@ -7,4 +7,5 @@ class UsersController < ApplicationController
     @user.destroy
     redirect_to '/admin'
   end
+  
 end

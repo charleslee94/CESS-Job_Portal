@@ -42,6 +42,13 @@ class JobsController < ApplicationController
   def show
     @job = Job.find(params[:id])
     @website = User.where(school: @job.school)[0].website
+    @address = User.where(school: @job.school)[0].address
+    @mission = User.where(school: @job.school)[0].mission
+    @num_students = User.where(school: @job.school)[0].num_students
+    @num_staff = User.where(school: @job.school)[0].num_staff
+    @ratio = User.where(school: @job.school)[0].ratio
+    @special = User.where(school: @job.school)[0].special
+                
   end
 
   # GET /jobs/new
@@ -132,6 +139,24 @@ class JobsController < ApplicationController
       flash[:notice] = 'You must be logged in to do this'
       redirect_to '/jobs'
     end
+  end
+  
+  def static_school_info
+    @user = User.find_by(email: current_user.email)
+
+    @user.update(:address => params[:user][:address])
+    @user.update(:mission => params[:user][:mission])
+    @user.update(:num_students => params[:user][:num_students])
+    @user.update(:num_staff => params[:user][:num_staff])
+    @user.update(:ratio => params[:user][:ratio])
+    @user.update(:special => params[:user][:special])
+    if @user.save 
+      flash[:notice] = 'You have successfully added your school information.'
+      redirect_to '/jobs'
+    else
+      flash[:notice] = 'Something went wrong.'
+      redirect_to '/jobs'
+    end 
   end
 
   private
