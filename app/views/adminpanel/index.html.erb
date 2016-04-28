@@ -13,7 +13,7 @@
       <tr>
         <td><%= user.school %></td>
         <td><%= user.email %> </td>
-        <td><%= link_to "Change Password", edit_user_registration_path, class: 'btn btn-success btn-xs' %></td>
+        <td><%= link_to "Change Password", change_pw_path(user),  class: 'btn btn-success btn-xs' %></td>
         <td><%= link_to 'Destroy', user, method: :delete, class: 'btn btn-danger btn-xs' %></td>
 
       </tr>
