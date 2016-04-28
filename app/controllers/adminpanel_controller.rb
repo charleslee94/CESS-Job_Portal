@@ -40,8 +40,9 @@ class AdminpanelController < ApplicationController
     
     
     def change_school_password
-        @user = User.find_by(email: params[:user][:email])
-        @user.password = params[:user][:password]
+        @user = User.find(params[:id])
+        # Update the password by getting some user input through the forms
+        #@user.update(password: params[:user][:password])
         if @user.save 
           flash[:notice] = 'You have successfully updated the password.'
           redirect_to '/jobs'

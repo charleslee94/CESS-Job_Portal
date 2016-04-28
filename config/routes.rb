@@ -19,8 +19,7 @@ Rails.application.routes.draw do
   get '/admin', :to => 'adminpanel#index', :as => 'admin_panel'
   get '/admin/newschool', :to => 'adminpanel#newschool', :as => 'new_school_user'
   get 'resumes/:schoolid', :to => 'resumes#index', :as => 'resumes'
-  get '/admin/change_password', :to => 'adminpanel#change_school_password', :as => 'change_school_password'
-  get '/admin/change_password', :to => 'admin_panel#changepw(school)', :as => 'change_pw'
+  get '/admin/change_password/:id', :to => 'adminpanel#change_school_password', :as => 'change_school_password'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
