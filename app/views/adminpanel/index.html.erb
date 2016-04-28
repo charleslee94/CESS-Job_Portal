@@ -1,13 +1,9 @@
-<p> Welcome to the admin panel! </p>
-
-<%= link_to 'Create a new school', new_school_user_path %>
-
+<h1> Admin Panel </h1>
 <table class="table table-hover table-striped table-responsive">
   <thead>
     <tr>
       <th><%= "School" %></th>
       <th><%= "Email" %></th>
-      <th><%= "Last Signed In At" %></th>
       <th colspan="2"</th>
     </tr>
   </thead>
@@ -17,8 +13,7 @@
       <tr>
         <td><%= user.school %></td>
         <td><%= user.email %> </td>
-        <td><%= user.last_sign_in_at.try(:strftime, "%A, %B %d, %Y")%></td>
-        <td><%= link_to "Change Password", edit_user_registration_path, class: 'btn btn-danger btn-xs' %></td>
+        <td><%= link_to "Change Password", edit_user_registration_path, class: 'btn btn-success btn-xs' %></td>
         <td><%= link_to 'Destroy', user, method: :delete, class: 'btn btn-danger btn-xs' %></td>
 
       </tr>
@@ -26,3 +21,5 @@
   </tbody>
 </table>
 
+<%= link_to 'Create a new school', new_school_user_path ,class: 'btn btn-primary btn-xs' %>
+<%= link_to 'Jobs', '/jobs', class: 'btn btn-success btn-xs' %>

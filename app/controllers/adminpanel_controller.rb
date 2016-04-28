@@ -26,8 +26,4 @@ class AdminpanelController < ApplicationController
           redirect_to '/admin'
       end
     end
-    def destroy
-      @user.destroy
-    end
-      
 end
