@@ -19,6 +19,7 @@
 
   <div class="field">
     <%= f.label :password %>
+    <p> Password must be at least 8 characters in length. </p>
     <% if @minimum_password_length %>
     <em>(<%= @minimum_password_length %> characters minimum)</em>
     <% end %><br />
