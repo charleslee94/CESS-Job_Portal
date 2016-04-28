@@ -9,11 +9,11 @@
 <table class="table table-hover table-striped table-responsive">
   <thead>
     <tr>
-      <th><%= link_to "School", jobs_path(:sort => "school", :sort_on => "text")%></th>
-      <th><%= link_to "Title", jobs_path(:sort => "title", :sort_on => "text") %></th>
+      <th><%= link_to "School", jobs_path(:sort => "school")%></th>
+      <th><%= link_to "Title", jobs_path(:sort => "title") %></th>
       <th>FTE</th>
-      <th><%= link_to "Compensation Min", jobs_path(:sort => "compensation_min", :sort_on => "compensation") %></th>
-      <th><%= link_to "Compensation Max", jobs_path(:sort => "compensation_max", :sort_on => "compensation") %></th>
+      <th>Compensation Min</th>
+      <th>Compensation Max</th>
       <th>Expiration</th>
       <th colspan="3"></th>
     </tr>

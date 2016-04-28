@@ -19,7 +19,7 @@ class AdminpanelController < ApplicationController
     
     
     def create_new_school
-      @user = User.new(email: params[:user][:email], school: params[:user][:school], password: params[:user][:password], user_type: 'school', website: params[:user][:website])
+      @user = User.new(email: params[:user][:email], school: params[:user][:school], password: params[:user][:password], user_type: 'school')
       if @user.save 
           flash[:notice] = 'You have successfully created a new school. Log in to your school account to start posting job listings.'
           redirect_to '/jobs'
@@ -29,14 +29,6 @@ class AdminpanelController < ApplicationController
       end
     end
     
-    
-    def changepw(school)
-        print "HI"
-        @user = User.find_by(name: school.school)
-        print "MEOW"
-        print @user
-        print "cats"
-    end
     
     
     def change_school_password

@@ -145,6 +145,7 @@ class JobsController < ApplicationController
     @user = User.find_by(email: current_user.email)
 
     @user.update(:address => params[:user][:address])
+    @user.update(:website => params[:user][:website])
     @user.update(:mission => params[:user][:mission])
     @user.update(:num_students => params[:user][:num_students])
     @user.update(:num_staff => params[:user][:num_staff])
