@@ -54,7 +54,7 @@
   <% if current_user.user_type == 'admin' %>
     <%= link_to('Admin Panel', admin_panel_path, class: 'btn btn-success btn-xs') %>
   <% end %>
-  <% if current_user.user_type == 'candidate'  %>
+  <% if current_user.user_type == 'candidate' or current_user.user_type == 'admin' %>
     <%= link_to "Change Password", edit_user_registration_path, class: 'btn btn-success btn-xs' %>
   <% end %>
   <%= link_to('Sign Out', destroy_user_session_path, :method => :delete, class: 'btn btn-success btn-xs') %>
