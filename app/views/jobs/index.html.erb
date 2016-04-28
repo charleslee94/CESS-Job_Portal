@@ -1,6 +1,9 @@
 <p id="notice"><%= notice %></p>
 
 <h1 class = "title">Open Positions</h1>
+<% if flash[:notice] %>
+  <center><p class="notice", style="color:red;"><%= flash[:notice] %></p></center>
+<% end %>
 
 <%#= link_to 'View by School', :show => "school", class: 'btn btn-primary btn-xs' %>
 <%#= link_to 'View by Title', :show => "title", class: 'btn btn-primary btn-xs' %>

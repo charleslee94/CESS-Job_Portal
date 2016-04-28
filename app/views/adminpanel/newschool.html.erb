@@ -1,5 +1,10 @@
+<% if flash[:notice] %>
+  <center><p class="notice", style="color:red;"><%= flash[:notice] %></p></center>
+<% end %>
+
 <div class = "centeredbox">
 <h2>Sign up</h2>
+
 
 <%= form_for(@user, url: {action: "create_new_school"}) do |f| %>
 

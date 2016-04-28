@@ -1,4 +1,7 @@
 <h1> Admin Panel </h1>
+<% if flash[:notice] %>
+  <center><p class="notice", style="color:red;"><%= flash[:notice] %></p></center>
+<% end %>
 <table class="table table-hover table-striped table-responsive">
   <thead>
     <tr>
