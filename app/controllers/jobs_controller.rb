@@ -40,14 +40,15 @@ class JobsController < ApplicationController
   # GET /jobs/1
   # GET /jobs/1.json
   def show
+    @school = User.where(school: @job.school)[0]
     @job = Job.find(params[:id])
-    @website = User.where(school: @job.school)[0].website
-    @address = User.where(school: @job.school)[0].address
-    @mission = User.where(school: @job.school)[0].mission
-    @num_students = User.where(school: @job.school)[0].num_students
-    @num_staff = User.where(school: @job.school)[0].num_staff
-    @ratio = User.where(school: @job.school)[0].ratio
-    @special = User.where(school: @job.school)[0].special
+    @website = @school.website
+    @address = @school.address
+    @mission = @school.mission
+    @num_students = @school.num_students
+    @num_staff = @school.num_staff
+    @ratio = @school.ratio
+    @special = @school.special
   end
 
   # GET /jobs/new
