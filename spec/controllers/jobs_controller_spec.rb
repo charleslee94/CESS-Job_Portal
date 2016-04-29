@@ -83,6 +83,12 @@ describe JobsController do
       delete :destroy, :id => @job.id
       flash[:notice].should =~ /Job was successfully destroyed/
     end
+    
+    it 'should also have a sad path' do
+      sign_in nil
+      delete :destroy, :id => @job.id
+      flash[:notice].should =~ /You must be logged in/
+    end
   end
 
   describe 'PATCH jobs#update' do
