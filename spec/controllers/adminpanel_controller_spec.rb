@@ -27,14 +27,17 @@ describe AdminpanelController do
   end
   
    describe "POST #create_new_school" do
-       
-        #it "create happy path" do
-        #    candidate = User.create!({:email => "hah2a@haha.com", :password => 'whatever222'})
-        #    User.should_receive(:new).and_return(candidate)
-        #    post :create_new_school, :params[candidate.id] => {:email => "hah2a@haha.com", :password => 'whatever222', :school => 'hard knocks'}
-        #    flash[:notice].should =~ /successfully/
-        #end
-  end
+    it 'create happy path' do
+        post :create_new_school, :user => {:email => "hah2a@haha.com", :password => 'whatever222', :school => 'hard knocks'}
+        flash[:notice].should =~ /successfully/
+    end
+   end
   
-  
+    describe "GET change_school_password" do
+     it 'change happy path' do
+         candidate = User.create!({:email => "hah2a@haha.com", :password => 'whatever222', :user_type => 'candidate'})
+         get :change_school_password, :user => {:password => "hahahahaa"}, :id => candidate.id
+         flash[:notice].should =~ /successfully/
+     end
+    end 
 end
