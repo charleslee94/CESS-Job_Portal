@@ -5,7 +5,7 @@ class UsersController < ApplicationController
       job.destroy
     end
     @user.destroy
+    flash[:notice] = 'Successfully destroyed school.'
     redirect_to '/admin'
   end
-  
 end
