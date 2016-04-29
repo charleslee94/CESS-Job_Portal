@@ -1,7 +1,8 @@
 <p id="notice"><%= notice %></p>
 
-<h1>School Information</h1>
 
+<h1>School Information</h1>
+<div style="margin: 15px">
 <%= form_for(User.find_by(email: current_user.email), url: :static_school_info) do |f| %>
 
   <div class="field">
@@ -29,7 +30,7 @@
     <%= f.text_field :ratio, class: 'form-control' %>
   </div>
   <div class="field">
-    <%= f.label :special %><br>
+    <%= f.label "If you want to work here you should know:" %><br>
     <%= f.text_field :special, class: 'form-control' %>  </div>
     
   <div class="actions">
@@ -37,4 +38,6 @@
   </div>
 <% end %>
 
+
 <%= link_to 'Back', jobs_path, class: 'btn btn-primary btn-xs' %>
+</div>
