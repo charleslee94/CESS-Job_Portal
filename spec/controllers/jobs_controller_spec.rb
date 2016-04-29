@@ -65,6 +65,15 @@ describe JobsController do
     end
   end
   
+  describe 'testing GET static_school_info' do
+    it '@save path works' do
+      @user = User.create({:email => "haha@haha.com", :password => 'whatever222', :user_type => 'candidate'})
+      sign_in @user
+      get :static_school_info, :user => {:address => 'nowhere'}
+      flash[:notice].should =~ /You have successfully/
+    end
+  end
+  
   describe 'DELETE jobs#destroy' do
     it 'should delete a job' do
       candidate = User.create({:email => "haha@haha.com", :password => 'whatever222', :user_type => 'school'})
