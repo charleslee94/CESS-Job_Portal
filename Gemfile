@@ -52,6 +52,7 @@ group :development, :test do
   gem 'awesome_print', require: 'ap'
   gem 'quiet_assets'
   gem 'better_errors'
+  gem 'pry'
 end
 
 group :test do

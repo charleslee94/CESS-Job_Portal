@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   resources :jobs
   resources :application
+  resources :users
+  
   
   # map '/' to be a redirect to '/movies'
   root :to => redirect('/guidelines')
@@ -17,6 +19,10 @@ Rails.application.routes.draw do
   get '/admin', :to => 'adminpanel#index', :as => 'admin_panel'
   get '/admin/newschool', :to => 'adminpanel#newschool', :as => 'new_school_user'
   get 'resumes/:schoolid', :to => 'resumes#index', :as => 'resumes'
+  get '/admin/change_password/:id', :to => 'adminpanel#change_password', :as => 'change_school_password'
+  patch '/admin/change_password/:id', :to => 'adminpanel#change_school_password', :as => 'confirm_password_change'
+  get 'static_info', :to => 'jobs#static_info', :as => 'static_info'
+  patch 'static_info', :to => 'jobs#static_school_info', :as => 'static_school_info'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

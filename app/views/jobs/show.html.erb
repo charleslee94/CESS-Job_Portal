@@ -1,55 +1,160 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>School:</strong>
-  <%= @job.school %>
-</p>
+<center><p style="font-size:18px"><b>Job Details</b></p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @job.title %>
-</p>
+<table border="0">
+  <tbody>
+  <tr>
+    <td><strong>School:</strong></td>
+    <td><%= @job.school %></td>
+  </tr>
+  
+  <tr>
+    <td><strong>Title:</strong></td>
+    <td><%= @job.title %></td>
+  </tr>
+  
+  <tr>
+    <td><strong>Job Description:</strong></td>
+    <td><%= @job.job_description %></td>
+  </tr>
+  
+  <tr>
+    <td><strong>FTE:</strong></td>
+    <td><%= @job.fte %></td>
+  </tr>
+  
+  <tr>
+    <td><strong>Compensation Min:</strong></td>
+    <td><%= @job.compensation_min %></td>
+  </tr>
+  
+  <tr>
+    <td><strong>Compensation Max:</strong></td>
+    <td><%= @job.compensation_max %></td>
+  </tr>
+  
+  <tr>
+    <td><strong>Posted On:</strong></td>
+    <td><%= @job.created_at.try(:strftime, "%A, %B %d, %Y") %></td>
+  </tr>
+  
+  <tr>
+    <td><strong>Expiration:</strong></td>
+    <td><%= @job.expiration.try(:strftime, "%A, %B %d, %Y") %></td>
+  </tr>
+  
+  </tbody>
+  
+</table>
 
-<p>
-  <strong>Job Description:</strong>
-  <%= @job.job_description %>
-</p>
 
-<p>
-  <strong>FTE:</strong>
-  <%= @job.fte %>
-</p>
+<br>
+<br>
+<p style="font-size:18px"><b>School Information</b></p>
 
-<p>
-  <strong>Compensation min:</strong>
-  <%= @job.compensation_min %>
-</p>
+<table border="0">
+  <tbody>
+  <tr>
+    <td><strong>Address:</strong></td>
+    <td>
+      <% if @address != nil %>
+          <%= @address %>
+      <% else %>
+          Address Unavailable 
+      <% end %>
+    </td>
+  </tr>
+  
+  <tr>
+    <td><strong>Website:</strong></td>
+    <td>
+      <% if @website != nil %>
+          <%= @website %>
+      <% else %>
+          Website Unavailable 
+      <% end %>
+    </td>
+  </tr>
+  
+  <tr>
+    <td><strong>Mission:</strong></td>
+    <td>
+      <% if @mission != nil %>
+          <%= @mission %>
+      <% else %>
+          Unavailable 
+      <% end %>
+    </td>
+  </tr>
+  
+  <tr>
+    <td><strong>Number of Students:</strong></td>
+    <td>
+      <% if @num_students != nil %>
+          <%= @num_students %>
+      <% else %>
+          Unavailable 
+      <% end %>
+    </td>
+  </tr>
+  
+  <tr>
+    <td><strong>Number of Staff:</strong></td>
+    <td>
+      <% if @num_students != nil %>
+          <%= @num_students %>
+      <% else %>
+          Unavailable 
+      <% end %>
+    </td>
+  </tr>
+  
+  <tr>
+    <td><strong>Ratio:</strong></td>
+    <td>
+      <% if @ratio != nil %>
+          <%= @ratio %>
+      <% else %>
+          Unavailable 
+      <% end %>
+    </td>
+  </tr>
+  
 
-<p>
-  <strong>Compensation max:</strong>
-  <%= @job.compensation_max %>
-</p>
+  </tbody>
+  
+</table>
 
-<p>
-  <strong>Expiration:</strong>
-  <%= @job.expiration.try(:strftime, "%A, %B %d, %Y") %>
-</p>
+  <p><strong>If you want to work here you should know:</strong></p>
+      <p><% if @special != nil %>
+          <%= @special %>
+      <% else %>
+          Unavailable 
+      <% end %>
+      </p>
+
+
+<br>
+
+
+<%= link_to 'Back', jobs_path, class: 'btn btn-primary btn-xs' %>
 
 <% if user_signed_in? %>
     <% if current_user.user_type == 'school' or  current_user.user_type == 'admin'%>
-      <td><%= link_to 'Edit', edit_job_path(@job), class: 'btn btn-primary btn-xs' %></td> |
+      <td> | <%= link_to 'Edit', edit_job_path(@job), class: 'btn btn-primary btn-xs' %></td>
     <% end %>
-<% end %>
-<%= link_to 'Back', jobs_path, class: 'btn btn-primary btn-xs' %> |
-<% if user_signed_in? %>
     <% if current_user.user_type == 'school' or  current_user.user_type == 'admin'%>
-        <td><%= link_to 'Destroy', @job,  method: :delete, class: 'btn btn-danger btn-xs' %></td> |
+        <td> | <%= link_to 'Destroy', @job,  method: :delete, class: 'btn btn-danger btn-xs' %></td>
     <% end %>
 <% end %>
+
 <% if user_signed_in? %>
   <% if current_user.user_type == 'candidate'%>
-    <td><%= link_to 'Apply Here', new_app_path(@job), class: 'btn btn-success btn-xs' %></td>
+    <td> | <%= link_to 'Submit Resume', new_app_path(@job), class: 'btn btn-success btn-xs' %></td>
   <% end %>
 <% else %>
-  <%= link_to 'Apply Here', new_app_path(@job), class: 'btn btn-success btn-xs' %>
+  <td> | <%= link_to 'Submit Resume', new_app_path(@job), class: 'btn btn-success btn-xs' %> </td>
 <% end %>
+
+</center>

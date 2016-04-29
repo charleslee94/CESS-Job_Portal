@@ -9,7 +9,9 @@
 
 users = [{:email => 'mattjoseph@berkeley.edu', :password => 'hahahahaa', :user_type => 'admin'},
          {:email => 'candidate@berkeley.edu', :password => 'hahahahaa', :user_type => 'candidate'},
-         {:email => 'school@berkeley.edu', :password => '12345678', :user_type => 'school'}]
+         {:email => 'school@berkeley.edu', :password => '12345678', :user_type => 'school', school: 'Berkeley School'},
+         {email: 'hihihi@hi.com', password: 123123123, user_type: 'school', school: 'Hart School'},
+         {email: 'hehe@he.com', password: 145145145, user_type: 'school', school: 'Academy of Arts'}]
 
 users.each do |user|
     User.create!(user)

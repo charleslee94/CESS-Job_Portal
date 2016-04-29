@@ -1,8 +1,13 @@
 <p id="notice"><%= notice %></p>
+<% if flash[:notice] %>
+  <center><p class="notice", style="color:red;"><%= flash[:notice] %></p></center>
+<% end %>
 
 <h1>Edit Job</h1>
 
 <%= render 'form' %>
 
+<div style="margin-left:15px">
 <%= link_to 'Show', @job, class: 'btn btn-primary btn-xs' %> |
 <%= link_to 'Back', jobs_path, class: 'btn btn-primary btn-xs' %>
+</div>

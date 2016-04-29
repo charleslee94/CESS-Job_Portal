@@ -1,3 +1,28 @@
-<p> Welcome to the admin panel! </p>
+<h1> Admin Panel </h1>
+<% if flash[:notice] %>
+  <center><p class="notice", style="color:red;"><%= flash[:notice] %></p></center>
+<% end %>
+<table class="table table-hover table-striped table-responsive">
+  <thead>
+    <tr>
+      <th><%= "School" %></th>
+      <th><%= "Email" %></th>
+      <th colspan="2"</th>
+    </tr>
+  </thead>
 
-<%= link_to 'Create a new school', new_school_user_path %>
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.school %></td>
+        <td><%= user.email %> </td>
+        <td><%= link_to "Change Password", change_school_password_path(user),  class: 'btn btn-success btn-xs' %></td>
+        <td><%= link_to 'Destroy', user, method: :delete, class: 'btn btn-danger btn-xs' %></td>
+
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'Create a new school', new_school_user_path ,class: 'btn btn-primary btn-xs' %>
+<%= link_to 'Jobs', '/jobs', class: 'btn btn-success btn-xs' %>
