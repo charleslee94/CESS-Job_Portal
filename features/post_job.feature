@@ -8,7 +8,6 @@ Scenario: post job opening
         Given I am signed in with a school name "Gillispie"
         Given I am on the post open positions page
         And  I fill in "Title" with "Pre-School"
-        And I fill in "Job description" with "pre school is fun"
         And I fill in "Compensation min" with "60,000"
         And I fill in "Compensation max" with "70,000"
         And I press "Create Job"

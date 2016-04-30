@@ -9,19 +9,13 @@ Background:
    | school         | title           | job_description          | compensation_min | compensation_max | expiration | fte |
    | Ashley Falls   | Teacher         | I love my job!           | 80,000           | 100,000          | 2018-10-20 | .75 |
     
+  Given the following users exist:
+       | email                | password   | user_type | school       |
+       | mathew@jopeph.com    | admin123   | admin     |              |
+       | torrey@pines.com     | 12345678   | school    | Ashley Falls |
+       
 Scenario: visiting the portal for the first time
   Given I am on the home page
-  Then I should not see "Submit Resume" 
-  And I should see "Mission and Values" 
-  When I follow "Candidates: View Job Postings"
-  And I am signed in with a user type "candidate"
-  And I follow "Candidates: View Job Postings"
-  When I follow "Ashley Falls"
-  Then I should see "Submit Resume"
-  And I should not see "SFCESS Guidelines"
-
-Scenario: visiting the portal for the second time
-  Given I am on the guidelines page
   Then I should not see "Submit Resume" 
   And I should see "Mission and Values" 
   When I follow "Candidates: View Job Postings"

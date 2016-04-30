@@ -14,11 +14,16 @@ Background: jobs in database
    | Mathew      | Joseph           | haha.jpg       |     1    |
    | Nathan      | Holmes           | test.pdf       |     2    |
    
+    Given the following users exist:
+       | email                | password   | user_type | school       |
+       | mathew@jopeph.com    | admin123   | admin     |              |
+       | torrey@pines.com     | 12345678   | school    | Ashley Falls |
+   
 
 Scenario: create a user login for a school
     Given I am signed in with a user type "admin"
     And I am on the admin page
-    Then I should see "Welcome to the admin panel!"
+    Then I should see "Admin Panel Signed in successfully"
     And I follow "Create a new school"
     And I fill in "Email" with "school@sc.com"
     And I fill in "Password" with "8characters"
@@ -36,8 +41,8 @@ Scenario: malformed user login
     And I fill in "Password confirmation" with "short"
     And I fill in "School" with "Torrey Pines"
     And I press "Sign up"
-    Then I should be on the view open positions page
-    Then I should see "Something went wrong in the creation of this user."
+    Then I should be on the schools page
+    Then I should see "Account not created!"
 
 Scenario: I should not be able to see the admin panel if I am not logged in as an admin
     Given I am signed in with a user type "candidate"

@@ -25,8 +25,14 @@ module NavigationHelpers
     when /^the school resumes page$/
       '/resumes/6000'
       
+    when /^the resumes page$/
+      '/resumes/1'
+      
     when /^the post open positions page$/
       '/jobs/new'
+      
+    when /^the schools page$/
+      '/admin/newschool'
       
     when /^the admin page$/
       '/admin'

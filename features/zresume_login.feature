@@ -11,6 +11,11 @@ Background: jobs in database
     Given the following resumes exist:
    | firstname   | lastname     | attachment     | job_id   |
    | Mathew      | Joseph       | haha.jpg       |     1    |
+   
+   Given the following users exist:
+       | email                | password   | user_type | school       |
+       | mathew@jopeph.com    | admin123   | admin     |              |
+       | torrey@pines.com     | 12345678   | school    | Ashley Falls |
 
 Scenario: must be logged in to upload resume
     Given candidates exist

@@ -5,12 +5,17 @@ Feature: schools can see what job an applicant applied to
 
 Background: jobs in database
     Given the following job openings exist:
-   | school         | title           | job_description          | compensation_min | compensation_max | expiration | fte |
-   | Ashley Falls   | English Teacher         | I love my job!           | 80,000           | 100,000          | 2018-10-20 | 1   |
+   | school         | title            | job_description          | compensation_min | compensation_max | expiration | fte |
+   | Ashley Falls   | English Teacher  | I love my job!           | 80,000           | 100,000          | 2018-10-20 | 1   |
    
     Given the following resumes exist:
    | firstname   | lastname     | attachment     | job_id   |
    | Mathew      | Joseph       | haha.jpg       |     1    |
+   
+   Given the following users exist:
+       | email                | password   | user_type | school       |
+       | mathew@jopeph.com    | admin123   | admin     |              |
+       | torrey@pines.com     | 12345678   | school    | Ashley Falls |
 
     
 Scenario: see what resumes belong to what jobs

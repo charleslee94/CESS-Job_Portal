@@ -12,10 +12,17 @@ Background: jobs in database
     | firstname   | lastname    | attachment     |   job_id      |
     | Mathew      | Joseph      | haha.jpg       |     6000      |
     
+    Given the following users exist:
+       | email                | password   | user_type | school       |
+       | mathew@jopeph.com    | admin123   | admin     |              |
+       | torrey@pines.com     | 12345678   | school    | Ashley Falls |
+      
+    
 Scenario: upload resume sad
     Given I am signed in with a user type "candidate"
     Given I am on the view open positions page
     And I follow "Ashley Falls"
+    Then I should see "Submit Resume"
     And I follow "Submit Resume"
     Then I should see "Submit resume for Teacher"
     And I press "Save"

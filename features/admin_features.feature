@@ -15,11 +15,11 @@ Background: jobs in database
    | Nathan      | Holmes           | test.pdf       |     2    |
    
    Given the following users exist:
-   | email                | password   | school       |
-   | mathew@jopeph.com    | admin123   | Ashley Falls | 
+   | email                | password   | school       | user_type |
+   | mathew@jopeph.com    | admin123   | Ashley Falls | school    |
 
 Scenario: create a user login for a school
-    Given I am at the home page
+    Given I am on the homepage
     And I follow "SFCESS School Sign In"
     And I follow "Sign up"
     And I fill in "Email" with "school@sc.com"
@@ -29,7 +29,7 @@ Scenario: create a user login for a school
     Then I should be on the guidelines page
 
 Scenario: malformed user login
-    Given I am at the home page
+    Given I am on the homepage
     And I follow "SFCESS School Sign In"
     And I follow "Sign up"
     And I fill in "Email" with "test@test.com"
@@ -40,25 +40,26 @@ Scenario: malformed user login
 
 Scenario: delete a posting
     Given I am logged in as "mathew@joseph.com" with password "admin123"
-    And I am at the home page
-    And I follow "Candidates: View Job Openings"
+    And I am on the homepage
+    And I follow "Candidates: View Job Postings"
+    Then I should see "Ashley Falls"
     And I follow "Ashley Falls"
     Then I should see "Destroy"
-    And I follow "Destroy"
+    And I click "Destroy"
     Then I should see "successfully destroyed."
     
 # Iteration 3-1 test #
 
 Scenario: Login and see only school resumes
     Given I am logged in as "mathew@joseph.com" with password "admin123"
-    And I am at the home page
-    And I follow "Candidates: View Job Openings"
-    And I follow "View submitted resumes"
+    And I am on the homepage
+    And I follow "Candidates: View Job Postings"
+    And I click "View Submitted Resumes"
     Then I should see "Joseph"
     And I should not see "Holmes"
 
 Scenario: Not logged in
-    Given I am at the home page
+    Given I am on the view open positions page
     And I follow "Ashley Falls"
     And I follow "Submit Resume"
     Then I should see "Log in"

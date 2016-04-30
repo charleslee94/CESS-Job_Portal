@@ -7,8 +7,13 @@ Background: jobs in database
 
    Given the following job openings exist:
    | school         | title           | job_description          | compensation_min | compensation_max | expiration | fte | created_at |
-   | Ashley Falls   | Teacher         | I love my job!           | 80,000           | 100,000          | 2018-10-20 | .5  | 2016-4-21       |
+   | Ashley Falls   | Teacher         | I love my job!           | 80,000           | 100,000          | 2018-10-20 | .5  | 2016-4-21  |
 
+  Given the following users exist:
+       | email                | password   | user_type | school       |
+       | mathew@jopeph.com    | admin123   | admin     |              |
+       | torrey@pines.com     | 12345678   | school    | Ashley Falls |
+       
 Scenario: follow link to job application page
   Given I am signed in with a user type "candidate"
   And I am on the view open positions page
@@ -25,10 +30,10 @@ Scenario: apply to a job
 Scenario: edit and show
   Given I am on the view open positions page
   And I follow "Ashley Falls"
-  Then I should see "Compensation min"
+  Then I should see "Compensation Min"
 
 Scenario: see job posting 
   Given I am on the view open positions page
   When I follow "Ashley Falls"
-  Then I should see "Date of Posting"
-  And I should see "2016-4-21"
+  Then I should see "Posted On"
+  And I should see "Thursday, April 21, 2016"

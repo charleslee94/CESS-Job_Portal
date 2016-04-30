@@ -7,18 +7,22 @@ Feature: be able to see school's website
 Background: jobs in database
 
     Given the following job openings exist:
-        | school         | title           | job_description          | compensation_min | compensation_max | expiration | fte |    website                |
-        | Ashley Falls   | Teacher         | I love my job!           | 80,000           | 100,000          | 2018-10-20 |  1  |  http://www.dmusd.org/af  |   
-        | Torrey Pines   | Math teacher    | This job rocks!          | 100,000          | 120,000          | 2018-10-20 |  1  | http://tp.sduhsd.net/     |
-        | Carmel Valley  | English teacher |  Middle school is rough. | 87,000           | 98,000           | 2018-10-20 |  1  |  http://cv.sduhsd.net/    |
-        
+        | school         | title           | job_description          | compensation_min | compensation_max | expiration | fte |    
+        | Ashley Falls   | Teacher         | I love my job!           | 80,000           | 100,000          | 2018-10-20 |  1  | 
+        | Torrey Pines   | Math teacher    | This job rocks!          | 100,000          | 120,000          | 2018-10-20 |  1  | 
+        | Carmel Valley  | English teacher |  Middle school is rough. | 87,000           | 98,000           | 2018-10-20 |  1  | 
+
+Given the following users exist:
+       | email                | password   | user_type | school       | address           |
+       | mathew@jopeph.com    | admin123   | admin     |              |                   |
+       | torrey@pines.com     | 12345678   | school    | Ashley Falls | meow Berkeley, CA | 
+
 Scenario: visit school website
   Given I am on the view open positions page
   Then I should see "Ashley Falls"
   When I follow "Ashley Falls"
-  Then I should see "Website"
-  When I click on link "http://www.dmusd.org/af"
-  Then the page title should be "Ashley Falls School / Homepage"
+  Then I should see "Address"
+  Then I should see "meow Berkeley, CA"
 
  
 

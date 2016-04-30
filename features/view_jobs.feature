@@ -12,6 +12,13 @@ Background: jobs in database
         | Torrey Pines   | Math teacher    | This job rocks!          | 100,000          | 120,000          | 2018-10-20 |  1  | 
         | Carmel Valley  | English teacher |  Middle school is rough. | 87,000           | 98,000           | 2018-10-20 |  1  | 
         
+    Given the following users exist:
+       | email                | password   | user_type | school       | address           |
+       | mathew@jopeph.com    | admin123   | admin     |              |                   |
+       | torrey@pines.com     | 12345678   | school    | Ashley Falls | meow Berkeley, CA | 
+       | me@me.com            | 12345678   | school    | Carmel Valley| meow Berkeley, CA | 
+       | e@me.com             | 12345678   | school    | Torrey Pines | meow Berkeley, CA |
+       
 Scenario: view job openings
   Given I am on the view open positions page
   Then I should see "Ashley Falls"
@@ -19,16 +26,6 @@ Scenario: view job openings
   And the title for "Torrey Pines" should be "Math teacher"
   And the compensation_min for "Ashley Falls" should be "80,000"
 
-#Scenario: view job openings by school
-#  Given I am on the view open positions page
-#  When I press "View by school"
-#  Then I should see "Ashley Falls"
-#  And I should see "Torrey Pines"
-#  Then I should not see "Teacher"
-#  And I should not see "I love my job!"
-#  Then when I follow "Ashley Falls"
-#  Then I should see "I love my job!"
-#  And I should not see "Torrey Pines"
 
 Scenario: view job openings by title
   Given I am on the view open positions page
@@ -37,18 +34,6 @@ Scenario: view job openings by title
   And I should see "Torrey Pines"
   Then I should not see "English teacher"
   And I should not see "Ashley Falls"
-
-Scenario: view jobs descending by compensation minimum
-  Given I am on the view open positions page
-  When I follow "Compensation Min"
-  Then I should see "Torrey Pines" before "Carmel Valley"
-  And I should see "Ashley Falls" before "Carmel Valley"
-
-Scenario: view jobs descending by compensation maximum
-  Given I am on the view open positions page
-  When I follow "Compensation Max"
-  Then I should see "Torrey Pines" before "Carmel Valley"
-  And I should see "Ashley Falls" before "Carmel Valley"
   
 Scenario: view jobs alphabetical order by school
   Given I am on the view open positions page

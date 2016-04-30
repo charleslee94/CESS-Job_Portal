@@ -96,14 +96,10 @@ When /^I am logged in as "([^"]*)" with password "([^"]*)"$/ do |email, password
   visit '/users/sign_in'
   fill_in "user_email", :with => email
   fill_in "user_password", :with => password
-  click_button "Sign in"
+  click_button "Log in"
 end
 
-When /^I click on link (.*)$/ do |link|
-  BROWSER.link(:text, link).click
-end
-
-Then /^the page title should be "([^"]*)"$/ do |title|
-  BROWSER.title.eql?(title).should == true
+When /^I click (.*)$/ do |button|
+  click_button button
 end
 
