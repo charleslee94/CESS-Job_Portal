@@ -71,6 +71,8 @@ describe JobsController do
     end
   end
   
+  #should be working
+  
   describe 'DELETE jobs#destroy' do
     it 'should delete a job' do
       candidate = User.create({:email => "haha@haha.com", :password => 'whatever222', :user_type => 'school'})
