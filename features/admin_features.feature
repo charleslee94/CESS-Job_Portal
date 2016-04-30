@@ -5,18 +5,18 @@ Feature: allow only admins to edit their own things
 
 Background: jobs in database
     Given the following job openings exist:
-   | school         | title           | job_description          | compensation_min | compensation_max | expiration | fte |
-   | Ashley Falls   | Teacher         | I love my job!           | 80,000           | 100,000          | 2018-10-20 | 1   |
-   | Ashley Falls 2  | Teacher 2      | I love my job!           | 80,000           | 100,000          | 2018-10-20 | .5  |
+   | school         | title           | job_description          | compensation_min | compensation_max | expiration | fte | user_id | id |
+   | Ashley Falls   | Teacher         | I love my job!           | 80,000           | 100,000          | 2018-10-20 | 1   | 60      | 45 |
+   | Ashley Falls 2  | Teacher 2      | I love my job!           | 80,000           | 100,000          | 2018-10-20 | .5  | 61      | 50 |
     
     Given the following resumes exist:
-   | firstname   | lastname         | attachment     | job_id   |
-   | Mathew      | Joseph           | haha.jpg       |     1    |
-   | Nathan      | Holmes           | test.pdf       |     2    |
+   | firstname   | lastname         | attachment     | job_id    |
+   | Mathew      | Joseph           | haha.jpg       |     45    |
+   | Nathan      | Holmes           | test.pdf       |     50    |
    
    Given the following users exist:
-   | email                | password   | school       | user_type |
-   | mathew@jopeph.com    | admin123   | Ashley Falls | school    |
+   | email                | password   | school       | user_type | id  |
+   | mathew@joseph.com    | admin123   | Ashley Falls | school    | 60  |
 
 Scenario: create a user login for a school
     Given I am on the homepage
@@ -41,11 +41,11 @@ Scenario: malformed user login
 Scenario: delete a posting
     Given I am logged in as "mathew@joseph.com" with password "admin123"
     And I am on the homepage
-    And I follow "Candidates: View Job Postings"
+    And I follow "View Job Postings"
     Then I should see "Ashley Falls"
     And I follow "Ashley Falls"
     Then I should see "Destroy"
-    And I click "Destroy"
+    And I follow "Destroy"
     Then I should see "successfully destroyed."
     
 # Iteration 3-1 test #
@@ -53,8 +53,8 @@ Scenario: delete a posting
 Scenario: Login and see only school resumes
     Given I am logged in as "mathew@joseph.com" with password "admin123"
     And I am on the homepage
-    And I follow "Candidates: View Job Postings"
-    And I click "View Submitted Resumes"
+    And I follow "View Job Postings"
+    And I follow "View Submitted Resumes"
     Then I should see "Joseph"
     And I should not see "Holmes"
 

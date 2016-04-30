@@ -5,17 +5,17 @@ Feature: allow only admins to edit their own things
 
 Background: jobs in database
     Given the following job openings exist:
-   | school         | title           | job_description          | compensation_min | compensation_max | expiration | fte |
-   | Ashley Falls   | Teacher         | I love my job!           | 80,000           | 100,000          | 2018-10-20 | 1   |
+   | school         | title           | job_description          | compensation_min | compensation_max | expiration | fte | id   | user_id |  
+   | Ashley Falls   | Teacher         | I love my job!           | 80,000           | 100,000          | 2018-10-20 | 1   | 6000 | 65      |
    
     Given the following resumes exist:
     | firstname   | lastname    | attachment     | job_id   | 
     | Mathew      | Joseph      | haha.jpg       |  6000    | 
     
     Given the following users exist:
-       | email                | password   | user_type | school       |
-       | mathew@jopeph.com    | admin123   | admin     |              |
-       | torrey@pines.com     | 12345678   | school    | Ashley Falls |
+       | email                | password   | user_type | school       | id | 
+       | mathew@jopeph.com    | admin123   | admin     |              |    |
+       | torrey@pines.com     | 12345678   | school    | Ashley Falls | 65 | 
 
 Scenario: upload resume sad path
     Given I am on the view open positions page
@@ -26,7 +26,7 @@ Scenario: upload resume sad path
 
 Scenario: listing correct resume things on index
     Given I am logged in as "torrey@pines.com" with password "12345678"
-    Given I am on the resumes page
+    Given I am on the school resumes page
     Then I should see "Download"
     And I follow "Back to Jobs"
     Then I should see "Ashley Falls"

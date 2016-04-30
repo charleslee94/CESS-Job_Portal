@@ -23,10 +23,10 @@ module NavigationHelpers
       '/jobs'
     
     when /^the school resumes page$/
-      '/resumes/6000'
+      '/resumes/65'
       
     when /^the resumes page$/
-      '/resumes/1'
+      '/resumes/6000'
       
     when /^the post open positions page$/
       '/jobs/new'
